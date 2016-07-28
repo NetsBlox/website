@@ -215,13 +215,16 @@ div.carousel-caption .trylink {
     background-size: cover; 
 }
 
+.navbar-wrapper .navbar {
+    border-radius: 4px;
+}
+
 .navbar-wrapper-tutorial {
     padding-top: 20px; /* This is to mimic the carousel's effect on the navbar on the home page */
 }
 
 .tutorial-heading {
-    background-color: black; 
-    color: white;
+    color: #211966;
 }
 
 /* ./tutorial styles */
