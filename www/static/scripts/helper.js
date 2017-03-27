@@ -71,7 +71,7 @@ function json2Proj(project, classes=''){
 //create html card based on project obj
 function json2Card(project){
   project.category = ['max','even','odd','featured'][Math.floor(Math.random() * 4)];
-  return `<div class="col-sm-3 element-item ${project.category}">
+  return `<div class="col-sm-3 col-md-2 element-item ${project.category}">
              <div class="card-container">
                 <a href="https://editor.netsblox.org/#present:Username=${project.owner}&ProjectName=${project.projectName}" target="_blank">
                 <div class="card">
@@ -86,7 +86,7 @@ function json2Card(project){
                             <div class="main">
                                 <h3 class="name">${project.projectName}</h3>
                                 <p class="profession">RPC 1</p>
-                                <p class="text-center">"${project.notes.substring(0,30) || 'No description.'}"</p>
+                                <p class="text-center">"${project.notes ? project.notes.substring(0,30) : 'No description.'}"</p>
                             </div>
                         </div>
                     </div> <!-- end front panel -->
@@ -94,7 +94,7 @@ function json2Card(project){
                         <div class="content">
                             <div class="main">
                                 <h4 class="text-center">${project.roleNames[0]}</h4>
-                                <p class="text-center">${project.notes || 'No description provided.'}</p>
+                                <p class="text-center"><small>${project.notes || 'No description provided.'}</small></p>
 
                                 <div class="stats-container">
                                     <div class="stats">

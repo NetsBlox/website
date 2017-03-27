@@ -27,6 +27,14 @@ div.btn-group {
   width: 100%;
 }
 
+/* set navbar size backto normal since we dont have logo there*/
+div.navbar-wrapper .navbar {
+  margin-left:unset;
+}
+
+
+
+
 
 /* Rotating Card start */
 
@@ -196,7 +204,7 @@ div.btn-group {
 
 .card .stats-container{
 	width: 100%;
-	margin-top: 50px;
+	margin-top: 2rem;
 }
 .card .stats{
 	display: block;

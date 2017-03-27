@@ -1,5 +1,7 @@
 .idea
 node_modules
+npm-debug.log
+www/npm-debug.log
 www/node_modules
 editor/update.sh.log
 editor/server.log
