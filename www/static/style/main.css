@@ -151,6 +151,7 @@ div.navbar-wrapper .navbar {
     padding: 10px 20px 20px;
 }
 .card .content .main {
+    position: relative;
     min-height: 160px;
 }
 .card .back .content .main {
@@ -204,7 +205,9 @@ div.navbar-wrapper .navbar {
 
 .card .stats-container{
 	width: 100%;
-	margin-top: 2rem;
+	margin-top: 1rem;
+  position: absolute;
+  bottom: 1rem;
 }
 .card .stats{
 	display: block;
