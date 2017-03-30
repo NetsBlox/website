@@ -3,14 +3,14 @@ let serverAdr = 'http://localhost:8080';
 // get the data
 let examplesAjax = $.ajax({
   method: 'GET',
-  url: 'http://localhost:8080/api/Examples/EXAMPLES?metadata=true'
+  url: serverAdr + '/api/Examples/EXAMPLES?metadata=true'
 }).fail(err => {
   console.log(err);
 })
 
 let publicProjectsAjax = $.ajax({
   method: 'GET',
-  url: 'http://localhost:8080/api/Projects/PROJECTS'
+  url: serverAdr +'/api/Projects/PROJECTS'
 }).fail(err => {
   console.log(err);
 })
@@ -20,7 +20,7 @@ $(document).ready(function() {
 
   var $grid = $('#examples-grid');
   var $pSlider = $('#projects-slider');
-  examplesAjax.done(examples=>{
+  examplesAjax.success(examples=>{
     console.log('ajax is done');
     console.log(examples);
     for (var i = 0; i < examples.length; i++) {
@@ -48,25 +48,28 @@ $(document).ready(function() {
 
   })
 
-  publicProjectsAjax.done(data=>{
-    console.log('public projects',data);
-    for(let i = 0; i < data.length; i++){
-      let projectEl =  '<li>' + json2Proj(data[i]) + '</li>';
-      $pSlider.append(projectEl);
+  publicProjectsAjax.success(data=>{
+    console.log('number of projects',data.length);
+    if(data.length > 8){
+        console.log('public projects',data);
+        for(let i = 0; i < data.length; i++){
+          let projectEl =  '<li>' + json2Proj(data[i]) + '</li>';
+          $pSlider.append(projectEl);
+        }
+
+      //lightslider
+        $pSlider.lightSlider({
+            autoWidth:true,
+            loop:true,
+            auto:true,
+            pauseOnHover: true,
+            onSliderLoad: function() {
+              $pSlider.removeClass('cS-hidden');
+              $('h3.hidden').removeClass('hidden');
+            } 
+        });
+        $('.prj-element a').popover();
     }
-
-  //lightslider
-    $pSlider.lightSlider({
-        autoWidth:true,
-        loop:true,
-        auto:true,
-        pauseOnHover: true,
-        onSliderLoad: function() {
-            $pSlider.removeClass('cS-hidden');
-        } 
-    });
-    $('.prj-element a').popover();
-
 
   })
 
