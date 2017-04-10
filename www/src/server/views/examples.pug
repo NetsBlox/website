@@ -1,0 +1,41 @@
+#examples-grid.hidden-xs.clearfix
+  each eg in examples
+    .col-sm-3.col-md-3.col-lg-2.element-item.featured
+      .card-container
+        .card
+          .front
+            .cover
+              img(src= eg.thumbnail)
+            //- .user.hidden
+              img.img-circle(src='HERE')
+            .content
+              .main
+              h3.name= eg.projectTitle
+              p.profession= eg.services[0]
+              p.text-center= eg.notes[0]
+          .back
+            .content
+              .main
+              h4.text-center= eg.primaryRoleName
+              p.text-center
+                small= eg.notes[0]
+              .stats-container
+                .stats
+                h4 235
+                p Views
+                .stats
+                h4 114
+                p Likes
+                .stats
+                h4= eg.roleNames.length
+                p Roles
+
+#examples-grid-m.visible-xs.clearfix
+  each eg in examples
+    .col-md-3.col-sm-6
+      .h-thumbnail
+        img.img-responsive.center-block.img-thumbnail(alt='', src= eg.thumbnail, style='width: 100%;')
+        ul.list-group
+          span.label.label-success= eg.services[0]
+          li.list-group-item.title= eg.projectName
+
