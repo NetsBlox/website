@@ -1,5 +1,5 @@
 // let serverAdr = 'https://editor.netsblox.org';
-// let serverAdr = 'http://localhost:8080';
+let serverAdr = 'http://local.netsblox.org:8080';
 
 // // get examples data
 // let examplesAjax = $.ajax({
@@ -127,8 +127,15 @@ $('form').submit(function(e){
       grabUserProjects = $.ajax({
           url: serverAdr + '/api//getProjectList?format=json',
           method: 'GET',
+          xhrFields: {
+             withCredentials: true
+          },
+          crossDomain: true,
           success: data => {
             console.log('grabbed user projects', data);
+          },
+          fail: err => {
+            console.log('failed to get user data');
           }
         })
     },

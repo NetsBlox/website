@@ -16,30 +16,56 @@ html
       script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
   body
     #main-content
-      .navbar-wrapper
-        .container
-          .navbar.navbar-inverse.navbar-static-top(role='navigation')
-            .container
-              .navbar-header
-                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                  span.sr-only Toggle navigation
-                  span.icon-bar
-                  span.icon-bar
-                  span.icon-bar
-              .navbar-collapse.collapse
-                ul.nav.navbar-nav
-                  li.active
-                    a(href='#') About
-                  li
-                    a.trylink(href='#') Try Now
-                  li
-                    a(href='NetsBloxWhitePaper.pdf') White Paper
-                  li
-                    a(href='tutorials/index.html') Tutorials
-                  li
-                    a(href='http://community.netsblox.org') Community
-                  li
-                    a(href='#', data-toggle='modal', data-target='#login-modal') Login
+      //- .navbar-wrapper
+      //-   .container
+      //-     .navbar.navbar-inverse.navbar-static-top(role='navigation')
+      //-       .container
+      //-         .navbar-header
+      //-           button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+      //-             span.sr-only Toggle navigation
+      //-             span.icon-bar
+      //-             span.icon-bar
+      //-             span.icon-bar
+      //-         .navbar-collapse.collapse
+      //-           ul.nav.navbar-nav
+      //-             li.active
+      //-               a(href='#') About
+      //-             li
+      //-               a.trylink(href='#') Try Now
+      //-             li
+      //-               a(href='NetsBloxWhitePaper.pdf') White Paper
+      //-             li
+      //-               a(href='tutorials/index.html') Tutorials
+      //-             li
+      //-               a(href='http://community.netsblox.org') Community
+      //-             li
+      //-               a(href='#', data-toggle='modal', data-target='#login-modal') Login
+      
+      nav.navbar.navbar-inverse
+        .container-fluid
+          .navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            |  
+            a.navbar-brand(href='#') NetsBlox
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li.active
+                a(href='#') About
+              li
+                a.trylink(href='#') Try Now
+              li
+                a(href='NetsBloxWhitePaper.pdf') White Paper
+              li
+                a(href='tutorials/index.html') Tutorials
+              li
+                a(href='http://community.netsblox.org') Community
+              li
+                a(href='#', data-toggle='modal', data-target='#login-modal') Login
+
       #myCarousel.carousel.slide(data-ride='carousel', data-interval='15000')
         ol.carousel-indicators
           li.active(data-target='#myCarousel', data-slide-to='0')
@@ -54,8 +80,7 @@ html
                   .col-sm-12.col-lg-12
                     h1 Limitless
                 .row
-                  p.col-sm-12.col-lg-12
-                    | Just two simple distributed programming concepts - message passing and remote procedure calls - open a world of possibilities.
+                  p.col-sm-12.col-lg-12 Just two simple distributed programming concepts - message passing and remote procedure calls - open a world of possibilities.
                   p
                     a.btn.btn-lg.btn-primary.trylink(href='#', role='button') Use NetsBlox!
           .item.prototypical
@@ -63,8 +88,7 @@ html
             .container
               .carousel-caption(style='padding-bottom: 80px;')
                 h1 Flexible
-                p
-                  | Work on any computer or deploy the programs you created with NetsBlox on your phone or tablet and play against your friends in the next room or the next state.
+                p Work on any computer or deploy the programs you created with NetsBlox on your phone or tablet and play against your friends in the next room or the next state.
           .item.versioning
             img(src='images/carousel/ttt.png', alt='First slide')
             .container
@@ -73,29 +97,28 @@ html
                   .col-sm-12.col-lg-12
                     h1 Collaborative
                 .row
-                  p.col-sm-12.col-lg-12
-                    | Work with your friends sharing the same workspace or have your own two programs play each other; it&apos;s your choice.
+                  p.col-sm-12.col-lg-12 Work with your friends sharing the same workspace or have your own two programs play each other; it&apos;s your choice.
                   p
                     a.btn.btn-lg.btn-primary.trylink(href='#', role='button') Use NetsBlox!
-        a.left.carousel-control(href='#myCarousel', data-slide='prev')
+        a.left.hidden-xs.carousel-control(href='#myCarousel', data-slide='prev')
           span.glyphicon.glyphicon-chevron-left
-        a.right.carousel-control(href='#myCarousel', data-slide='next')
+        a.right.hidden-xs.carousel-control(href='#myCarousel', data-slide='next')
           span.glyphicon.glyphicon-chevron-right
       .container.marketing
-        .row
-          .col-lg-3
+        .row.text-center
+          .col-md-3.col-sm-6
             h2 Familiar
             p
               | Uses the same visual formalism of Scratch and Snap! so you can start with NetsBlox where you left off.
-          .col-lg-3
+          .col-md-3.col-sm-6
             h2 Safe
             p
               | Only your friends can collaborate with you, play against you or even contact you without permission.
-          .col-lg-3
+          .col-md-3.col-sm-6
             h2 Fun
             p
               | Design multi-player games or harness real-time data sources from the Internet to create your science projects!
-          .col-lg-3
+          .col-md-3.col-sm-6
             h2 Rewarding
             p
               | Learn the key concepts that run our interconnected world from iPhones through Instagram to traffic lights.
@@ -112,8 +135,10 @@ html
         include pubProjects.pug
         hr
         .row.social-buttons-holder
-          a(href='https://github.com/netsblox/netsblox', title='GitHub')
+          a(href='https://github.com/netsblox/netsblox', target="_blank" title='GitHub')
             i.fa.fa-github.fa-2x
+          a(href='https://www.facebook.com/netsblox', target="_blank" title='Facebook')
+            i.fa.fa-facebook-square.fa-2x
     footer
       p
         | &copy; 2016 
@@ -129,26 +154,24 @@ html
           br
           form
             input(type='text', name='username', placeholder='Username')
-            |  
             input(type='password', name='password', placeholder='Password')
-            |  
             button.login.loginmodal-submit(name='login', type='submit') Login
-            .login-help
-              a(href='https://editor.netsblox.org/') Register
-              |  - 
-              a(href='https://editor.netsblox.org/') Forgot Password
+            //- .login-help
+            //-   a(href='https://editor.netsblox.org/') Register
+            //-   |  - 
+            //-   a(href='https://editor.netsblox.org/') Forgot Password
     script(src='libs/jquery/jquery-2.1.0.min.js')
     script(src='libs/bootstrap/bootstrap-3.1.1-dist/js/bootstrap.min.js')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet', integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN', crossorigin='anonymous')
     script(src='libs/bootstrap/holder/holder.2.3.1.min.js')
     script(src='libs/fancybox/jquery.fancybox.pack.js')
-    script(src='http://www.google.com/recaptcha/api/js/recaptcha_ajax.js')
+    //- script(src='http://www.google.com/recaptcha/api/js/recaptcha_ajax.js')
     script(src='libs/form/jquery.form.min.js')
     script(src='libs/rrssb/rrssb.min.js')
     script(src='libs/isotope/isotope.min.js')
     script(src='libs/lightslider/lightslider.js')
     script(src='scripts/helper.js')
-    script(src='scripts/webgme_www.js')
+    //- script(src='scripts/webgme_www.js')
     script(src='scripts/main.js')
     script(type='text/javascript').
       $(function () {

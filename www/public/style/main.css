@@ -28,12 +28,16 @@ div.btn-group {
 }
 
 /* set navbar size backto normal since we dont have logo there*/
-div.navbar-wrapper .navbar {
+nav.navbar {
   margin-left:unset;
+  margin-bottom: 0;
 }
 
 
-
+.social-buttons-holder a{
+  margin-right: 1rem;
+  color: black;
+}
 
 /*mobile friendly thumbnails project eg*/
 
@@ -61,6 +65,7 @@ div.navbar-wrapper .navbar {
      -o-perspective: 800px;
         perspective: 800px;
         margin-bottom: 30px;
+        overflow: hidden;
 }
 /* flip the pane when hovered */
 .card-container:not(.manual-flip):hover .card,
@@ -188,7 +193,7 @@ div.navbar-wrapper .navbar {
 .card .profession{
     color: #999999;
     text-align: center;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 .card .footer {
     border-top: 1px solid #EEEEEE;
