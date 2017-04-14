@@ -49,13 +49,13 @@ $(document).ready(function() {
         return qsRegex ? $(this).text().match( qsRegex ) : true;
       }
     });
-    // filter items on button click
-    $('.filter-button-group').on( 'click', 'button', function() {
-      var filterValue = $(this).attr('data-filter');
-      $(this).addClass('active');
-      $(this).siblings().removeClass('active');
-      $grid.isotope({ filter: filterValue });
-    });
+    // setup button filters for isotope
+    // $('.filter-button-group').on( 'click', 'button', function() {
+    //   var filterValue = $(this).attr('data-filter');
+    //   $(this).addClass('active');
+    //   $(this).siblings().removeClass('active');
+    //   $grid.isotope({ filter: filterValue });
+    // });
 
     //filter items on search
     // use value of search field to filter

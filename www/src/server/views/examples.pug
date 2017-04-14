@@ -1,7 +1,16 @@
-input(type='text',class='quicksearch',placeholder='search')
+h3.text-center Examples &amp; Services
+//- .btn-group-wrap
+//-   .btn-group.button-group.filter-button-group(class='style=')
+//-     button.btn.btn-info(data-filter='*') Show all
+//-     button.btn.btn-info(data-filter='.staticmap') Map
+//-     button.btn.btn-info.active(data-filter='.featured') Featured
+.row
+  .col-sm-4.col-sm-offset-4.col-lg-2.col-lg-offset-5
+    .form-group
+      input(type='text',class='form-control quicksearch',placeholder='Search')
 #examples-grid.hidden-xs.clearfix
   each eg in examples
-    .col-sm-3.col-md-3.col-lg-2.element-item.featured
+    .col-sm-3.col-md-3.col-lg-2.element-item
       .card-container
         .card
           .front
