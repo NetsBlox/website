@@ -49,7 +49,6 @@ html
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            |  
             a.navbar-brand(href='#') NetsBlox
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
             ul.nav.navbar-nav
@@ -64,8 +63,10 @@ html
               li
                 a(href='http://community.netsblox.org') Community
               li
-                a(href='#', data-toggle='modal', data-target='#login-modal') Login
-
+                a(href='#', id="login" data-toggle='modal', data-target='#login-modal') Login
+              li
+                a(href='#', id="logout" class="hidden") Logout
+            <p class="hidden navbar-text navbar-right">Signed in as <b>foo</b></p>
       #myCarousel.carousel.slide(data-ride='carousel', data-interval='15000')
         ol.carousel-indicators
           li.active(data-target='#myCarousel', data-slide-to='0')
@@ -152,7 +153,7 @@ html
         .loginmodal-container
           h1 Login to NetsBlox
           br
-          form
+          form(method='post')
             input(type='text', name='username', placeholder='Username')
             input(type='password', name='password', placeholder='Password')
             button.login.loginmodal-submit(name='login', type='submit') Login
@@ -172,6 +173,7 @@ html
     script(src='libs/lightslider/lightslider.js')
     script(src='scripts/helper.js')
     //- script(src='scripts/webgme_www.js')
+    script(src='scripts/js-cookie.js')
     script(src='scripts/main.js')
     script(type='text/javascript').
       $(function () {

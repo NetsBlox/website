@@ -40,11 +40,14 @@ $(document).ready(function() {
 
 
     // init Isotope
+    var qsRegex;
     $grid.isotope({
       // options
       // layoutMode: 'fitRows',
       itemSlecetor: '.element-item',
-      filter: '.featured'
+      filter: function() {
+        return qsRegex ? $(this).text().match( qsRegex ) : true;
+      }
     });
     // filter items on button click
     $('.filter-button-group').on( 'click', 'button', function() {
@@ -53,6 +56,30 @@ $(document).ready(function() {
       $(this).siblings().removeClass('active');
       $grid.isotope({ filter: filterValue });
     });
+
+    //filter items on search
+    // use value of search field to filter
+    var $quicksearch = $('.quicksearch').keyup( debounce( function() {
+      qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+      $grid.isotope();
+    }, 200 ) );
+
+    // debounce so filtering doesn't happen every millisecond
+    function debounce( fn, threshold ) {
+      var timeout;
+      return function debounced() {
+        if ( timeout ) {
+          clearTimeout( timeout );
+        }
+        function delayed() {
+          fn();
+          timeout = null;
+        }
+        timeout = setTimeout( delayed, threshold || 100 );
+      }
+    }
+
+    //==== end of isotope ====
 
   // $('.prj-element a').popover();
 
@@ -94,11 +121,25 @@ $(document).ready(function() {
   //      }
   //  });
 
+  // determine if logged in
+  let user = Cookies.get('username');
+  if (user !== undefined) {
+    updateLoginViews(true);
+    alert('welcome ' + user);
+  }
+
+
+  //logout 
+  $('#logout').on('click',()=>{
+    Cookies.remove('username');
+    Cookies.remove('netsblox-cookie');
+    updateLoginViews(false);
+  })
+
 
 }); // end of document ready func
 
 let grabUserProjects;
-
 
 $('form').submit(function(e){
   e.preventDefault();
@@ -110,11 +151,16 @@ $('form').submit(function(e){
   $.ajax({
     url: serverAdr + '/api/?SESSIONGLUE=.sc1m16',
     method: 'POST',
-    data: {
+    data: JSON.stringify({
       __h: hashedP,
       __u: username,
       remember: true
+    }),
+    contentType: "application/json; charset=utf-8",
+    xhrFields: {
+       withCredentials: true
     },
+    crossDomain: true,
     statusCode: {
         403: function (xhr) {
           // login failed ( catching using status code due to the response)
@@ -124,24 +170,48 @@ $('form').submit(function(e){
     },
     success: data =>{
       console.log('logged in');
-      grabUserProjects = $.ajax({
-          url: serverAdr + '/api//getProjectList?format=json',
-          method: 'GET',
-          xhrFields: {
-             withCredentials: true
-          },
-          crossDomain: true,
-          success: data => {
-            console.log('grabbed user projects', data);
-          },
-          fail: err => {
-            console.log('failed to get user data');
-          }
-        })
+      postLogin(); // promises..
     },
     fail: err =>{
       console.log(err);
     }
 
   })
+
+
+function postLogin(){
+  Cookies.set('username',username,{expires: 14}); 
+  grabUserProjects = $.ajax({
+      url: serverAdr + '/api//getProjectList?format=json',
+      method: 'GET',
+      xhrFields: {
+         withCredentials: true
+      },
+      crossDomain: true,
+      success: data => {
+        console.log('grabbed user projects', data);
+      }
+    })
+
+  updateLoginViews(true);
+}
+
+
+
+
 }) // end of on submit
+
+
+function updateLoginViews(isLoggedIn){
+  //use toggle? 
+  if (isLoggedIn) {
+    $('#login').addClass('hidden');
+    $('#logout').removeClass('hidden');
+    $('nav p').removeClass('hidden').find('b').text(Cookies.get('username'));
+    $('#login-modal').modal('hide');
+  }else{ //means we are logging out
+    $('#login').removeClass('hidden');
+    $('#logout').addClass('hidden');
+    $('nav p').addClass('hidden');
+  }
+}
