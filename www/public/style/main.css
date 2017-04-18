@@ -54,6 +54,10 @@ nav.navbar {
 }
 
 
+nav.navbar {
+  border-radius: 0;
+}
+
 /* Start of Imports */
 
 
