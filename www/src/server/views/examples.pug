@@ -8,9 +8,13 @@ h3.text-center Examples &amp; Services
   .col-sm-4.col-sm-offset-4.col-lg-2.col-lg-offset-5
     .form-group
       input(type='text',class='form-control quicksearch',placeholder='Search')
-#examples-grid.hidden-xs.clearfix
+
+
+//- .hidden-xs.clearfix
+#examples-grid
+  .grid-sizer.col-xs-12.col-sm-6.col-md-4.col-lg-3
   each eg in examples
-    .col-sm-3.col-md-3.col-lg-2.element-item
+    .element-item.col-xs-12.col-sm-6.col-md-4.col-lg-3
       .card-container
         .card
           .front
@@ -21,8 +25,9 @@ h3.text-center Examples &amp; Services
             .content
               .main
                 h3.name= eg.projectName
-                each service in eg.services
-                  p.profession= service
+                p.profession= eg.services.join(', ')
+                //- each service in eg.services
+                //-   p.profession= service
                 // p.text-center= eg.notes
           .back
             .content
