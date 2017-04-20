@@ -12,38 +12,33 @@ h3.text-center Examples &amp; Services
 
 //- .hidden-xs.clearfix
 #examples-grid
+  - var servAddr = 'http://localhost:8080';
   .grid-sizer.col-xs-12.col-sm-6.col-md-4.col-lg-3
   each eg in examples
     .element-item.col-xs-12.col-sm-6.col-md-4.col-lg-3
-      .card-container
-        .card
-          .front
-            .cover
-              img(src= eg.thumbnail)
-            .user.hidden
-              img.img-circle(src='HERE')
-            .content
-              .main
-                h3.name= eg.projectName
-                p.profession= eg.services.join(', ')
-                //- each service in eg.services
-                //-   p.profession= service
-                // p.text-center= eg.notes
-          .back
-            .content
-              .main
-                h4.text-center= eg.primaryRoleName
-                p.text-center= eg.notes
-                .stats-container
-                  .stats
-                    h4 235
-                    p Views
-                  .stats
-                    h4 114
-                    p Likes
-                  .stats
-                    h4= eg.roleNames.length
-                    p Roles
+      a(href= servAddr+'/?action=example&ProjectName='+eg.projectName, target='_blank')
+        .card-container
+          .card
+            .front(style=`background-image: url(${servAddr}/api/examples/${eg.projectName}/thumbnail);`)
+              .content
+                .main
+                  h3.name= eg.projectName
+                  p.profession= eg.services.join(', ')
+            .back
+              .content
+                .main
+                  h4.text-center= eg.primaryRoleName
+                  p.text-center= eg.notes
+                  .stats-container
+                    .stats
+                      h4 235
+                      p Views
+                    .stats
+                      h4 114
+                      p Likes
+                    .stats
+                      h4= eg.roleNames.length
+                      p Roles
 
 #examples-grid-m.visible-xs.clearfix
   each eg in examples
@@ -54,3 +49,18 @@ h3.text-center Examples &amp; Services
           span.label.label-success= eg.services[0]
           li.list-group-item.title= eg.projectName
 
+
+
+
+            //- .front
+            //-   .cover
+            //-     img(src= `${servAddr}/api/examples/${eg.projectName}/thumbnail`)
+            //-   .user.hidden
+            //-     img.img-circle(src='HERE')
+            //-   .content
+            //-     .main
+            //-       h3.name= eg.projectName
+            //-       p.profession= eg.services.join(', ')
+            //-       //- each service in eg.services
+            //-       //-   p.profession= service
+            //-       // p.text-center= eg.notes

@@ -53,10 +53,38 @@ nav.navbar {
   border-bottom: none;
 }
 
-
+/* navbar */
 nav.navbar {
   border-radius: 0;
+  z-index: 1;
 }
+
+.element-item .front{
+  background-size: cover;
+}
+
+/*carousel*/
+/*.carousel {
+  height: 100vh !important;
+}
+
+#myCarousel{
+  height: 100vh;
+  margin-top: -50px;
+}
+#myCarousel .item{
+  height: 100vh;
+}
+#myCarousel img{
+  height: 100vh;
+}
+.carousel-inner{
+  height: 100vh;
+}
+
+.item.prototypical {
+  height: 100vh;
+}*/
 
 /* Start of Imports */
 

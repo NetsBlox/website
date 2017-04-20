@@ -22,72 +22,59 @@ function json2Proj(project, classes=''){
 }
 //create html card based on project obj
 function json2Card(project){
-  project.category = ['max','even','featured'][Math.floor(Math.random() * 3)] + ' ' + ['max','even','featured'][Math.floor(Math.random() * 4)];
-  return `<div class="col-sm-3 col-md-3 col-lg-2 element-item ${project.category} ${project.services.join(' ')}">
-             <div class="card-container">
-                <a href="https://editor.netsblox.org/#present:Username=${project.owner}&ProjectName=${project.projectName}" target="_blank">
-                <div class="card">
-                    <div class="front">
-                        <div class="cover">
-                            <img src="${project.thumbnail}"/>
-                        </div>
-                        <div class="user hidden">
-                            <img class="img-circle" src="${project.thumbnail}"/>
-                        </div>
-                        <div class="content">
-                            <div class="main">
-                                <h3 class="name">${project.projectName}</h3>
-                                <p class="profession">${project.services[0] || 'No Service'}</p>
-                                <p class="text-center">${project.notes ? project.notes.substring(0,30)+ '...': '<span class="text-muted">"No description"</span>'}</p>
-                            </div>
-                        </div>
-                    </div> <!-- end front panel -->
-                    <div class="back">
-                        <div class="content">
-                            <div class="main">
-                                <h4 class="text-center">${project.primaryRoleName}</h4>
-                                <p class="text-center"><small>${project.notes || '<span class="text-muted">No description provided.</span>'}</small></p>
-
-                                <div class="stats-container">
-                                    <div class="stats">
-                                        <h4>235</h4>
-                                        <p>
-                                            Views
-                                        </p>
-                                    </div>
-                                    <div class="stats">
-                                        <h4>114</h4>
-                                        <p>
-                                            Likes
-                                        </p>
-                                    </div>
-                                    <div class="stats">
-                                        <h4>${project.roleNames.length}</h4>
-                                        <p>
-                                            Roles
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- end back panel -->
-                </div> <!-- end card -->
-                </a>
-            </div> <!-- end card-container -->
-            </div>`
+  return `
+    <div class="element-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card-container">
+        <div class="card">
+          <div class="front">
+            <div class="cover"><img src="${project.thumbnail}"></div>
+            <div class="user hidden"><img class="img-circle" src="HERE"></div>
+            <div class="content">
+              <div class="main">
+                <h3 class="name">${project.projectName}</h3>
+                <p class="profession">${project.services[0]}</p>
+                <!-- p.text-center= eg.notes-->
+              </div>
+            </div>
+          </div>
+          <div class="back">
+            <div class="content">
+              <div class="main">
+                <h4 class="text-center">${project.primaryRoleName}</h4>
+                <p class="text-center"></p>
+                <div class="stats-container">
+                  <div class="stats">
+                    <h4>235</h4>
+                    <p>Views</p>
+                  </div>
+                  <div class="stats">
+                    <h4>114</h4>
+                    <p>Likes</p>
+                  </div>
+                  <div class="stats">
+                    <h4>2</h4>
+                    <p>Roles</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`
 }
 
 
 
 let json2MobileEl = project => {
-  return `<div class="col-md-3 col-sm-6">
+  return `<div class="col-lg-2 col-md-3 col-sm-4">
   <div class="h-thumbnail">
-    <a href="/videos/show/670">
-      <img class="img-responsive center-block img-thumbnail" alt="" src="${project.thumbnail}" style="width: 100%;"/>
+    <a href="#">
+      <img class="img-responsive center-block img-thumbnail" alt="" src="${project.Thumbnail}" style="width: 100%;"/>
     </a>
       <ul class="list-group">
-      <span class="label label-success">${project.services[0]}</span>  
-        <li class="list-group-item title">${project.projectName}</li>
+      <span class="label label-success"></span>  
+        <li class="list-group-item title">${project.ProjectName}</li>
       </ul> 
   </div>
 </div>`

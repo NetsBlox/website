@@ -161,6 +161,7 @@ function updateLoginViews(isLoggedIn) {
 		} else { //means we are logging out
 			$('#login').removeClass('hidden');
 			$('#logout').addClass('hidden');
+			$('#userProjects-grid').addClass('hidden').find('row').empty();
 			$('nav p').addClass('hidden');
 		}
 	}
@@ -172,10 +173,13 @@ function grabUserProjects(){
 			withCredentials: true
 		},
 		crossDomain: true,
+
 		success: data => {
+			let $userProjsWrapper = $('#userProjects-grid').removeClass('hidden');
 			console.log('grabbed user projects', data);
+			$userProjsWrapper.find('.row').empty();
 			data.forEach( proj => {
-				$('.container.marketing').append(proj.ProjectName + ' ');
+				$userProjsWrapper.find('.row').append(json2MobileEl(proj));
 			})
 		}
 	})
