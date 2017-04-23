@@ -11,43 +11,52 @@ h3.text-center Examples &amp; Services
 
 
 //- .hidden-xs.clearfix
-#examples-grid
+//- #examples-grid
+//-   - var servAddr = 'http://localhost:8080';
+//-   .grid-sizer.col-xs-12.col-sm-6.col-md-4.col-lg-3
+//-   each eg in examples
+//-     .element-item.col-xs-12.col-sm-6.col-md-4.col-lg-3
+//-       a(href= servAddr+'/?action=example&ProjectName='+eg.projectName, target='_blank')
+//-         .card-container
+//-           .card
+//-             .front(style=`background-image: url(${servAddr}/api/examples/${eg.projectName}/thumbnail);`)
+//-               .content
+//-                 .main
+//-                   //- h3.name= eg.projectName
+//-                   //- p.profession= eg.services.join(', ')
+//-             .back
+//-               .content
+//-                 .main
+//-                   h3.name= eg.projectName
+//-                   h4.text-center= eg.primaryRoleName
+//-                   p.profession= eg.services.join(', ')
+//-                   p.text-center= eg.notes
+//-                   .stats-container
+//-                     .stats
+//-                       h4 235
+//-                       p Views
+//-                     .stats
+//-                       h4 114
+//-                       p Likes
+//-                     .stats
+//-                       h4= eg.roleNames.length
+//-                       p Roles
+
+#examples-grid-m.clearfix
   - var servAddr = 'http://localhost:8080';
   .grid-sizer.col-xs-12.col-sm-6.col-md-4.col-lg-3
   each eg in examples
-    .element-item.col-xs-12.col-sm-6.col-md-4.col-lg-3
-      a(href= servAddr+'/?action=example&ProjectName='+eg.projectName, target='_blank')
-        .card-container
-          .card
-            .front(style=`background-image: url(${servAddr}/api/examples/${eg.projectName}/thumbnail);`)
-              .content
-                .main
-                  h3.name= eg.projectName
-                  p.profession= eg.services.join(', ')
-            .back
-              .content
-                .main
-                  h4.text-center= eg.primaryRoleName
-                  p.text-center= eg.notes
-                  .stats-container
-                    .stats
-                      h4 235
-                      p Views
-                    .stats
-                      h4 114
-                      p Likes
-                    .stats
-                      h4= eg.roleNames.length
-                      p Roles
-
-#examples-grid-m.visible-xs.clearfix
-  each eg in examples
-    .col-md-3.col-sm-6
+    .element-item.col-xs-12.col-sm-6.col-md-4.col-lg-3.clearfix
       .h-thumbnail
-        img.img-responsive.center-block.img-thumbnail(alt='', src= eg.thumbnail, style='width: 100%;')
+        img.img-responsive.center-block.img-thumbnail(title= eg.notes, src= `${servAddr}/api/examples/${eg.projectName}/thumbnail`, style='width: 100%;')
         ul.list-group
           span.label.label-success= eg.services[0]
-          li.list-group-item.title= eg.projectName
+          li.list-group-item.title
+            b= eg.projectName
+            a(href= servAddr+'/?action=example&ProjectName='+eg.projectName, target='_blank') 
+                i.fa.fa-external-link
+            span.pull-right= ' Roles: '+ eg.roleNames.length
+
 
 
 

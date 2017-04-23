@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 	// init Isotope
 	var qsRegex;
-	$grid.isotope({
+	$gridM.isotope({
 			// options
 			// layoutMode: 'fitRows',
 			itemSelector: '.element-item',
@@ -37,7 +37,7 @@ $(document).ready(function() {
 	// use value of search field to filter
 	var $quicksearch = $('.quicksearch').keyup(debounce(function() {
 		qsRegex = new RegExp($quicksearch.val(), 'gi');
-		$grid.isotope();
+		$gridM.isotope();
 	}, 200));
 
 	// debounce so filtering doesn't happen every millisecond
