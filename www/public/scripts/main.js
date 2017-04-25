@@ -1,5 +1,5 @@
-// let serverAdr = 'https://editor.netsblox.org';
-let serverAdr = 'http://local.netsblox.org:8080';
+// let SERVER_ADDRESS = 'https://editor.netsblox.org';
+let SERVER_ADDRESS = 'http://local.netsblox.org:8080';
 
 
 $(document).ready(function() {
@@ -24,7 +24,10 @@ $(document).ready(function() {
 				return qsRegex ? $(this).text().match(qsRegex) : true;
 			}
 		});
-
+	// layout the items after the images are loaded
+	setTimeout(()=>{
+		$gridM.isotope('layout');
+	},1000);
 	// setup button filters for isotope
 	// $('.filter-button-group').on( 'click', 'button', function() {
 	//   var filterValue = $(this).attr('data-filter');
@@ -90,9 +93,15 @@ $(document).ready(function() {
 
 	//logout 
 	$('#logout').on('click', () => {
-		Cookies.remove('username');
-		Cookies.remove('netsblox-cookie');
-		updateLoginViews(false);
+		$.ajax({
+			url: SERVER_ADDRESS + '/api/logout',
+			success: () => {
+				document.cookie = "netsblox-cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+				document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+				updateLoginViews(false);
+			}
+		});
+
 	})
 
 
@@ -106,7 +115,7 @@ $('form').submit(function(e) {
 	console.log(username, hashedP);
 
 	$.ajax({
-		url: serverAdr + '/api/?SESSIONGLUE=.sc1m16',
+		url: SERVER_ADDRESS + '/api/?SESSIONGLUE=.sc1m16',
 		method: 'POST',
 		data: JSON.stringify({
 			__h: hashedP,
@@ -115,32 +124,31 @@ $('form').submit(function(e) {
 		}),
 		contentType: "application/json; charset=utf-8",
 		xhrFields: {
-			withCredentials: true
+			withCredentials: false
 		},
 		crossDomain: true,
 		statusCode: {
 			403: function(xhr) {
-										// login failed ( catching using status code due to the response)
-										console.log(xhr.responseText);
-										alert(xhr.responseText);
-									}
-								},
-								success: data => {
-									console.log('logged in');
-								postLogin(); // promises..
-							},
-							fail: err => {
-								console.log(err);
-							}
+					// login failed ( catching using status code due to the response)
+					console.log(xhr.responseText);
+					alert(xhr.responseText);
+				}
+			},
+		success: data => {
+			console.log('logged in');
+			postLogin(); // promises..
+		},
+		fail: err => {
+			console.log('failed to log in', err);
+		}
 
-						})
+	})
 
 
 	function postLogin() {
 		Cookies.set('username', username, {
 			expires: 14
 		});
-		grabUserProjects();
 		updateLoginViews(true);
 	}
 
@@ -166,8 +174,10 @@ function updateLoginViews(isLoggedIn) {
 		}
 	}
 function grabUserProjects(){
+
+	$('#userProjects-grid').find('.row').empty();
 	$.ajax({
-		url: serverAdr + '/api//getProjectList?format=json',
+		url: SERVER_ADDRESS + '/api//getProjectList?format=json',
 		method: 'GET',
 		xhrFields: {
 			withCredentials: true
@@ -175,11 +185,10 @@ function grabUserProjects(){
 		crossDomain: true,
 
 		success: data => {
-			let $userProjsWrapper = $('#userProjects-grid').removeClass('hidden');
+			$('#userProjects-grid').removeClass('hidden')
 			console.log('grabbed user projects', data);
-			$userProjsWrapper.find('.row').empty();
 			data.forEach( proj => {
-				$userProjsWrapper.find('.row').append(json2MobileEl(proj));
+				$('#userProjects-grid').find('.row').append(json2MobileEl(proj));
 			})
 		}
 	})

@@ -48,7 +48,7 @@ h3.text-center Examples &amp; Services
   each eg in examples
     .element-item.col-xs-12.col-sm-6.col-md-4.col-lg-3.clearfix
       .h-thumbnail
-        img.img-responsive.center-block.img-thumbnail(title= eg.notes, src= `${servAddr}/api/examples/${eg.projectName}/thumbnail`, style='width: 100%;')
+        img.img-responsive.center-block.img-thumbnail(title= eg.notes || 'No description provided.', src= `${servAddr}/api/examples/${eg.projectName}/thumbnail`, style='width: 100%;')
         ul.list-group
           span.label.label-success= eg.services[0]
           li.list-group-item.title
@@ -56,7 +56,6 @@ h3.text-center Examples &amp; Services
             a(href= servAddr+'/?action=example&ProjectName='+eg.projectName, target='_blank') 
                 i.fa.fa-external-link
             span.pull-right= ' Roles: '+ eg.roleNames.length
-
 
 
 

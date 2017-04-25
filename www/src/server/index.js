@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, '../../public')));
 // Setup pipeline support for server-side templates
 app.engine('pug', require('pug').__express);
 app.set('views', path.join(__dirname, 'views'));
-// app.locals.pretty = true;
+app.locals.pretty = true;
 // Finish pipeline setup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
