@@ -2,18 +2,17 @@ doctype html
 html
   head
     title NetsBlox
-    link(href='libs/bootstrap/bootstrap-3.1.1-dist/css/bootstrap.min.css', rel='stylesheet')
-    link(href='libs/bootstrap/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css', rel='stylesheet')
+    //- link(href='libs/bootstrap/bootstrap-3.1.1-dist/css/bootstrap.min.css', rel='stylesheet')
+    //- link(href='libs/bootstrap/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
     link(href='style/carousel_theme.css', rel='stylesheet')
-    link(href='libs/rrssb/rrssb.css', rel='stylesheet')
+    //- link(href='libs/rrssb/rrssb.css', rel='stylesheet')
     link(href='style/webgme_www.css', rel='stylesheet')
-    link(href='libs/lightslider/lightslider.css', rel='stylesheet')
-    link(rel='stylesheet', href='libs/fancybox/jquery.fancybox.css', type='text/css', media='screen')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css', rel='stylesheet')
+    //- link(rel='stylesheet', href='libs/fancybox/jquery.fancybox.css', type='text/css', media='screen')
     link(rel='stylesheet', type='text/css', href='style/main.css')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    //if lt IE 9
-      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
-      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    meta(name='description', content='NetsBlox is a visual programming language and cloud-based environment that enables novice programmers to create networked programs such as multi-player games.')
   body
     #main-content
       nav.navbar.navbar-inverse
@@ -85,37 +84,35 @@ html
           span.glyphicon.glyphicon-chevron-left
         a.right.hidden-xs.carousel-control(href='#myCarousel', data-slide='next')
           span.glyphicon.glyphicon-chevron-right
+      br
       .container.marketing
-        .row.text-center
-          
-          .well NetsBlox is a visual programming language and cloud-based environment that enables novice programmers to create networked programs such as multi-player games. Its visual notation is based on Scratch and it uses the open source JavaScript code base of Snap! NetsBlox opens up the internet with its vast array of public domain scientific and other data sources making it possible to create STEM projects, such as displaying seismic activity anywhere on Earth using an interactive Google Maps background. Similarly, weather, air pollution, and many other data sources such as the Open Movie Database and the Sloan Digital Sky Server are available. NetsBlox supports collaborative program editing similar to how Google Docs work.
+        p.text-center NetsBlox is a visual programming language and cloud-based environment that enables novice programmers to create networked programs such as multi-player games. Its visual notation is based on Scratch and it uses the open source JavaScript code base of Snap! NetsBlox opens up the internet with its vast array of public domain scientific and other data sources making it possible to create STEM projects, such as displaying seismic activity anywhere on Earth using an interactive Google Maps background. Similarly, weather, air pollution, and many other data sources such as the Open Movie Database and the Sloan Digital Sky Server are available. NetsBlox supports collaborative program editing similar to how Google Docs work.
+        //- .col-md-3.col-sm-6
+        //-   h2 Familiar
+        //-   p Uses the same visual formalism of Scratch and Snap! so you can start with NetsBlox where you left off.
+        //- .col-md-3.col-sm-6
+        //-   h2 Safe
+        //-   p Only your friends can collaborate with you, play against you or even contact you without permission.
+        //- .col-md-3.col-sm-6
+        //-   h2 Fun
+        //-   p Design multi-player games or harness real-time data sources from the Internet to create your science projects!
+        //- .col-md-3.col-sm-6
+        //-   h2 Rewarding
+        //-   p Learn the key concepts that run our interconnected world from iPhones through Instagram to traffic lights.
 
-          //- .col-md-3.col-sm-6
-          //-   h2 Familiar
-          //-   p Uses the same visual formalism of Scratch and Snap! so you can start with NetsBlox where you left off.
-          //- .col-md-3.col-sm-6
-          //-   h2 Safe
-          //-   p Only your friends can collaborate with you, play against you or even contact you without permission.
-          //- .col-md-3.col-sm-6
-          //-   h2 Fun
-          //-   p Design multi-player games or harness real-time data sources from the Internet to create your science projects!
-          //- .col-md-3.col-sm-6
-          //-   h2 Rewarding
-          //-   p Learn the key concepts that run our interconnected world from iPhones through Instagram to traffic lights.
-        br
+      .container-fluid#showcase
         #userProjects-grid.hidden.text-center
           h3 My Projects
           .row
-          //- .grid-sizer.col-xs-12.col-sm-6.col-md-4.col-lg-3
-            
         include examples.pug
         include pubProjects.pug
-        hr
-        .row.social-buttons-holder
-          a(href='https://github.com/netsblox/netsblox', target="_blank" title='GitHub')
-            i.fa.fa-github.fa-2x
-          a(href='https://www.facebook.com/netsblox', target="_blank" title='Facebook')
-            i.fa.fa-facebook-square.fa-2x
+
+      .social-buttons-holder
+        a(href='https://github.com/netsblox/netsblox', target="_blank" title='GitHub')
+          i.fa.fa-github.fa-2x
+        a(href='https://www.facebook.com/netsblox', target="_blank" title='Facebook')
+          i.fa.fa-facebook-square.fa-2x
+      br
     footer.text-center
       p
         | &copy; 2016 
@@ -137,29 +134,26 @@ html
             //-   a(href='https://editor.netsblox.org/') Register
             //-   |  - 
             //-   a(href='https://editor.netsblox.org/') Forgot Password
-    script(src='libs/jquery/jquery-2.1.0.min.js')
-    script(src='libs/bootstrap/bootstrap-3.1.1-dist/js/bootstrap.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet', integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN', crossorigin='anonymous')
-    script(src='libs/bootstrap/holder/holder.2.3.1.min.js')
-    script(src='libs/fancybox/jquery.fancybox.pack.js')
-    //- script(src='http://www.google.com/recaptcha/api/js/recaptcha_ajax.js')
-    script(src='libs/form/jquery.form.min.js')
-    script(src='libs/rrssb/rrssb.min.js')
-    script(src='libs/isotope/isotope.min.js')
-    script(src='libs/lightslider/lightslider.js')
+    //- script(src='libs/bootstrap/holder/holder.2.3.1.min.js')
+    //- script(src='libs/form/jquery.form.min.js')
+    //- script(src='libs/rrssb/rrssb.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js')
     script(src='scripts/helper.js')
-    //- script(src='scripts/webgme_www.js')
     script(src='scripts/js-cookie.js')
     script(src='scripts/main.js')
-    script(type='text/javascript').
-      $(function () {
-      var link = window.location.protocol + '//editor.' +
-      window.location.hostname
-      .replace('www.', '')
-      .replace('.com', '.org');
-      console.log('Try link: ' + link);
-      $('.trylink').prop('href', link);
-      });
+    //- script(type='text/javascript').
+    //-   $(function () {
+    //-   var link = window.location.protocol + '//editor.' +
+    //-   window.location.hostname
+    //-   .replace('www.', '')
+    //-   .replace('.com', '.org');
+    //-   console.log('Try link: ' + link);
+    //-   $('.trylink').prop('href', link);
+    //-   });
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
