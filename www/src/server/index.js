@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.engine('pug', require('pug').__express);
 app.set('views', path.join(__dirname, 'views'));
 app.locals.pretty = true;
+app.locals.env = process.env; 
 // Finish pipeline setup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -81,7 +82,7 @@ app.get('*', (req, res) => {
     axios.all([examplesPromise,publicProjectsPromise]).then(axios.spread((examples,projects)=>{
         console.log('Data received from server',projects.data.length)
     // TODO cache results and serve from cache
-        res.render('index.pug', {examples: examples.data, projects: projects.data});
+        res.render('index.pug', {examples: examples.data, projects: projects.data });
     })).catch((err)=>{
     //handle errors
         console.log('Failed to get projects data from netsblox server.',err)

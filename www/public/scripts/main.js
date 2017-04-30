@@ -1,5 +1,6 @@
+/* jshint esversion: 6 */
 // let SERVER_ADDRESS = 'https://editor.netsblox.org';
-let SERVER_ADDRESS = 'http://local.netsblox.org:8080';
+const SERVER_ADDRESS = document.getElementById('editor').href;
 
 
 $(document).ready(function() {
@@ -7,7 +8,6 @@ $(document).ready(function() {
 	var $grid = $('#examples-grid');
 	let $gridM = $('#examples-grid-m');
 	var $pSlider = $('#projects-slider');
-
 
 
 	// init Isotope
@@ -56,7 +56,7 @@ $(document).ready(function() {
 				timeout = null;
 			}
 			timeout = setTimeout(delayed, threshold || 100);
-		}
+		};
 	}
 
 	//==== end of isotope ====
@@ -64,7 +64,7 @@ $(document).ready(function() {
 	//lightslider
 	$pSlider.lightSlider({
 		autoWidth: false,
-		item: 5,
+		item: 6,
 		pager: false,
 		loop: true,
 		auto: true,
@@ -73,8 +73,6 @@ $(document).ready(function() {
 			$pSlider.removeClass('cS-hidden');
 		}
 	});
-
-
 
 	// close modal when clicking on backdrop
 	// $("body").on("click", ".modal-dialog", function(e) {
@@ -94,15 +92,15 @@ $(document).ready(function() {
 	//logout 
 	$('#logout').on('click', () => {
 		$.ajax({
-			url: SERVER_ADDRESS + '/api/logout',
+			url: SERVER_ADDRESS + 'api/logout',
 			success: () => {
-				document.cookie = "netsblox-cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
-				document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+				document.cookie = "netsblox-cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+				document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
 				updateLoginViews(false);
 			}
 		});
 
-	})
+	});
 
 
 }); // end of document ready func
@@ -112,10 +110,9 @@ $('form').submit(function(e) {
 	let username = $('input[name="username"]').val();
 	let password = $('input[name="password"]').val();
 	let hashedP = SHA512(password);
-	console.log(username, hashedP);
 
 	$.ajax({
-		url: SERVER_ADDRESS + '/api/?SESSIONGLUE=.sc1m16',
+		url: SERVER_ADDRESS + 'api/?SESSIONGLUE=.sc1m16',
 		method: 'POST',
 		data: JSON.stringify({
 			__h: hashedP,
@@ -124,7 +121,7 @@ $('form').submit(function(e) {
 		}),
 		contentType: "application/json; charset=utf-8",
 		xhrFields: {
-			withCredentials: false
+			withCredentials: true
 		},
 		crossDomain: true,
 		statusCode: {
@@ -134,16 +131,16 @@ $('form').submit(function(e) {
 					alert(xhr.responseText);
 				}
 			},
-		success: data => {
-			console.log('logged in');
+			success: data => {
+				console.log(document.cookie);
+				console.log('logged in');
 			postLogin(); // promises..
 		},
 		fail: err => {
 			console.log('failed to log in', err);
 		}
 
-	})
-
+	});
 
 	function postLogin() {
 		Cookies.set('username', username, {
@@ -151,11 +148,7 @@ $('form').submit(function(e) {
 		});
 		updateLoginViews(true);
 	}
-
-
-
-
-		}) // end of on submit
+}); // end of on submit
 
 
 function updateLoginViews(isLoggedIn) {
@@ -173,23 +166,23 @@ function updateLoginViews(isLoggedIn) {
 			$('nav p').addClass('hidden');
 		}
 	}
-function grabUserProjects(){
+	function grabUserProjects(){
 
-	$('#userProjects-grid').find('.row').empty();
-	$.ajax({
-		url: SERVER_ADDRESS + '/api//getProjectList?format=json',
-		method: 'GET',
-		xhrFields: {
-			withCredentials: true
-		},
-		crossDomain: true,
+		$('#userProjects-grid').find('.row').empty();
+		$.ajax({
+			url: SERVER_ADDRESS + 'api/getProjectList?format=json',
+			method: 'GET',
+			xhrFields: {
+				withCredentials: true
+			},
+			crossDomain: true,
 
-		success: data => {
-			$('#userProjects-grid').removeClass('hidden')
-			console.log('grabbed user projects', data);
-			data.forEach( proj => {
-				$('#userProjects-grid').find('.row').append(json2MobileEl(proj));
-			})
-		}
-	})
-}
+			success: data => {
+				$('#userProjects-grid').removeClass('hidden');
+				console.log('grabbed user projects', data);
+				data.forEach( proj => {
+					$('#userProjects-grid').find('.row').append(json2MobileEl(proj));
+				});
+			}
+		});
+	}

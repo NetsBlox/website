@@ -1,11 +1,31 @@
+//- .hidden-xs
+//-   h3.text-center Published Projects
+//-   ul#projects-slider.cS-hidden
+//-     each proj in projects
+//-       .prj-element.element-item
+//-         a(href=env.EDITOR_ADDRESS + '/#present:Username='+proj.owner+'&ProjectName='+proj.projectName, target='_blank')
+//-           .thumbnail
+//-             img(src= proj.thumbnail, alt='NetsBlox Project: ' + proj.projectName)
+//-             .caption.text-center
+//-               h4= proj.projectName
+//-               small= proj.services[0]
+
+
+
 .hidden-xs
-  h3.text-center User creations
+  h3.text-center Published Projects
   ul#projects-slider.cS-hidden
-    each proj in projects
-      .prj-element.element-item
-        a(href='localhost:8080/#present:Username='+proj.owner+'&ProjectName='+proj.projectName, target='_blank')
-          .thumbnail
-            img(src= proj.thumbnail, alt='NetsBlox Project: ' + proj.projectName)
-            .caption.text-center
-              h4= proj.projectName
-              small= proj.services[0]
+    each eg in projects
+      .element-item.col-xs-12.col-sm-4.col-md-3.col-lg-2
+        .h-thumbnail
+          .img-container
+            img.img-responsive.center-block.img-thumbnail(src= eg.thumbnail, style='width: 100%;')
+            .overlay
+              .caption.text-center= eg.notes || 'No description provided.'
+          ul.list-group
+            span.label.label-success= eg.services[0]
+            li.list-group-item.title
+              b= eg.projectName
+              a(href= env.EDITOR_ADDRESS + '/#present:Username='+eg.owner+'&ProjectName='+eg.projectName, target='_blank') 
+                  i.fa.fa-external-link
+              span.pull-right= ' Roles: '+ eg.roleNames.length
