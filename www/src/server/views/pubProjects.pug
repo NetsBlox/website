@@ -23,7 +23,7 @@
             .overlay
               .caption.text-center= eg.notes || 'No description provided.'
           ul.list-group
-            span.label.label-success= eg.services[0]
+            span.label.label-success= eg.services ? eg.services[0] : null
             li.list-group-item.title
               b= eg.projectName
               a(href= env.EDITOR_ADDRESS + '/#present:Username='+eg.owner+'&ProjectName='+eg.projectName, target='_blank') 

@@ -10,6 +10,7 @@ const path            = require('path'),
 
 let port = process.env.PORT ? process.env.PORT : 8000;
 let env = process.env.NODE_ENV ? process.env.NODE_ENV : 'dev';
+let serverAdr = process.env.EDITOR_ADDRESS;
 
 /**********************************************************************************************************/
 
@@ -41,7 +42,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('*', (req, res) => {
     // get the exmaples and public projects data
     // let serverAdr = 'https://editor.netsblox.org';
-    let serverAdr = 'http://localhost:8080';
 
     // get examples data
     let examplesPromise = axios({
