@@ -27,7 +27,7 @@ $(document).ready(function() {
 	// layout the items after the images are loaded
 	setTimeout(()=>{
 		$gridM.isotope('layout');
-	},1000);
+	},1500);
 	// setup button filters for isotope
 	// $('.filter-button-group').on( 'click', 'button', function() {
 	//   var filterValue = $(this).attr('data-filter');
