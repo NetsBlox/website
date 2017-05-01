@@ -42,21 +42,20 @@ h3.text-center Examples &amp; Services
 //-                       p Roles
 
 #examples-grid-m.clearfix
-  .grid-sizer.col-xs-12.col-sm-4.col-md-3.col-lg-2
+  .grid-sizer.col-xs-12.col-sm-4.col-md-3
   each eg in examples
-    .element-item.col-xs-12.col-sm-4.col-md-3.col-lg-2
-      .h-thumbnail
-        .img-container
-          img.img-responsive.center-block.img-thumbnail(src= `${env.EDITOR_ADDRESS}/api/examples/${eg.projectName}/thumbnail?aspectRatio=1.33333`, style='width: 100%;')
-          .overlay
-            .caption.text-center= eg.notes || 'No description provided.'
-        ul.list-group
-          span.label.label-success= eg.services[0]
-          li.list-group-item.title
-            b= eg.projectName
-            a(href= env.EDITOR_ADDRESS+'/?action=example&ProjectName='+eg.projectName, target='_blank') 
-                i.fa.fa-external-link
-            span.pull-right= ' Roles: '+ eg.roleNames.length
+    a(class="wrapper-link",href= env.EDITOR_ADDRESS+'/?action=example&ProjectName='+eg.projectName, target='_blank') 
+      .element-item.col-xs-12.col-sm-4.col-md-3
+        .h-thumbnail
+          .img-container
+            img.img-responsive.center-block.img-thumbnail(src= `${env.EDITOR_ADDRESS}/api/examples/${eg.projectName}/thumbnail?aspectRatio=1.33333`, style='width: 100%;')
+            .overlay
+              .caption.text-center= eg.notes || 'No description provided.'
+          ul.list-group
+            span.label.label-success= eg.services[0]
+            li.list-group-item.title
+              b= eg.projectName
+              span.pull-right= ' Roles: '+ eg.roleNames.length
 
 
 
