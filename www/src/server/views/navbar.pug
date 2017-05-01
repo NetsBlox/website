@@ -17,8 +17,11 @@ nav.navbar.navbar-inverse
 					a(href='tutorials/index.html') Tutorials
 				li
 					a(href='http://community.netsblox.org') Community
+			ul.nav.navbar-nav.navbar-right
 				li
-					a(href='', id="login" data-toggle='modal', data-target='#login-modal', onClick="document.querySelector('form input').focus();") Login
+					a(href='', title="login", id="login" data-toggle='modal', data-target='#login-modal', onClick="document.querySelector('form input').focus();")
+						i.fa.fa-sign-in
 				li
-					a(href='', id="logout" class="hidden") Logout
+					a(href='', id="logout", class="hidden", title="logout")
+						i.fa.fa-sign-out
 			<p class="hidden navbar-text navbar-right">Signed in as <b>foo</b></p>

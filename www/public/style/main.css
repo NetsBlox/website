@@ -12,6 +12,7 @@ body a:hover{
   text-align: center;
 }
 
+
 div.btn-group {
   margin: 0 auto; 
   text-align: center;
@@ -39,9 +40,24 @@ nav.navbar {
   margin-bottom: 0;
 }
 
+.navbar i {
+  color: #e6e6e6;
+  font-size: 2rem;
+}
+
 .navbar-inverse, footer {
   background-color: #2f2f2f;
 }
+
+.navbar-inverse ul.navbar-nav li a {
+  color: #e8e8e8 ;
+}
+
+.navbar-inverse .navbar-text, .navbar-brand {
+  color: #e8e8e8  !important;
+}
+
+
 
 
 .social-buttons-holder a{
@@ -165,6 +181,7 @@ nav.navbar {
 /****** LOGIN MODAL ******/
 .loginmodal-container {
   padding: 30px;
+  color: #5a5a5a;
   max-width: 350px;
   width: 100% !important;
   background-color: #F7F7F7;
