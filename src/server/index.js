@@ -42,8 +42,7 @@ if (SECURE_PORT) {
 			res.redirect('https://' + req.hostname +':'+SECURE_PORT+ req.url);
 		}
 	});
-	
-};
+}
 // Finish pipeline setup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -71,20 +70,19 @@ app.get('/', (req, res) => {
 				res.render('index.pug', {examples: examples.data, projects: projects.data });
 		})).catch((err)=>{
 		//handle errors
-				console.log('Failed to get projects data from netsblox server.',err)
+				console.log('Failed to get projects data from netsblox server.',err);
 				res.status(500).send();
-		})
+		});
 
 });
 
-
 app.get('/tutorials*', (req,res) => {
-	res.render('tutorials.pug',{})
+	res.render('tutorials.pug',{});
 });
 
 app.get('*', (req,res)=>{
 	res.status(404).send('Page not found. Go back to <a href="/">Home Page</a>. If you believe there is a mistake, please let us know at <a href="https://facebook.com/netsblox"> our facebook page</a>.');
-})
+});
 
 /**********************************************************************************************************/
 
@@ -103,14 +101,5 @@ if (process.env.SECURE_PORT) {
 	let httpsServer = https.createServer(SSL_OPTIONS, app);
 	httpsServer.listen(SECURE_PORT);
 	console.log('listening on secure port: ',SECURE_PORT);
-
-	// // redirect http traffic to https
-	// app.all('*', function(req, res, next){
-	// 	if (req.secure) {
-	// 	return next();
-	// 	};
-	// 	console.log('got unsec', req);
-	// 	res.redirect('https://'+req.hostname+':'+app.get(SECURE_PORT)+req.url);
-	// });
 
 }
