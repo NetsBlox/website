@@ -35,10 +35,8 @@ app.locals.env = process.env;
 if (SECURE_PORT) {
 	app.use (function (req, res, next) {
 		if (req.secure) {
-			return next();
+			next();
 		} else {
-			console.log(req.hostname,req.url);
-			console.log('https://' + req.hostname +':'+SECURE_PORT+ req.url);
 			res.redirect('https://' + req.hostname +':'+SECURE_PORT+ req.url);
 		}
 	});
@@ -93,7 +91,7 @@ let httpServer = http.Server(app).listen(PORT, () => {
 	console.log('listening on unsecure port: ' + PORT);
 });
 
-if (process.env.SECURE_PORT) {
+if (SECURE_PORT) {
 	const SSL_OPTIONS = {
 		key: fs.readFileSync(CERT_DIR + '/key.pem'),
 		cert: fs.readFileSync(CERT_DIR + '/cert.pem')
