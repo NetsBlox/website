@@ -2,11 +2,4 @@
 .env
 node_modules
 npm-debug.log
-www/npm-debug.log
-www/node_modules
-editor/update.sh.log
-editor/server.log
-editor/server-error.log
-editor/blob-local-storage
-editor/node_modules
-editor/npm-debug.log
+*.pem

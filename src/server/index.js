@@ -1,15 +1,20 @@
 'use strict';
-const path            = require('path'),
-		express         = require('express'),
-		bodyParser      = require('body-parser'),
-		axios				= require('axios'),
-		cookieParser    = require('cookie-parser'),
-		logger          = require('morgan');
+const path 					= require('path'),
+			express 			= require('express'),
+			bodyParser 		= require('body-parser'),
+			axios					= require('axios'),
+			http 					= require('http'),
+			https 				= require('https'),
+			cookieParser 	= require('cookie-parser'),
+			logger				= require('morgan'),
+			fs 						= require('fs');
 
-const PORT = process.env.PORT ? process.env.PORT : 8000;
+const PORT = process.env.PORT || 8000;
 const NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'dev';
 const SERVER_ADDRESS = process.env.EDITOR_ADDRESS;
-
+// setup https - doesn't setup a secure server if the port is not defined. 
+const SECURE_PORT = process.env.SECURE_PORT;
+const CERT_DIR = process.env.CERT_DIR || __dirname; // expects key.pem & cert.pem
 /**********************************************************************************************************/
 
 // Setup our Express pipeline
@@ -25,6 +30,20 @@ app.engine('pug', require('pug').__express);
 app.set('views', path.join(__dirname, 'views'));
 app.locals.pretty = true;
 app.locals.env = process.env; 
+
+// redirect to https if available
+if (SECURE_PORT) {
+	app.use (function (req, res, next) {
+		if (req.secure) {
+			return next();
+		} else {
+			console.log(req.hostname,req.url);
+			console.log('https://' + req.hostname +':'+SECURE_PORT+ req.url);
+			res.redirect('https://' + req.hostname +':'+SECURE_PORT+ req.url);
+		}
+	});
+	
+};
 // Finish pipeline setup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -70,6 +89,28 @@ app.get('*', (req,res)=>{
 /**********************************************************************************************************/
 
 // Run the server itself
-let server = app.listen(PORT, () => {
-		console.log('Example app listening on ' + server.address().port);
+
+
+let httpServer = http.Server(app).listen(PORT, () => {
+	console.log('listening on unsecure port: ' + PORT);
 });
+
+if (process.env.SECURE_PORT) {
+	const SSL_OPTIONS = {
+		key: fs.readFileSync(CERT_DIR + '/key.pem'),
+		cert: fs.readFileSync(CERT_DIR + '/cert.pem')
+	};
+	let httpsServer = https.createServer(SSL_OPTIONS, app);
+	httpsServer.listen(SECURE_PORT);
+	console.log('listening on secure port: ',SECURE_PORT);
+
+	// // redirect http traffic to https
+	// app.all('*', function(req, res, next){
+	// 	if (req.secure) {
+	// 	return next();
+	// 	};
+	// 	console.log('got unsec', req);
+	// 	res.redirect('https://'+req.hostname+':'+app.get(SECURE_PORT)+req.url);
+	// });
+
+}
