@@ -10,6 +10,8 @@ h3.text-center Examples &amp; Services
       input(type='text',class='form-control quicksearch',placeholder='Search')
 
 
+
+//- rotating cards: 
 //- .hidden-xs.clearfix
 //- #examples-grid
 //-   .grid-sizer.col-xs-12.col-sm-6.col-md-4.col-lg-3
@@ -56,19 +58,3 @@ h3.text-center Examples &amp; Services
             li.list-group-item.title
               b= eg.projectName
               span.pull-right= ' Roles: '+ eg.roleNames.length
-
-
-
-
-            //- .front
-            //-   .cover
-            //-     img(src= `${env.EDITOR_ADDRESS}/api/examples/${eg.projectName}/thumbnail`)
-            //-   .user.hidden
-            //-     img.img-circle(src='HERE')
-            //-   .content
-            //-     .main
-            //-       h3.name= eg.projectName
-            //-       p.profession= eg.services.join(', ')
-            //-       //- each service in eg.services
-            //-       //-   p.profession= service
-            //-       // p.text-center= eg.notes

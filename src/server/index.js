@@ -1,13 +1,13 @@
 'use strict';
-const path 					= require('path'),
-			express 			= require('express'),
-			bodyParser 		= require('body-parser'),
-			axios					= require('axios'),
-			http 					= require('http'),
-			https 				= require('https'),
-			cookieParser 	= require('cookie-parser'),
-			logger				= require('morgan'),
-			fs 						= require('fs');
+const path 			= require('path'),
+	express 		= require('express'),
+	bodyParser 		= require('body-parser'),
+	axios			= require('axios'),
+	http 			= require('http'),
+	https 			= require('https'),
+	cookieParser 	= require('cookie-parser'),
+	logger			= require('morgan'),
+	fs 				= require('fs');
 
 const PORT = process.env.PORT || 8000;
 const NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'dev';

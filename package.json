@@ -1,5 +1,5 @@
 {
-  "name": "website",
+  "name": "netsblox",
   "version": "0.0.1",
   "description": "NetsBlox website",
   "main": "source/server.js",
