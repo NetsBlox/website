@@ -18,12 +18,12 @@ footer.text-center
 					//-   a(href='https://editor.netsblox.org/') Register
 					//-   |  - 
 					//-   a(href='https://editor.netsblox.org/') Forgot Password
-	span#analytics.hidden= env.GOOGLE_ANALYTICS
 	script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
 	script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
 	link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet', integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN', crossorigin='anonymous')
 	script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js')
 	script(src='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js')
 	script(src='scripts/sha512.js')
 	script(src='scripts/helper.js')
 	script(src='scripts/js-cookie.js')
@@ -33,5 +33,5 @@ footer.text-center
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		ga('create', document.getElementById('analytics').value, 'auto');
+		ga('create', "#{env.GOOGLE_ANALYTICS}" , 'auto');
 		ga('send', 'pageview');
