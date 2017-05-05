@@ -1,12 +1,12 @@
 'use strict';
-const path 			= require('path'),
-	express 		= require('express'),
-	bodyParser 		= require('body-parser'),
-	axios			= require('axios'),
-	http 			= require('http'),
-	cookieParser 	= require('cookie-parser'),
-	logger			= require('morgan'),
-	fs 				= require('fs');
+const path       = require('path'),
+  express     = require('express'),
+  bodyParser     = require('body-parser'),
+  axios      = require('axios'),
+  http       = require('http'),
+  cookieParser   = require('cookie-parser'),
+  logger      = require('morgan'),
+  fs         = require('fs');
 
 const PORT = process.env.PORT || 8000;
 const NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'dev';
@@ -34,38 +34,38 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /**********************************************************************************************************/
 
 app.get('/', (req, res) => {
-		// get the exmaples and public projects data
-		// get examples data
-		let examplesPromise = axios({
-				url: SERVER_ADDRESS + '/api/Examples/EXAMPLES?metadata=true',
-				method: 'get'
-		});
+    // get the exmaples and public projects data
+    // get examples data
+    let examplesPromise = axios({
+        url: SERVER_ADDRESS + '/api/Examples/EXAMPLES?metadata=true',
+        method: 'get'
+    });
 
-		// get projects data
-		let publicProjectsPromise = axios({
-			method: 'GET',
-			url: SERVER_ADDRESS +'/api/Projects/PROJECTS'
-		});
-		// end of calls to get the data
+    // get projects data
+    let publicProjectsPromise = axios({
+      method: 'GET',
+      url: SERVER_ADDRESS +'/api/Projects/PROJECTS'
+    });
+    // end of calls to get the data
 
-		axios.all([examplesPromise,publicProjectsPromise]).then(axios.spread((examples,projects)=>{
-				console.log('Data received from server',projects.data.length)
-		// TODO cache results and serve from cache
-				res.render('index.pug', {examples: examples.data, projects: projects.data });
-		})).catch((err)=>{
-		//handle errors
-				console.log('Failed to get projects data from netsblox server.',err);
-				res.status(500).send();
-		});
+    axios.all([examplesPromise,publicProjectsPromise]).then(axios.spread((examples,projects)=>{
+        console.log('Data received from server',projects.data.length)
+    // TODO cache results and serve from cache
+        res.render('index.pug', {examples: examples.data, projects: projects.data });
+    })).catch((err)=>{
+    //handle errors
+        console.log('Failed to get projects data from netsblox server.',err);
+        res.status(500).send();
+    });
 
 });
 
 app.get('/tutorials*', (req,res) => {
-	res.render('tutorials.pug',{});
+  res.render('tutorials.pug',{});
 });
 
 app.get('*', (req,res)=>{
-	res.status(404).send('Page not found. Go back to <a href="/">Home Page</a>. If you believe there is a mistake, please let us know at <a href="https://facebook.com/netsblox"> our facebook page</a>.');
+  res.status(404).send('Page not found. Go back to <a href="/">Home Page</a>. If you believe there is a mistake, please let us know at <a href="https://facebook.com/netsblox"> our facebook page</a>.');
 });
 
 /**********************************************************************************************************/
@@ -74,5 +74,5 @@ app.get('*', (req,res)=>{
 
 
 let httpServer = http.Server(app).listen(PORT, () => {
-	console.log('listening on unsecure port: ' + PORT);
+  console.log('listening on unsecure port: ' + PORT);
 });

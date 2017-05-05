@@ -1,5 +1,5 @@
 body div#main-content{
-	background-color: #fbfbfb;
+  background-color: #fbfbfb;
   font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif
 }
 
@@ -24,7 +24,7 @@ div.btn-group {
 }
 
 .prj-element .thumbnail:hover{
-	box-shadow: 0px 0px 5px 1px #888888;
+  box-shadow: 0px 0px 5px 1px #888888;
 
 }
 
