@@ -15,7 +15,7 @@ module.exports = {
         path: path.join(__dirname, '/public/') ,
         filename: '[name].js',
         chunkFilename: "[id].js",
-        sourceMapFilename: "[name].map",
+        sourceMapFilename: "[name].map"
     },
     module: {
         rules: [
@@ -46,7 +46,7 @@ module.exports = {
     plugins: [
         new webpack.LoaderOptionsPlugin({
             debug: true
-        }),
+        })
         // new webpack.optimize.CommonsChunkPlugin({
         //     name: "vendor",
         //     filename: "vendor.js"
