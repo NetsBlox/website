@@ -21,4 +21,4 @@ ratings:
   - "**.module"
 exclude_paths:
 - test/
-- src/client/Snap--Build-Your-Own-Blocks/
+- src/client/sha512.js
