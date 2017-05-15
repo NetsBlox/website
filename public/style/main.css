@@ -19,7 +19,7 @@ div.btn-group {
 }
 .prj-element .thumbnail {
   position: relative;
-  padding: 0px;
+  padding: 0;
   margin-bottom: 20px;
 }
 
@@ -38,7 +38,7 @@ nav.navbar {
   margin-bottom: 0;
 }
 .navbar-brand {
-  padding: 0px;
+  padding: 0;
 }
 .navbar-brand>img {
   height: 100%;
