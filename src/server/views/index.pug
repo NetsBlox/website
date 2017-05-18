@@ -73,7 +73,7 @@ block content
               li.list-group-item.title
                 b Weather
                 //- span.pull-right Roles: NUMBEROFROLES
-      a(class="wrapper-link",href= env.EDITOR_ADDRESS+'/?action=example&ProjectName=Battleship', target='_blank') 
+      a(class="wrapper-link",href= env.EDITOR_ADDRESS+'/?action=example&ProjectName=Battleship&editMode=true', target='_blank') 
         .element-item.col-xs-12.col-sm-4.col-md-3
           .h-thumbnail
             .img-container
@@ -84,7 +84,7 @@ block content
               //- span.label.label-success SERVICES
               li.list-group-item.title
                 b Battleship
-                //- span.pull-right Roles: NUMBEROFROLES
+                    i.fa.fa-users.pull-right(title="Multiplayer")
       a(class="wrapper-link",href= env.EDITOR_ADDRESS+'/?action=example&ProjectName=Earthquakes', target='_blank') 
         .element-item.col-xs-12.col-sm-4.col-md-3
           .h-thumbnail
