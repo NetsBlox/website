@@ -114,6 +114,7 @@ nav.navbar {
     background-image: url('/images/carousel/earthquake.png');
     min-height: 12rem;
     color: #333;
+    margin: 0;
 }
 /*.carousel {
   height: 100vh !important;
