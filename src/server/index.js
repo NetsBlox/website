@@ -77,7 +77,9 @@ app.get('/', (req, res) => {
 app.get('/tutorials*', (req,res) => {
   res.render('tutorials.pug',{});
 });
-
+app.get('/document*', (req,res) => {
+  res.render('documentations.pug',{});
+});
 app.get('*', (req,res)=>{
   res.status(404).send('Page not found. Go back to <a href="/">Home Page</a>. If you believe there is a mistake, please let us know at <a href="https://facebook.com/netsblox"> our facebook page</a>.');
 });

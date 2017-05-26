@@ -8,13 +8,14 @@ nav.navbar.navbar-inverse
         span.icon-bar
       a.navbar-brand(href='/')
           img(class="img-responsive", src="/images/logo.png")
-      h4.navbar-text.hidden-xs NetsBlox
+      a(href='/')
+        h4.navbar-text.hidden-xs NetsBlox
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
         li
-          a#editor(href=env.EDITOR_ADDRESS) Try Now
+          a#editor(href=env.EDITOR_ADDRESS, target="_blank") Try Now
         li
-          a(href='NetsBloxWhitePaper.pdf') White Paper
+          a(href='documents') Documents
         li
           a(href='tutorials') Tutorials
         li

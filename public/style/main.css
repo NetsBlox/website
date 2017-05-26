@@ -1,6 +1,10 @@
 body div#main-content{
   background-color: #fbfbfb;
-  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+body {
+  background-color: #fbfbfb;
 }
 
 body a:hover{
@@ -62,7 +66,10 @@ nav.navbar {
   color: #e8e8e8  !important;
 }
 
-
+div#main-content{
+    /*padding before footer*/
+    padding-bottom: 1rem;
+}
 
 
 .social-buttons-holder a{
@@ -191,6 +198,42 @@ nav.navbar {
 
 
 /* Start of Imports */
+
+/* box panels for documentation */
+
+.box {
+  background:#fff;
+  transition:all 0.2s ease;
+  border:2px dashed #dadada;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-clip: padding-box;
+  padding:0 20px 20px 20px;
+  min-height:340px;
+}
+
+.box:hover {
+  border:2px solid #525C7A;
+}
+
+.box span.box-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.box .box-content {
+  padding: 16px;
+  border-radius: 0 0 2px 2px;
+  background-clip: padding-box;
+  box-sizing: border-box;
+}
+.box .box-content p {
+  color:#515c66;
+  text-transform:none;
+}
 
 
 /* Bootstrap Login */
