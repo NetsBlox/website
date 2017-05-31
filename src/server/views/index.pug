@@ -1,4 +1,4 @@
-extends layout.pug
+extends includes/layout.pug
 block content
   #myCarousel.carousel.hidden-xs.slide(data-ride='carousel', data-interval='15000')
     ol.carousel-indicators
@@ -87,8 +87,8 @@ block content
     #userProjects-grid.hidden.text-center
       h3 My Projects
       .row
-    include examples.pug
-    include pubProjects.pug
+    include includes/examples.pug
+    include includes/pubProjects.pug
 
   .social-buttons-holder
     a(href='https://github.com/netsblox/netsblox', target="_blank" title='GitHub')

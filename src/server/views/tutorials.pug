@@ -1,8 +1,11 @@
-extends layout.pug
+extends includes/layout.pug
 block content
   style(type='text/css').
     #main-content {
-      background-image: url(../images/carousel/earthquake.png) !important;
+      background-image: url(../images/carousel/earthquake.png);
+      background-size: cover;
+      background-position: center; 
+
     }
   br
   .container.text-center
