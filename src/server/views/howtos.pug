@@ -1,38 +1,42 @@
 extends includes/layout.pug
 block content
     .container
-      .row
-        h2.text-center Dive Into NetsBlox
-        .row
-          .col-md-4.text-center
-            .box
-              .box-content
-                h1.tag-title White Paper
-                hr
-                p
-                  | Computational thinking (CT) has been described as a general analytic approach to problem solving, designing systems, and understanding human behaviors. The integration of CT within the K12 curriculum has also been argued for by the ACM committee on K12 education, and has become a focus of several researchers on educational computing.
-                br
-                a.btn.btn-block.btn-primary(href='NetsBloxWhitePaper.pdf') Learn more
-          .col-md-4.text-center
-            .box
-              .box-content
-                h1.tag-title Quick Start
-                hr
-                p
-                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pharetra quam sollicitudin nibh aliquam finibus. Etiam efficitur felis vel imperdiet varius. Maecenas bibendum elementum molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris cursus finibus semper. Fusce molestie tincidunt leo vel varius. Nam scelerisque nulla feugiat leo consequat, id dignissim sem tincidunt. 
-                br
-                a.btn.btn-block.btn-primary(href='ppc.html') Learn more
-          .col-md-4.text-center
-            .box
-              .box-content
-                h1.tag-title Visual Programming
-                hr
-                p
-                  | This paper introduces NetsBlox, a visual programming environment for learning distributed programming principles. Extending both the visual formalism and open source code base of Snap!, NetsBlox provides two accessible distributed programming abstractions to simplify the process of creating networked applications: message passing and Remote Procedure Calls (RPC). 
-                br
-                a.btn.btn-block.btn-primary(href='VisualProgramming.pdf') Learn more
-    
-        #quickStart
+        .page-header
+            h1 How to guide and tutorials
+        div
+            h3 How to:
+            ul
+                li
+                    a(href='#') Play multiplayer games
+                li
+                    a(href='#') Create networked apps (too big)
+                li 
+                    a(href='#') Use Services (Remote Procedure Calls)
+                li
+                    a(href='#') Manage rooms
+                li
+                    a(href='#') Send and receive messages
+                li
+                    a(href='#') Sign up
+                li
+                    a(href='#') Create networked apps (too big)
+                li 
+                    a(href='#') Use Services (Remote Procedure Calls)
+                li
+                    a(href='#') Manage rooms
+                li
+                    a(href='#') Send and receive messages
+            h3 What is/are (glossary): 
+            ul
+                li
+                    a(href='#') Room
+                li
+                    a(href='#') Message
+                li 
+                    a(href='#') Services (RPCs)
+
+                
+        div
             p NetsBlox provides a few main abstractions to enable users to create distributed applications: 
             em Remote Procedure Calls
             | , the 
