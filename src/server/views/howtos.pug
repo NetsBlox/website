@@ -1,40 +1,67 @@
 extends includes/layout.pug
+block title
+    title  How To's - NetsBlox
 block content
+    mixin ytPlayer(url, title)
+        .panel.panel-default
+            .panel-body
+                .embed-responsive.embed-responsive-16by9
+                      iframe(class="embed-responsive-item", src= url)
+    mixin entry(question, slug, ytUrl)
+        .row.entry(id= slug)
+            if ytUrl
+                .col-md-8
+                    h3= question + '?'
+                    block
+                .col-md-4
+                    +ytPlayer(ytUrl, 'title')
+            else
+                .col-md-12
+                    h3= question + '?'
+                    block
     .container
         .page-header
             h1 How to guide and tutorials
         div
-            h3 How to:
+            h2 How to:
             ul
                 li
-                    a(href='#') Play multiplayer games
-                li
-                    a(href='#') Create networked apps (too big)
+                    a(href='#play-multiplayer') Play multiplayer games
                 li 
-                    a(href='#') Use Services (Remote Procedure Calls)
+                    a(href='#use-services') Use Services (Remote Procedure Calls)
                 li
-                    a(href='#') Manage rooms
+                    a(href='#manage-room') Manage rooms
                 li
-                    a(href='#') Send and receive messages
+                    a(href='#send-messages') Send and receive messages
                 li
-                    a(href='#') Sign up
-                li
-                    a(href='#') Create networked apps (too big)
-                li 
-                    a(href='#') Use Services (Remote Procedure Calls)
-                li
-                    a(href='#') Manage rooms
-                li
-                    a(href='#') Send and receive messages
-            h3 What is/are (glossary): 
+                    a(href='#singup') Sign up
+            h2 What are: 
             ul
                 li
-                    a(href='#') Room
+                    a(href='#rooms') Room
                 li
-                    a(href='#') Message
+                    a(href='#messages') Message
                 li 
-                    a(href='#') Services (RPCs)
-
+                    a(href='#services') Services (RPCs)
+        +entry('How to sign up', 'signup', 'https://www.youtube.com/embed/YXKUtTbbVWI')
+            p valuable content
+        +entry('How to send and receive messages', 'send-messages', 'https://www.youtube.com/embed/YXKUtTbbVWI')
+            p valuable content
+        +entry('How to use services (RPCs)', 'use-services', 'https://www.youtube.com/embed/YXKUtTbbVWI')
+            p valuable content
+        +entry('How to manage a room', 'manage-room', 'https://www.youtube.com/embed/YXKUtTbbVWI')
+            p valuable content
+        +entry('How to play multiplayer games', 'play-multiplayer', 'https://www.youtube.com/embed/YXKUtTbbVWI')
+            p valuable content            
+        +entry('What are rooms in NetsBlox', 'rooms')
+            p valuable content
+        +entry('What are messages', 'messages')
+            p valuable content
+        +entry('What are services', 'services')
+            p valuable content
+        //- +entry('How to sign up and sign in','signup', 'asdflj ;asdf;l ajsd;f jz;xjb zxcbj asdfj; a', 'https://www.youtube.com/embed/YXKUtTbbVWI')
+        //- +entry('How to sign up and sign in','manage' ,'asdflj ;asdf;l ajsd;f jz;xjb zxcbj asdfj; a', 'https://www.youtube.com/embed/YXKUtTbbVWI')
+            
                 
         div
             p NetsBlox provides a few main abstractions to enable users to create distributed applications: 
