@@ -6,7 +6,7 @@ block content
         .panel.panel-default
             .panel-body
                 .embed-responsive.embed-responsive-16by9
-                      iframe(class="embed-responsive-item", src= url)
+                      iframe(class="embed-responsive-item", allowfullscreen="allowfullscreen", src= url)
     mixin entry(question, slug, ytUrl)
         .row.entry(id= slug)
             if ytUrl
