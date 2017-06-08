@@ -203,14 +203,21 @@ nav.navbar {
 
 .box {
   background:#fff;
-  transition:all 0.2s ease;
+  transition:all 0.3s ease;
   border:2px dashed #dadada;
   margin-top: 10px;
+  padding: 2rem;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 10px;
   background-clip: padding-box;
   padding:0 20px 20px 20px;
   min-height:45rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.box a {
+  margin-top: auto;
 }
 
 .box:hover {
@@ -224,13 +231,12 @@ nav.navbar {
     text-transform: uppercase;
 }
 
-.box .box-content {
-  padding: 16px;
-  border-radius: 0 0 2px 2px;
-  background-clip: padding-box;
-  box-sizing: border-box;
+.box .tag-title {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 }
-.box .box-content p {
+.box p {
   color:#515c66;
   text-transform:none;
 }

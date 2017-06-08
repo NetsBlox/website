@@ -1,62 +1,18 @@
 extends includes/layout.pug
 block content
-    .container
+  mixin box(title, description, url)
+    .col-md-4.col-sm-6.text-center
+      .box
+        h2.tag-title= title
+        p= description           
+        br
+        a.btn.btn-block.btn-primary(href=url) Learn more
+  .container
+    .row
+      h2.text-center Learn more about NetsBlox
       .row
-        h2.text-center Learn more about NetsBlox
-        .row
-          .col-md-4.col-sm-6.text-center
-            .box
-              .box-content
-                h1.tag-title White Paper
-                hr
-                p
-                  | Computational thinking (CT) has been described as a general analytic approach to problem solving, designing systems, and understanding human behaviors. The integration of CT within the K12 curriculum has also been argued for by the ACM committee on K12 education, and has become a focus of several researchers on educational computing.
-                br
-                a.btn.btn-block.btn-primary(href='NetsBloxWhitePaper.pdf') Learn more
-          .col-md-4.col-sm-6.text-center
-            .box
-              .box-content
-                h1.tag-title Video Tutorials
-                hr
-                p
-                  | This paper introduces NetsBlox, a visual programming environment for learning distributed programming principles. Extending both the visual formalism and open source code base of Snap!, NetsBlox provides two accessible distributed programming abstractions to simplify the process of creating networked applications: message passing and Remote Procedure Calls (RPC). 
-                br
-                a.btn.btn-block.btn-primary(href='/tutorials') Learn more
-          .col-md-4.col-sm-6.text-center
-            .box
-              .box-content
-                h1.tag-title How To's
-                hr
-                p
-                  | This paper introduces NetsBlox, a visual programming environment for learning distributed programming principles. Extending both the visual formalism and open source code base of Snap!, NetsBlox provides two accessible distributed programming abstractions to simplify the process of creating networked applications: message passing and Remote Procedure Calls (RPC). 
-                br
-                a.btn.btn-block.btn-primary(href='/howtos') Learn more
-          .col-md-4.col-sm-6.text-center
-            .box
-              .box-content
-                h1.tag-title Flyer
-                hr
-                p
-                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pharetra quam sollicitudin nibh aliquam finibus. Etiam efficitur felis vel imperdiet varius. Maecenas bibendum elementum molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris cursus finibus semper. Fusce molestie tincidunt leo vel varius. Nam scelerisque nulla feugiat leo consequat, id dignissim sem tincidunt. 
-                br
-                a.btn.btn-block.btn-primary(href='NetsBloxFlyer.pdf') Learn more
-          .col-md-4.col-sm-6.text-center
-            .box
-              .box-content
-                h1.tag-title Visual Programming
-                hr
-                p
-                  | This paper introduces NetsBlox, a visual programming environment for learning distributed programming principles. Extending both the visual formalism and open source code base of Snap!, NetsBlox provides two accessible distributed programming abstractions to simplify the process of creating networked applications: message passing and Remote Procedure Calls (RPC). 
-                br
-                a.btn.btn-block.btn-primary(href='VisualProgramming.pdf') Learn more
-                
-          .col-md-4.col-sm-6.text-center
-            .box
-              .box-content
-                h1.tag-title Snap Manual
-                hr
-                p
-                  | This paper introduces NetsBlox, a visual programming environment for learning distributed programming principles. Extending both the visual formalism and open source code base of Snap!, NetsBlox provides two accessible distributed programming abstractions to simplify the process of creating networked applications: message passing and Remote Procedure Calls (RPC). 
-                br
-                a.btn.btn-block.btn-primary(href='https://snap.berkeley.edu/SnapManual.pdf') Learn more
-                
+        +box('White Paper', 'Computational thinking (CT) has been described as a general analytic approach to problem solving, designing systems, and understanding human behaviors. The integration of CT within the K12 curriculum has also been argued for by the ACM committee on K12 education, and has become a focus of several researchers on educational computing.', 'NetsBloxWhitePaper.pdf')
+        +box('Snap Manual', 'In this manual we sometimes make reference to Scratch, e.g., to explain how some Snap! feature extends something familiar in Scratch. It’s very helpful to have some experience with Scratch before reading this manual, but not essential..','https://snap.berkeley.edu/SnapManual.pdf')
+        +box('Video Tutorials', 'Demoes and walkthroughs are available here.','/tutorials')
+        +box("How To's", 'General guides as well as explanations about different programming concepts in NetsBlox. ','/howtos')
+        +box('Flyer', 'NetsBlox is an open-source web- and cloud-based visual programming environment. Its visual notation is based on Scratch from MIT and uses the open source JavaScript code base of Snap! from Berkeley. Both of these are extremely successful tools in K12 computer science education. NetsBlox adds the capability of networking and enables distributed programming at a level accessible to young learners.','NetsBloxFlyer.pdf')
