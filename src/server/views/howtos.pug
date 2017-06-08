@@ -8,7 +8,7 @@ block content
                 .embed-responsive.embed-responsive-16by9
                       iframe(class="embed-responsive-item", allowfullscreen="allowfullscreen", src= url)
     mixin entry(question, slug, ytUrl)
-        .row.entry(id= slug)
+        .row.vertical-align.entry(id= slug)
             if ytUrl
                 .col-md-8
                     h3= question + '?'

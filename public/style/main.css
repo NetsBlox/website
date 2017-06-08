@@ -16,6 +16,10 @@ body a:hover{
   text-align: center;
 }
 
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
 
 div.btn-group {
   margin: 0 auto;
