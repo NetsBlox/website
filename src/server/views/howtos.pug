@@ -34,7 +34,9 @@ block content
                 li
                     a(href='#send-messages') Send and receive messages
                 li
-                    a(href='#singup') Sign up
+                    a(href='#signup') Sign up/in
+                li
+                    a(href='#custom-messages') Work with custom messages.
             h2 What are: 
             ul
                 li
@@ -43,91 +45,9 @@ block content
                     a(href='#messages') Message
                 li 
                     a(href='#services') Services (RPCs)
-        +entry('How to sign up', 'signup', 'https://www.youtube.com/embed/YXKUtTbbVWI')
+        +entry('How to sign up and sing in', 'signup', 'https://www.youtube.com/embed/YXKUtTbbVWI')
             p valuable content
-        +entry('How to send and receive messages', 'send-messages', 'https://www.youtube.com/embed/YXKUtTbbVWI')
-            p valuable content
-        +entry('How to use services (RPCs)', 'use-services', 'https://www.youtube.com/embed/YXKUtTbbVWI')
-            p valuable content
-        +entry('How to manage a room', 'manage-room', 'https://www.youtube.com/embed/YXKUtTbbVWI')
-            p valuable content
-        +entry('How to play multiplayer games', 'play-multiplayer', 'https://www.youtube.com/embed/YXKUtTbbVWI')
-            p valuable content            
-        +entry('What are rooms in NetsBlox', 'rooms')
-            p valuable content
-        +entry('What are messages', 'messages')
-            p valuable content
-        +entry('What are services', 'services')
-            p valuable content
-        //- +entry('How to sign up and sign in','signup', 'asdflj ;asdf;l ajsd;f jz;xjb zxcbj asdfj; a', 'https://www.youtube.com/embed/YXKUtTbbVWI')
-        //- +entry('How to sign up and sign in','manage' ,'asdflj ;asdf;l ajsd;f jz;xjb zxcbj asdfj; a', 'https://www.youtube.com/embed/YXKUtTbbVWI')
-            
-                
-        div
-            p NetsBlox provides a few main abstractions to enable users to create distributed applications: 
-            em Remote Procedure Calls
-            | , the 
-            em Room
-            |  and 
-            em Messaging
-            h2#remoteprocedurecallsservices Remote Procedure Calls (Services)
-            p
-                | Services are provided by the NetsBlox server and allow the client to easily incorporate third party utilities (such as Google Maps, MovieDB, Weather, and Traffic data) as well as simplifies the creation of games which otherwise may be more complex (such as Battleship and ConnectN).
-            p
-                | Using services is pretty easy; simply select the "Services" tab from the project menu:
-            p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/importServices.png', alt='Services')
-            p Then select the desired Service to import from the dropdown:
-            p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/importMapService.png', alt='Select Map Service')
-            p Now, the map rpc blocks are available under the "Custom" tab:
-            p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/mapBlocks.png', alt='Map Blocks under "custom" tab')
-            p Then you can use the provided blocks to leverage the NetsBlox service:
-            p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/useMapBlock.png', alt='Setting stage background to map')
-            h2#room Room
-            p
-                | The NetsBlox Room defines the local network for a given application. A room can contain a number of different 
-                em roles
-                |  which are distinct NetsBlox clients running in their own window or machine. For example, a TicTacToe game may consist of two roles, 
-                em X
-                |  and 
-                em Y
-                | , which represent the two players in the game of TicTacToe:
-            p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/room.png', alt='TicTacToe Room')
-            h3#roommanagement Room Management
-            p
-                | The owner of the TicTacToe game can use the room tab to add new roles to the room (using the "plus" button), add/remove roles, rename roles and invite other users to occupy different roles in the given room. This is done by clicking on the given role in the room tab:
-            p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/editRoleDialog.png', alt='Edit Role')
-            p From this dialog, there are a number of supported actions:
-            ul
-                li
-                    em cloning the role
-                    | : This will create a new role in the room which is a copy of the clicked role. This includes sprites, blocks, costumes, code blocks, etc.
-                li
-                    em moving to the role
-                    | : This option allows the owner to move from the currently occupied role to the clicked role.
-                li
-                    em inviting another user
-                    | : Inviting a user will allow the owner to invite other users to occupy the given role at the room. This allows the given user to run and edit the blocks running at the given role.
-                li
-                    em deleting the role
-                    | : This will remove the role and all it's blocks from the given room and project.
-            p
-                | However, if a user is already occupying the given role, then the dialog also allows the owner to evict the user. This will remove the user from the owner's project:
-            p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/evictUser.png', alt='Evict User Dialog')
-            p Roles can be renamed by clicking on the name of the role:
-            p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/renameRole.png', alt='Rename Role')
-            h2#messaging Messaging
-            p
-                | Remote messaging allows users to send messages over the internet between different instances of NetsBlox, enabling users to create distributed, online apps. Unlike events, messages can contain a structured data payload. That is, they can be used to send information between NetsBlox scripts and users. The structure of messages is defined in a 
-                em message type
-                | . A message type contains the name of the message as well as the names of the expected fields of the message. For example, a message type may specify a type of message called "TicTacToe" that contains "role", "row" and "column" fields.
+        +entry('How to send and receive messages', 'send-messages')
             p Message sending and receiving can be done using the following blocks:
             p
                 img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/messages.png', alt='Messaging Blocks')
@@ -137,7 +57,7 @@ block content
                 | ) is used to receive messages from others and the bottom block (starting with 
                 code send msg
                 | ) can be used to send messages to other users.
-            h2#receivingmessages Receiving Messages
+            h4#receivingmessages Receiving Messages
             p
                 | The message handling block contains a dropdown for setting the message type for which it listens:
             p
@@ -154,7 +74,7 @@ block content
                 |  and 
                 em column
                 | .
-            h2#sendingmessages Sending Messages
+            h4 Sending Messages
             p
                 | Like the message handling block, the 
                 code send msg
@@ -187,7 +107,47 @@ block content
                 |  field set to 4. This message will be broadcasted to everyone else in the room (not including the sender).
             p
                 img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/sendTTTMsgComplete.png', alt='send TTT msg to everyone else')
-            h2#custommessagetypes Custom Message Types
+        +entry('How to use services (RPCs)', 'use-services')
+            p
+                | Using services is pretty easy; simply select the "Services" tab from the project menu:
+            p
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/importServices.png', alt='Services')
+            p Then select the desired Service to import from the dropdown:
+            p
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/importMapService.png', alt='Select Map Service')
+            p Now, the map rpc blocks are available under the "Custom" tab:
+            p
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/mapBlocks.png', alt='Map Blocks under "custom" tab')
+            p Then you can use the provided blocks to leverage the NetsBlox service:
+            p
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/useMapBlock.png', alt='Setting stage background to map')
+        +entry('How to manage a room', 'manage-room')
+            p
+                | The owner of the TicTacToe game can use the room tab to add new roles to the room (using the "plus" button), add/remove roles, rename roles and invite other users to occupy different roles in the given room. This is done by clicking on the given role in the room tab:
+            p
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/editRoleDialog.png', alt='Edit Role')
+            p From this dialog, there are a number of supported actions:
+            ul
+                li
+                    em cloning the role
+                    | : This will create a new role in the room which is a copy of the clicked role. This includes sprites, blocks, costumes, code blocks, etc.
+                li
+                    em moving to the role
+                    | : This option allows the owner to move from the currently occupied role to the clicked role.
+                li
+                    em inviting another user
+                    | : Inviting a user will allow the owner to invite other users to occupy the given role at the room. This allows the given user to run and edit the blocks running at the given role.
+                li
+                    em deleting the role
+                    | : This will remove the role and all it's blocks from the given room and project.
+            p
+                | However, if a user is already occupying the given role, then the dialog also allows the owner to evict the user. This will remove the user from the owner's project:
+            p
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/evictUser.png', alt='Evict User Dialog')
+            p Roles can be renamed by clicking on the name of the role:
+            p
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/renameRole.png', alt='Rename Role')
+        +entry('How to work with custom messages', 'custom-messages')
             p
                 | A number of the Services include predefined message types to be used with the given service (such as the TicTacToe, Earthquakes and Battleship services). However, there are many cases in which a user may want to define a custom message type. This can be done by first clicking on the "Make a message type" block in the block palette under the "Services" tab:
             p
@@ -204,3 +164,39 @@ block content
                 img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/makeTTTMsgType.png', alt='TicTacToe Message Type Def')
             p
                 | In this example, the name has been set to "TicTacToe" and the fields input has been extended to have three slots (by clicking the right arrow). These fields have been named "role", "row" and "column".
+        +entry('How to play multiplayer games', 'play-multiplayer', 'https://www.youtube.com/embed/h5q8M-N25uI')
+            ol
+                li
+                    | Sign in: First things first, for multiplayer games to work all the players need to be signed up and logged in. #[a( href='/howtos#singup', target="_blank") Here is how to do that].
+                li
+                    | Find & open a game you like: you can go through the list of our examples and user created apps on 
+                    a(href='https://netsblox.org') netsblox front page
+                    | , or have a friend share his own creation with you.
+                li Get the participants in the game/room: 
+                ol
+                    li If you are the first one opening the game (owner), to invite your opponents/teammates, go to the room tab you will see a circular view of the room and available roles. Each player occupies one role. To invite players click on a role choose invite users and search for your friend's username and hit ok to ask them to join your game.
+                    li If you are being invited to a game, make sure you have 
+                        a(href='https://editor.netsblox.org/') editor.netsblox.org
+                        |  open in your browser and that you are signed in. After you are invited, you will get a dialog asking you if you want to join the game.
+                li Start the game: make sure all the players are in by looking at the room view, if ther eis someone missing go back to third step. Now that you are all set, the main role can start the game by clicking on the green flag at the top right corner. You can maximize the stage (playground) by clicking on the icon.
+            ul
+                li To test multiplayer games, you can invite yourself to play by opening a new browser tab, going to the netsblox editor and invite "myself" as a player.     
+        +entry('What are rooms in NetsBlox', 'rooms')
+            p
+                | The NetsBlox Room defines the local network for a given application. A room can contain a number of different 
+                em roles
+                |  which are distinct NetsBlox clients running in their own window or machine. For example, a TicTacToe game may consist of two roles, 
+                em X
+                |  and 
+                em Y
+                | , which represent the two players in the game of TicTacToe:
+            p
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/room.png', alt='TicTacToe Room')
+        +entry('What are messages', 'messages')
+            p
+                | Remote messaging allows users to send messages over the internet between different instances of NetsBlox, enabling users to create distributed, online apps. Unlike events, messages can contain a structured data payload. That is, they can be used to send information between NetsBlox scripts and users. The structure of messages is defined in a 
+                em message type
+                | . A message type contains the name of the message as well as the names of the expected fields of the message. For example, a message type may specify a type of message called "TicTacToe" that contains "role", "row" and "column" fields.
+        +entry('What are services', 'services')
+            p
+                | Services are provided by the NetsBlox server and allow the client to easily incorporate third party utilities (such as Google Maps, MovieDB, Weather, and Traffic data) as well as simplifies the creation of games which otherwise may be more complex (such as Battleship and ConnectN).
