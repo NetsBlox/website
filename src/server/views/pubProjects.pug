@@ -13,5 +13,6 @@
               ul.list-group
                 span.label.label-success= eg.services ? eg.services[0] : null
                 li.list-group-item.title.text-center
-                  b(title= eg.projectName)= eg.projectName.substr(0, 12) + (eg.projectName.length > 12 ? '..': '')
-                  i.fa.fa-users.pull-right(title="Multiplayer")
+                  b(title= eg.projectName)= eg.projectName
+                  if eg.roleNames.length > 1
+                    i.fa.fa-users.pull-right(title="Multiplayer")
