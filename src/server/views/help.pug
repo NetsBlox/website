@@ -1,18 +1,44 @@
 extends includes/layout.pug
 block content
-  mixin box(title, description, url)
+  mixin box(title, url)
     .col-md-4.col-sm-6.text-center
       .box
         h2.tag-title= title
-        p= description           
+        block          
         br
         a.btn.btn-block.btn-primary(href=url) Learn more
   .container
     .row
       h2.text-center Learn more about NetsBlox
       .row
-        +box('White Paper', 'Computational thinking (CT) has been described as a general analytic approach to problem solving, designing systems, and understanding human behaviors. The integration of CT within the K12 curriculum has also been argued for by the ACM committee on K12 education, and has become a focus of several researchers on educational computing.', 'NetsBloxWhitePaper.pdf')
-        +box('Snap Manual', 'In this manual we sometimes make reference to Scratch, e.g., to explain how some Snap! feature extends something familiar in Scratch. It’s very helpful to have some experience with Scratch before reading this manual, but not essential..','https://snap.berkeley.edu/SnapManual.pdf')
-        +box('Video Tutorials', 'Demoes and walkthroughs are available here.','/tutorials')
-        +box("How To's", 'General guides as well as explanations about different programming concepts in NetsBlox. ','/howtos')
-        +box('Flyer', 'NetsBlox is an open-source web- and cloud-based visual programming environment. Its visual notation is based on Scratch from MIT and uses the open source JavaScript code base of Snap! from Berkeley. Both of these are extremely successful tools in K12 computer science education. NetsBlox adds the capability of networking and enables distributed programming at a level accessible to young learners.','NetsBloxFlyer.pdf')
+        +box("How To's",'/howtos')
+          p Guides and tutorials to help you understand and use NetsBlox.
+          .text-left
+            h4 How to:
+            ul
+              li 
+                a(href='/howtos/#use-services') Use Services (Remote Procedure Calls)
+              li
+                a(href='/howtos/#manage-room') Manage rooms
+              li
+                a(href='/howtos/#send-messages') Send and receive messages
+            h4 What are: 
+            ul
+              li
+                a(href='/howtos/#rooms') Rooms
+              li
+                a(href='/howtos/#messages') Messages
+              li 
+                a(href='/howtos/#services') Services (RPCs)
+        +box('QuickStart','NetsBloxFlyer.pdf')
+          p Get started with playing multiplayer games on NetsBlox.
+        +box('Demos','/tutorials')
+          p Walkthroughs and demos are available here.
+        +box('White Paper', 'NetsBloxWhitePaper.pdf')
+          p Computational thinking (CT) has been described as a general analytic approach to problem solving, designing systems, and understanding human behaviors. The integration of CT within the K12 curriculum has also been argued for by the ACM committee on K12 education, and has become a focus of several researchers on educational computing.
+        +box('Snap! Manual', 'https://snap.berkeley.edu/SnapManual.pdf')
+          p In this manual we sometimes make reference to Scratch, e.g., to explain how some Snap! feature extends something familiar in Scratch. It’s very helpful to have some experience with Scratch before reading this manual, but not essential..
+          p Demoes and walkthroughs are available here.
+          p General guides as well as explanations about different programming concepts in NetsBlox.
+        +box('Flyer','NetsBloxFlyer.pdf')
+          p , NetsBlox is an open-source web- and cloud-based visual programming environment. Its visual notation is based on Scratch from MIT and uses the open source JavaScript code base of Snap! from Berkeley. Both of these are extremely successful tools in K12 computer science education. NetsBlox adds the capability of networking and enables distributed programming at a level accessible to young learners.
