@@ -1,6 +1,21 @@
 /* jshint esversion: 6 */
-// let SERVER_ADDRESS = 'https://editor.netsblox.org';
 const SERVER_ADDRESS = document.getElementById('editor').href;
+const { json2MobileEl } = require('./helper');
+
+// helper disable project links on mobile
+var disableMobileProject = () =>{
+  if (/Mobi/.test(navigator.userAgent)) {
+    // mobile!
+    let projectLinks = document.querySelectorAll('a[href^="https://dev.netsblox.org/?action"], a[href^="https://dev.netsblox.org/#present"]');
+    // document.querySelectorAll('a[href^="https://dev.netsblox.org/#present"]')
+    projectLinks.forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        alert('Opening projects on small-screen devies is not fully supported yet. Please try again on a desktop.');
+      })
+    })
+  }
+};
 
 
 $(document).ready(function() {
@@ -8,6 +23,8 @@ $(document).ready(function() {
   var $grid = $('#examples-grid');
   let $gridM = $('#examples-grid-m');
   var $pSlider = $('#projects-slider');
+
+  disableMobileProject();
 
   // init Isotope
   var qsRegex;
@@ -131,7 +148,7 @@ $('form').submit(function(e) {
   e.preventDefault();
   let username = $('input[name="username"]').val();
   let password = $('input[name="password"]').val();
-  let hashedP = SHA512(password);
+  let hashedP = sha512(password);
 
   $.ajax({
     url: SERVER_ADDRESS + 'api/?SESSIONGLUE=.sc1m16',
@@ -200,11 +217,12 @@ function updateLoginViews(isLoggedIn) {
       crossDomain: true,
 
       success: data => {
-        $('#userProjects-grid').removeClass('hidden');
         console.log('grabbed user projects', data);
         data.forEach( proj => {
           $('#userProjects-grid').find('.row').append(json2MobileEl(proj));
         });
+        disableMobileProject();
+        $('#userProjects-grid').removeClass('hidden');
       }
     });
   }
