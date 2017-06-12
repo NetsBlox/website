@@ -206,7 +206,6 @@ nav.navbar {
   transition:all 0.3s ease;
   border:2px dashed #dadada;
   margin-top: 10px;
-  padding: 2rem;
   box-sizing: border-box;
   border-radius: 10px;
   background-clip: padding-box;
