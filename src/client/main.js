@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   // helper to check if image is loaded.
   function isImgLoaded(img){
-    return !(typeof img.naturalWidth !== undefined && img.naturalWidth == 0)
+    return !(typeof img.naturalWidth !== undefined && img.naturalWidth === 0)
   }
 
   // init Isotope
@@ -49,7 +49,7 @@ $(document).ready(function() {
       img.addEventListener('load',(e)=>{
         if (loadedImages >= images.length - LOADING_THRESHOLD) {
           revealExamples();
-        };
+        }
       });
     });
   }
