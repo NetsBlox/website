@@ -9,12 +9,6 @@ $(document).ready(function() {
   let $gridM = $('#examples-grid-m');
   var $pSlider = $('#projects-slider');
 
-
-  // helper to check if image is loaded.
-  function isImgLoaded(img){
-    return !(typeof img.naturalWidth !== undefined && img.naturalWidth === 0)
-  }
-
   // init Isotope
   var qsRegex;
   $gridM.isotope({
