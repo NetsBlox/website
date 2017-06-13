@@ -223,7 +223,7 @@ nav.navbar {
   border:2px solid #525C7A;
 }
 
-.box span.box-title {
+.box .box-title {
     color: #fff;
     font-size: 24px;
     font-weight: 300;

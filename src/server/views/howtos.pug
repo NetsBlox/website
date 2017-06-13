@@ -7,44 +7,45 @@ block content
             .panel-body
                 .embed-responsive.embed-responsive-16by9
                       iframe(class="embed-responsive-item", allowfullscreen="allowfullscreen", src= url)
-    mixin entry(question, slug, ytUrl)
+    mixin entry(title, slug, ytUrl)
         .row.vertical-align.entry(id= slug)
             if ytUrl
                 .col-md-8
-                    h3= question + '?'
+                    h3= title
                     block
                 .col-md-4
                     +ytPlayer(ytUrl, 'title')
             else
                 .col-md-12
-                    h3= question + '?'
+                    h3= title
                     block
     .container
         .page-header
-            h1 How to guide and tutorials
+            h1 How to guides and tutorials
         div
+            h2 Concepts: 
+            ul
+                li
+                    a(href='#rooms') Rooms
+                li
+                    a(href='#messages') Messages
+                li 
+                    a(href='#services') Services (RPCs)
             h2 How to:
             ul
                 li
-                    a(href='#play-multiplayer') Play multiplayer games
+                    a(href='#play-multiplayer') Playing multiplayer games
                 li 
-                    a(href='#use-services') Use Services (Remote Procedure Calls)
+                    a(href='#use-services') Using Services (Remote Procedure Calls)
                 li
-                    a(href='#manage-room') Manage rooms
+                    a(href='#manage-room') Managing rooms
                 li
-                    a(href='#send-messages') Send and receive messages
+                    a(href='#send-messages') Sending and receiving messages
                 li
                     a(href='#signup') Sign up/in
                 li
-                    a(href='#custom-messages') Work with custom messages.
-            h2 What are: 
-            ul
-                li
-                    a(href='#rooms') Room
-                li
-                    a(href='#messages') Message
-                li 
-                    a(href='#services') Services (RPCs)
+                    a(href='#custom-messages') Working with custom messages.
+
         +entry('How to sign up and sign in', 'signup')
             p In order to save your projects or play multiplayer games you need to have a NetsBlox account.
             p Open the editor and click on the cloud icon, there you will find the signup button. When you are filling the form make sure to use an up to date and working email address. After you sign up a password will be emailed to you. Go to your email copy the password and come back to the editor. You can then change this password via the "change password" option in the same cloud menu.
@@ -169,7 +170,7 @@ block content
         +entry('How to play multiplayer games', 'play-multiplayer', 'https://www.youtube.com/embed/h5q8M-N25uI')
             ol
                 li
-                    | Sign in: First things first, for multiplayer games to work all the players need to be signed up and logged in. #[a( href='/howtos#singup', target="_blank") Here is how to do that].
+                    | Sign in: First things first, for multiplayer games to work all the players need to be signed up and logged in. #[a( href='/howtos#signup', target="_blank") Here is how to do that].
                 li
                     | Find & open a game you like: you can go through the list of our examples and user created apps on 
                     a(href='https://netsblox.org') netsblox front page
