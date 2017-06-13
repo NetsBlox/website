@@ -21,6 +21,12 @@ body a:hover{
     align-items: center;
 }
 
+footer {
+    min-height: unset;
+    padding: 0;
+    padding-top: 1rem;
+}
+
 div.btn-group {
   margin: 0 auto;
   text-align: center;
@@ -40,6 +46,10 @@ div.btn-group {
 
 .prj-element .thumbnail img {
   width: 100%;
+}
+
+.fa.pull-right {
+    margin-top: 3px;
 }
 
 /* set navbar size backto normal since we dont have logo there*/

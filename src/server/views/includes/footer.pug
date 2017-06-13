@@ -1,10 +1,17 @@
-footer.text-center
-  p &copy; 2016 
-    a(href='http://www.isis.vanderbilt.edu/', target='_blank') Institute for Software Integrated Systems
-    |  / 
-    a(href='http://www.vanderbilt.edu', target='_blank') Vanderbilt University
-    |  / 
-    a(href='http://www.vuse.vanderbilt.edu', target='_blank') School of Engineering
+footer
+  .container-fluid
+    .row
+      .col-md-8
+        p &copy; 2016 
+          a(href='http://www.isis.vanderbilt.edu/', target='_blank') Institute for Software Integrated Systems
+          |  / 
+          a(href='http://www.vanderbilt.edu', target='_blank') Vanderbilt University
+          |  / 
+          a(href='http://www.vuse.vanderbilt.edu', target='_blank') School of Engineering
+      .col-md-4.text-right
+        p 
+          b Contact: 
+          | akos.ledeczi@vanderbilt.edu
   #login-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
     .modal-dialog
       .loginmodal-container
@@ -23,6 +30,7 @@ footer.text-center
   script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.3.0/sha512.min.js')
   script(src='/main.js')
   script.
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

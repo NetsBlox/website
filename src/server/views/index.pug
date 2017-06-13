@@ -66,7 +66,7 @@ block content
     //-   p Learn the key concepts that run our interconnected world from iPhones through Instagram to traffic lights.
 
   mixin featuredProject(name, description, isMultiplayer)
-    a(class="wrapper-link",href= env.EDITOR_ADDRESS+'/?action=example&ProjectName=' + name, target='_blank')
+    a(class="wrapper-link",href= env.EDITOR_ADDRESS+'/?action=example&ProjectName=' + name + '&editMode=true', target='_blank')
       .element-item.col-xs-12.col-sm-4.col-md-3
         .h-thumbnail
           .img-container
@@ -79,8 +79,11 @@ block content
               b= name
               if isMultiplayer
                 i.fa.fa-lg.fa-users.pull-right(title="Multiplayer")
-    
+  
   .container-fluid#showcase
+    #userProjects-grid.hidden.text-center
+      h3 My Projects
+      .row
     .row
       +featuredProject('Weather','Click to green flag to get a map. Use the +/- and arrow keys zoom and navigate. Click anywhere to get the current conditions.',false)
       +featuredProject('Battleship','Select the Room tab and click the "player 2 role" to invite a friend to play. Then click the green flag. Once you placed your ships, hit space to start.',true)
@@ -91,7 +94,6 @@ block content
       .row
     include includes/examples.pug
     include includes/pubProjects.pug
-
   .social-buttons-holder
     a(href='https://github.com/netsblox/netsblox', target="_blank" title='GitHub')
       i.fa.fa-github.fa-2x

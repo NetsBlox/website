@@ -1,6 +1,19 @@
 /* jshint esversion: 6 */
-// let SERVER_ADDRESS = 'https://editor.netsblox.org';
 const SERVER_ADDRESS = document.getElementById('editor').href;
+const { json2MobileEl } = require('./helper');
+// helper disable project links on mobile
+var disableMobileProject = () =>{
+  if (/Mobi/.test(navigator.userAgent)) {
+    // mobile!
+    let projectLinks = document.querySelectorAll(`a[href^="${SERVER_ADDRESS}?action"], a[href^="${SERVER_ADDRESS}#present"]`);
+    projectLinks.forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        alert('Opening projects on small-screen devies is not fully supported yet. Please try again on a desktop.');
+      })
+    })
+  }
+};
 
 
 $(document).ready(function() {
@@ -9,6 +22,7 @@ $(document).ready(function() {
   let $gridM = $('#examples-grid-m');
   var $pSlider = $('#projects-slider');
 
+  disableMobileProject();
 
   // init Isotope
   var qsRegex;
@@ -24,20 +38,31 @@ $(document).ready(function() {
         return qsRegex ? $(this).text().match(qsRegex) : true;
       }
     });
+
+  let revealExamples = () => {
+    document.querySelector('.spinner').className += ' hidden';
+    $gridM.removeClass('hidden');
+    $gridM.isotope('layout');
+  };
+
   // layout the items after the images are loaded
   let images = document.querySelectorAll('#examples-grid-m .element-item img');
-  let loadedImages = 0;
-  images.forEach((img)=>{
-    img.addEventListener('load',(e)=>{
-      loadedImages++;
-      console.log(loadedImages, images.length)
-      if (loadedImages === images.length -2) {
-        document.querySelector('.spinner').className += ' hidden';
-        $gridM.removeClass('hidden');
-        $gridM.isotope('layout');
-      }
-    })
-  })
+  document.querySelector('.spinner').className += ' hidden';
+  console.log('preloaded images', loadedImages);
+  const LOADING_THRESHOLD = 2;
+  if (loadedImages >= images.length - LOADING_THRESHOLD) {
+    //reveal and layout isotope
+    revealExamples();
+  }else {
+    images.forEach((img)=>{
+      img.addEventListener('load',(e)=>{
+        if (loadedImages >= images.length - LOADING_THRESHOLD) {
+          revealExamples();
+        }
+      });
+    });
+  }
+
 
   // setup button filters for isotope
   // $('.filter-button-group').on( 'click', 'button', function() {
@@ -121,7 +146,7 @@ $('form').submit(function(e) {
   e.preventDefault();
   let username = $('input[name="username"]').val();
   let password = $('input[name="password"]').val();
-  let hashedP = SHA512(password);
+  let hashedP = sha512(password);
 
   $.ajax({
     url: SERVER_ADDRESS + 'api/?SESSIONGLUE=.sc1m16',
@@ -190,11 +215,12 @@ function updateLoginViews(isLoggedIn) {
       crossDomain: true,
 
       success: data => {
-        $('#userProjects-grid').removeClass('hidden');
         console.log('grabbed user projects', data);
         data.forEach( proj => {
           $('#userProjects-grid').find('.row').append(json2MobileEl(proj));
         });
+        disableMobileProject();
+        $('#userProjects-grid').removeClass('hidden');
       }
     });
   }
