@@ -53,7 +53,7 @@ block content
         +entry('How to send and receive messages', 'send-messages')
             p Message sending and receiving can be done using the following blocks:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/messages.png', alt='Messaging Blocks')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/messages.png', alt='Messaging Blocks', class="img-responsive")
             p
                 | The top block (starting with 
                 code when I receive
@@ -64,11 +64,11 @@ block content
             p
                 | The message handling block contains a dropdown for setting the message type for which it listens:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/setMsgTypeHat.png', alt='Setting message type for message hat')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/setMsgTypeHat.png', alt='Setting message type for message hat', class="img-responsive")
             p
                 | This dropdown contains the names of all defined message types in the given role. Selecting one of the message types will dynamically change the block and add variable blocks for each of the expected fields in the given message type:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/msgHat.png', alt='Message hat for TicTacToe')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/msgHat.png', alt='Message hat for TicTacToe', class="img-responsive")
             p
                 | Upon receiving a message, these variable blocks will be set to the values received in the given message. In the above example, this allows the user to retrieve the values sent for 
                 em role
@@ -83,19 +83,19 @@ block content
                 code send msg
                 |  block also contains a field for specifying the message type:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/setMsgTypeSend.png', alt='Setting the message type in send msg block')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/setMsgTypeSend.png', alt='Setting the message type in send ms, class="img-responsive"g block')
             p
                 | After setting the message type, the send block will update to provide inputs for each of the expected inputs:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/sendTTTMsg.png', alt='TicTacToe send message block')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/sendTTTMsg.png', alt='TicTacToe send message block', class="img-responsive")
             p
                 | The empty input fields contain grey-ed out text displaying the field name for the corresponding input. These inputs can be filled just as any other block input slot:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/sendTTTMsgContent.png', alt='TicTacToe send msg block with content')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/sendTTTMsgContent.png', alt='TicTacToe send msg block with content', class="img-responsive")
             p
                 | Finally, the block only needs to specify to whom we want to send the given message. This is specified using the last dropdown:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/setRoleSendMsg.png', alt='Set the target role')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/setRoleSendMsg.png', alt='Set the target role', class="img-responsive")
             p
                 | This dropdown contains all the roles in the room as well as two extra fields: "others in room" and "everyone in room". Setting the field to "others in room" will result in the given role broadcasting the message to all other roles in the room whereas "everyone in room" will send the message to everyone in the room including the sender. Selecting any other entry will result in the message being sent only to the corresponding role.
             p
@@ -109,26 +109,26 @@ block content
                 em column
                 |  field set to 4. This message will be broadcasted to everyone else in the room (not including the sender).
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/sendTTTMsgComplete.png', alt='send TTT msg to everyone else')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/sendTTTMsgComplete.png', alt='send TTT msg to everyone else', class="img-responsive")
         +entry('How to use services (RPCs)', 'use-services')
             p
                 | Using services is pretty easy; simply select the "Services" tab from the project menu:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/importServices.png', alt='Services')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/importServices.png', alt='Services', class="img-responsive")
             p Then select the desired Service to import from the dropdown:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/importMapService.png', alt='Select Map Service')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/importMapService.png', alt='Select Map Service', class="img-responsive")
             p Now, the map rpc blocks are available under the "Custom" tab:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/mapBlocks.png', alt='Map Blocks under "custom" tab')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/mapBlocks.png', alt='Map Blocks under "custom" tab', class="img-responsive")
             p Then you can use the provided blocks to leverage the NetsBlox service:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/useMapBlock.png', alt='Setting stage background to map')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/useMapBlock.png', alt='Setting stage background to map', class="img-responsive")
         +entry('How to manage a room', 'manage-room')
             p
                 | The owner of the TicTacToe game can use the room tab to add new roles to the room (using the "plus" button), add/remove roles, rename roles and invite other users to occupy different roles in the given room. This is done by clicking on the given role in the room tab:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/editRoleDialog.png', alt='Edit Role')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/editRoleDialog.png', alt='Edit Role', class="img-responsive")
             p From this dialog, there are a number of supported actions:
             ul
                 li
@@ -146,25 +146,25 @@ block content
             p
                 | However, if a user is already occupying the given role, then the dialog also allows the owner to evict the user. This will remove the user from the owner's project:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/evictUser.png', alt='Evict User Dialog')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/evictUser.png', alt='Evict User Dialog', class="img-responsive")
             p Roles can be renamed by clicking on the name of the role:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/renameRole.png', alt='Rename Role')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/renameRole.png', alt='Rename Role', class="img-responsive")
         +entry('How to work with custom messages', 'custom-messages')
             p
                 | A number of the Services include predefined message types to be used with the given service (such as the TicTacToe, Earthquakes and Battleship services). However, there are many cases in which a user may want to define a custom message type. This can be done by first clicking on the "Make a message type" block in the block palette under the "Services" tab:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/makeMsgTypePalette.png', alt='Services Tab')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/makeMsgTypePalette.png', alt='Services Tab', class="img-responsive")
             p
                 | This will open the message type creation dialog. This dialog provides an interface for specifying the name and fields for the given message type:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/makeMsgTypeDialog.png', alt='Message Type Dialog')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/makeMsgTypeDialog.png', alt='Message Type Dialog', class="img-responsive")
             p
                 | After selecting "OK", the given message type will be created! An example of creating the 
                 em TicTacToe
                 |  message type used throughout this example is shown below:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/makeTTTMsgType.png', alt='TicTacToe Message Type Def')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/makeTTTMsgType.png', alt='TicTacToe Message Type Def', class="img-responsive")
             p
                 | In this example, the name has been set to "TicTacToe" and the fields input has been extended to have three slots (by clicking the right arrow). These fields have been named "role", "row" and "column".
         +entry('How to play multiplayer games', 'play-multiplayer', 'https://www.youtube.com/embed/h5q8M-N25uI')
@@ -194,7 +194,7 @@ block content
                 em Y
                 | , which represent the two players in the game of TicTacToe:
             p
-                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/room.png', alt='TicTacToe Room')
+                img(src='https://raw.githubusercontent.com/wiki/NetsBlox/NetsBlox/images/room.png', alt='TicTacToe Room', class="img-responsive")
         +entry('What are messages', 'messages')
             p
                 | Remote messaging allows users to send messages over the internet between different instances of NetsBlox, enabling users to create distributed, online apps. Unlike events, messages can contain a structured data payload. That is, they can be used to send information between NetsBlox scripts and users. The structure of messages is defined in a 
