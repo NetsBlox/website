@@ -129,28 +129,6 @@ footer a:active {
     text-decoration: none;
 }
 
-.back-to-top {
-    background-color: #1c80d8;
-    opacity: .6;
-    cursor: pointer;
-}
-
-.back-to-top:hover {
-    opacity: 1;
-}
-
-footer .back-to-top a,
-footer .back-to-top a:link,
-footer .back-to-top a:visited {
-    color: #fff;
-    padding: 1ex 2ex;
-    display: inline-block;
-}
-
-footer .back-to-top a:hover,
-footer .back-to-top a:active {
-    color: #fff;
-}
 
 .container.marketing {
     padding-bottom: 20px;
