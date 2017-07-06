@@ -22,3 +22,4 @@ ratings:
 exclude_paths:
 - test/
 - src/client/sha512.js
+- node_modules/
