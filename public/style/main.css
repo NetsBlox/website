@@ -258,6 +258,14 @@ nav.navbar {
 }
 
 
+
+/* change lighslider control colors to black*/
+.lSAction>a {
+  background-image: url('/images/controls-black.png');
+  top: 45%;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
 /* Bootstrap Login */
 
 @import url(http://fonts.googleapis.com/css?family=Roboto);
