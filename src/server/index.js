@@ -53,7 +53,7 @@ let getExamples = memoize(() => {
 }, {promise: true, maxAge: 86400 });
 
 app.get('/', (req, res) => {
-    // get the exmaples and public projects data
+    // get the examples and public projects data
     // get examples data
     let examplesPromise = getExamples();
     // get projects data
@@ -86,6 +86,8 @@ app.get('/howtos', (req,res) => {
 app.get('/quickstart', (req,res) => {
   res.render('quickstart.pug',{});
 });
+
+app.get('/eclipse', (req,res) => res.render('eclipse.pug',{}));
 app.get('*', (req,res)=>{
   res.status(404).send('Page not found. Go back to <a href="/">Home Page</a>. If you believe there is a mistake, please let us know at <a href="https://facebook.com/netsblox"> our facebook page</a>.');
 });

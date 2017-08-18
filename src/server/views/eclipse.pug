@@ -1,0 +1,13 @@
+extends includes/layout.pug
+block title
+    title Eclipse 2017 - NetsBlox
+block content
+    .container
+        h2 Eclipse 2017
+        .row
+            .panel.panel-default
+                .panel-body
+                    .embed-responsive.embed-responsive-16by9
+                        iframe(id='netsblox', class="embed-responsive-item", allowfullscreen="allowfullscreen",  src='https://dev.netsblox.org/?action=present&Username=ledeczi&ProjectName=EclipseViz')
+
+        p This is a description of the eclipse project
