@@ -21,12 +21,12 @@ block content
     .container
         .page-header
             h2 Eclipse 2017 Service
-        p With the help of sensors provided by Weather Underground, we have created a service that gathers weather data along the path of the eclipse, before, during and after. You can access this data through the "Eclipse-2017" service in NetsBlox. Here is a description of each remote procedure call, including the inputs and the return values. 
+        p With the help of sensors provided by Weather Underground, we have created a service that gathers weather data along the path of the eclipse, before, during and after. You can access this data through the "Eclipse-2017" service in NetsBlox. Descriptions of each remote procedure call are provided below, including the inputs and the return values. 
 
         h3 Available Remote Procedure Calls
-        p In theses RPCs the values returned are in the order of latest first, when applicable.
-        p The frequency of the sensor readings on 21st of Aug is once every 30 seconds and is reduced to once every five minutes at other times.
-        p Wherever asked to enter a datetime value, you should follow the ISO8601 format and enter the time as in GMT timezone. You can use the timeconversion block from the libraries menu. ISO8601 extended format is as follows: YYYY-MM-DDTHH:mm:ss.sssZ
+        p In these RPCs the values returned are in the order of latest reading first, when applicable.
+        p The frequency of the sensor readings on 21st of August is once every 30 seconds and is reduced to once every five minutes at other times.
+        p Wherever asked to enter a datetime value, you should follow the ISO8601 format and enter the time as in GMT timezone. You can use the "time conversion" block from the libraries menu. ISO8601 extended format is as follows: YYYY-MM-DDTHH:mm:ss.sssZ
 
         +methodSig('stations', 'returns a list of station IDs.')
         // +methodSig('stationsInfo', 'returns a structured list of stations with all kinds of information that we have on the stations')
