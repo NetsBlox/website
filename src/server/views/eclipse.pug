@@ -4,10 +4,20 @@ block title
 block content
     .container
         h2 Eclipse 2017
+        br
         .row
+            p  Click the image below to start the live Eclipse Temperature Trend app. We will be getting temperature data from 125 Weather Underground stations along the path of the total solar eclipse in 30-second resolution during the phenomenon. A cooling trend is indicated with a blue icon, while a warming trend is shown with red. As the shadow of the moon moves across the US, it will be shown in real-time. The expectation is that in front of the shadow, most of the stations will indicate a cooling trend as a larger and larger area of the sun is covered by the moon, while behind the shadow, temperatures should rise rapidly. Keep in mind that cloud cover and rain also have significant impact on temperature, so this blue/red wave will not be uniform. That is why we are also showing weather conditions along the path. Also note that the drier air in the Rockies should show larger temperature changes than the humid air in the South and along the coasts.
             .panel.panel-default
                 .panel-body
                     .embed-responsive.embed-responsive-16by9
-                        iframe(id='netsblox', class="embed-responsive-item", allowfullscreen="allowfullscreen",  src='https://dev.netsblox.org/?action=present&Username=ledeczi&ProjectName=EclipseViz')
+                        a(href='https://dev.netsblox.org/?action=present&Username=ledeczi&ProjectName=EclipseTemperatureTrend')
+                            img.embed-responsive-item.img-responsive.img-rounded(src='/images/eclipse2017.png' title='Click to open the interactive eclipse tracker!')
 
-        p This is a description of the eclipse project
+
+            p You can also click on any of the red/blue icons to get a plot of the past two hours worth of temperature trend at the given location. Click anywhere to return to the map. If you need to restart the app, click the red stop sign near the top right corner and click the green flag afterwards.
+
+            p However, if you are just interested in tracking the weather of Nashville during the eclipse, check out the <a href="https://thingspeak.com/channels/305027">NetsBlox weather station</a>!
+
+            em Note that before and after the Eclipse, temperature data in 5-min increments will be available, but of course, the shadow of the moon will not show. Check back after the Eclipse, as we will put another app that will show the entire event sped-up. 
+            br 
+            br 
