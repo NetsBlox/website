@@ -62,7 +62,7 @@ app.get('/', (req, res) => {
 
 
     axios.all([examplesPromise,publicProjectsPromise]).then(axios.spread((examples,projects)=>{
-        log.debug('Data received from server',projects.data.length)
+        log.debug('Data received from server',projects.data.length);
     // this is cached by default by express if node env is set to production
         examples.data = examples.data.filter(eg => !['Weather','Star Map','Battleship','Earthquakes'].includes(eg.projectName));
         res.render('index.pug', {examples: examples.data, projects: projects.data });
@@ -74,20 +74,13 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('/tutorials*', (req,res) => {
-  res.render('tutorials.pug',{});
-});
-app.get('/help', (req,res) => {
-  res.render('help.pug',{});
-});
-app.get('/howtos', (req,res) => {
-  res.render('howtos.pug',{});
-});
-app.get('/quickstart', (req,res) => {
-  res.render('quickstart.pug',{});
-});
+app.get('/tutorials*', (req,res) => res.render('tutorials.pug',{}));
+app.get('/help', (req,res) => res.render('help.pug',{}));
+app.get('/howtos', (req,res) => res.render('howtos.pug',{}));
+app.get('/quickstart', (req,res) => res.render('quickstart.pug',{}));
 
 app.get('/eclipse', (req,res) => res.render('eclipse.pug',{}));
+app.get('/eclipse/help', (req, res) => res.render('eclipse-help.pug'));
 app.get('*', (req,res)=>{
   res.status(404).send('Page not found. Go back to <a href="/">Home Page</a>. If you believe there is a mistake, please let us know at <a href="https://facebook.com/netsblox"> our facebook page</a>.');
 });

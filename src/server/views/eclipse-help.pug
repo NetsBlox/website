@@ -1,0 +1,42 @@
+extends includes/layout.pug
+block title
+    title Eclipse - Services - NetsBlox
+block content
+    mixin keyValDisp(key, val)
+        if val
+            b= key + ': ' 
+            | #{val}
+        else
+            b= key
+    mixin methodSig(name, description, inputs)
+        +keyValDisp(name, description)
+        if inputs
+            ul
+                each val, key in inputs
+                    li
+                        +keyValDisp(key, val)
+        block
+        hr
+
+    .container
+        .page-header
+            h2 Eclipse 2017 Service
+        p With the help of sensors provided by the Weather Underground's platform, we have created a service that to gather weather data along the path of the eclipse, before, during and after. You can access this data through the "Eclipse-2017" RPC in NetsBlox. Here is a description of what each RPC does, what the inputs are and what you can expect to get from it. 
+
+        h3 Available Remote Procedure Calls
+        p In the RPCs for this service (if applicable) the values returned are in the order of latest first.
+        p The frequency of the sensor readings on 21st of Aug is once every 30 seconds and is reduced to once every five minutes at other times.
+        p Wherever asked to enter a datetime value, you should follow the ISO8601 format and enter the time as in GMT timezone. You can use the timeconversion block from the libraries menu. ISO8601 extended format is as follows: YYYY-MM-DDTHH:mm:ss.sssZ
+
+        +methodSig('stations', 'returns a list of station IDs.')
+        // +methodSig('stationsInfo', 'returns a structured list of stations with all kinds of information that we have on the stations')
+        +methodSig('stationInfo', 'returns details about a specific stations.', {stationId: ''})
+        +methodSig('eclipsePath', 'returns a list 185 points depicting the path the eclipse. Each point includes coordinates and the time for totatlity at that point')
+        +methodSig('temperature', 'returns the last known temperature at a given station', {stationId: ''})
+        +methodSig('pastTemperature', 'returns the temperature at a point in time.', {stationId: '', time: 'A GMT date-time value formatted in ISO8601 (YYYY-MM-DDTHH:mm:ss.sssZ)'})
+        +methodSig('temperatureHistory', 'returns temperature history of a station as a list. (latest first)', {stationId: '', limit: 'The number of readings to get.'})
+        +methodSig('temperatureHistoryRange', 'returns a list of temperatures for a stations between two points in past time (latest first).', {stationId: ''})
+        +methodSig('condition', 'returns the last known condition at a given station. condition includes temperature, humidity, solar radiation, the exact time of the reading and more.', {stationId: ''})
+        +methodSig('pastCondition', 'returns the condition at a point in time.', {stationId: '', time: 'A GMT date-time value formatted in ISO8601 (YYYY-MM-DDTHH:mm:ss.sssZ)'})
+        +methodSig('conditionHistory', 'returns condition history of a station as a list. (latest first)', {stationId: '', limit: 'The number of readings to get.'})
+
