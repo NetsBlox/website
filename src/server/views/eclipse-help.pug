@@ -9,6 +9,7 @@ block content
         else
             b= key
     mixin methodSig(name, description, inputs)
+        hr
         +keyValDisp(name, description)
         if inputs
             ul
@@ -16,7 +17,6 @@ block content
                     li
                         +keyValDisp(key, val)
         block
-        hr
 
     .container
         .page-header
