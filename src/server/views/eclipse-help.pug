@@ -21,7 +21,7 @@ block content
     .container
         .page-header
             h2 Eclipse 2017 Service
-        p With the help of sensors provided by Weather Underground, we have created a service that gathers weather data along the path of the eclipse, before, during and after. You can access this data through the "Eclipse-2017" service in NetsBlox. Descriptions of each remote procedure call are provided below, including the inputs and the return values. 
+        p With the help of sensors provided by Weather Underground, we have created a service that gathers weather data along the path of the eclipse, before, during and after. This data is accessible through the "Eclipse-2017" service in NetsBlox. Descriptions of each remote procedure call are provided below, including the inputs and the return values.
 
         h3 Available Remote Procedure Calls
         p In these RPCs the values returned are in the order of latest reading first, when applicable.
@@ -30,7 +30,6 @@ block content
 
         ul.list-group
             +methodSig('stations', 'returns a list of station IDs.')
-            // +methodSig('stationsInfo', 'returns a structured list of stations with all kinds of information that we have on the stations')
             +methodSig('stationInfo', 'returns details about a specific station.', {stationId: ''})
             +methodSig('eclipsePath', 'returns a list 185 points depicting the path the eclipse. Each point includes coordinates and the time for totatlity at that point.')
             +methodSig('temperature', 'returns the last known temperature at a given station.', {stationId: ''})
@@ -46,7 +45,7 @@ block content
         ol
             li PWS: is "Personal Weather Station" AKA station ID
             li Geographical attributes such as: city, state, elevation, latitude, longitude and station's distance (approximate) from the totality center line
-            li weather: a short text describing the weather
+            li weather: a short description of the weather
             li sensor values: humidity*, UV*, solar radiation*, light*, wind*, temperature
             li readAt: the time that the sensor measured the values (at GMT 0)
             li readAtLocal: the local version of readAt
