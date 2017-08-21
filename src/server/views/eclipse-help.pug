@@ -31,25 +31,25 @@ block content
         ul.list-group
             +methodSig('stations', 'returns a list of station IDs.')
             // +methodSig('stationsInfo', 'returns a structured list of stations with all kinds of information that we have on the stations')
-            +methodSig('stationInfo', 'returns details about a specific stations.', {stationId: ''})
-            +methodSig('eclipsePath', 'returns a list 185 points depicting the path the eclipse. Each point includes coordinates and the time for totatlity at that point')
-            +methodSig('temperature', 'returns the last known temperature at a given station', {stationId: ''})
-            +methodSig('pastTemperature', 'returns the temperature at a point in time.', {stationId: '', time: 'A GMT date-time value formatted in ISO8601 (YYYY-MM-DDTHH:mm:ss.sssZ)'})
+            +methodSig('stationInfo', 'returns details about a specific station.', {stationId: ''})
+            +methodSig('eclipsePath', 'returns a list 185 points depicting the path the eclipse. Each point includes coordinates and the time for totatlity at that point.')
+            +methodSig('temperature', 'returns the last known temperature at a given station.', {stationId: ''})
+            +methodSig('pastTemperature', 'returns the temperature at a point in time.', {stationId: '', time: 'A GMT date-time value formatted in ISO8601 (YYYY-MM-DDTHH:mm:ss.sssZ).'})
             +methodSig('temperatureHistory', 'returns temperature history of a station as a list. (latest first)', {stationId: '', limit: 'The number of readings to get.'})
-            +methodSig('temperatureHistoryRange', 'returns a list of temperatures for a stations between two points in past time (latest first).', {stationId: '', startTime: 'an ISO8601 datetime represeting the older end of the range', endTime: 'newer end of the range'})
+            +methodSig('temperatureHistoryRange', 'returns a list of temperatures for a stations between two points in past time (latest first).', {stationId: '', startTime: 'an ISO8601 datetime represeting the older end of the range.', endTime: 'newer end of the range.'})
             +methodSig('condition', 'returns the last known condition at a given station. condition includes temperature, humidity, solar radiation, the exact time of the reading and more.', {stationId: ''})
-            +methodSig('pastCondition', 'returns the condition at a point in time.', {stationId: '', time: 'A GMT date-time value formatted in ISO8601 (YYYY-MM-DDTHH:mm:ss.sssZ)'})
+            +methodSig('pastCondition', 'returns the condition at a point in time.', {stationId: '', time: 'A GMT date-time value formatted in ISO8601 (YYYY-MM-DDTHH:mm:ss.sssZ).'})
             +methodSig('conditionHistory', 'returns condition history of a station as a list. (latest first)', {stationId: '', limit: 'The number of readings to get.'})
 
         h3 Station Condition Structure
         p When calling some of the RPCs on this service you get back one or more "condition"s which are in form of structured data. Here are the attributes that you can expect with these conditions. 
         ol
-            li PWS: is "Personal Weather Station" AKA station ID. 
-            li Geographical attributes such as: city, state, elevation, latitude, longitude and station's distance (approximate) from the totality center line.
+            li PWS: is "Personal Weather Station" AKA station ID
+            li Geographical attributes such as: city, state, elevation, latitude, longitude and station's distance (approximate) from the totality center line
             li weather: a short text describing the weather
             li sensor values: humidity*, UV*, solar radiation*, light*, wind*, temperature
             li readAt: the time that the sensor measured the values (at GMT 0)
             li readAtLocal: the local version of readAt
-            li requestTime: the time when NetsBlox's server requested the information from Weather Underground.
+            li requestTime: the time when NetsBlox's server requested the information from Weather Underground
 
-        em *availale only on select stations.
+        em *available only on select stations.
