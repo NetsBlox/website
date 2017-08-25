@@ -1,23 +1,28 @@
 extends includes/layout.pug
 block title
-    title Eclipse 2017 - NetsBlox
+  title Eclipse 2017 - NetsBlox
 block content
-    .container
-        h2 Eclipse 2017
-        br
-        .row
-            p Click the image below to start the Eclipse Temperature Trend app. We were getting temperature data from 121 Weather Underground stations along the path of the total solar eclipse in 30-second resolution during the phenomenon. A cooling trend is indicated with a blue icon, while a warming trend is shown with red. As the shadow of the moon moved across the US,  in front of the shadow, most of the stations indicated a cooling trend as a larger and larger area of the sun was covered by the moon, while behind the shadow, temperatures rose rapidly. Keep in mind that cloud cover and rain also have significant impact on temperature, so this blue/red wave was not uniform (that is why we are also showing weather conditions along the path).
-            p Once the app has initialized (which may take a minute or two), click the Play button. When it is not running the animation, clicking on any of the stations shows a temperature chart. Click anywhere to return to the map. If you need to restart the app, click the red stop sign near the top right corner and click the green flag afterwards. <span style="font-weight: bold">For best performance, please use Google Chrome (on a computer not a mobile device) for viewing the eclipse tracking app!</span>
-            .panel.panel-default
-                .panel-body
-                    .embed-responsive.embed-responsive-16by9
-                        a(href='https://editor.netsblox.org/?action=present&Username=ledeczi&ProjectName=EclipseViz')
-                            img.embed-responsive-item.img-responsive.img-rounded(src='/images/eclipse2017.png' title='Click to open the interactive eclipse tracker!')
+  .container
+    h2 Eclipse 2017
+    br
+    .row
+      p Click the image below to start the Eclipse Temperature Trend app. We were getting temperature data from 121 Weather Underground stations along the path of the total solar eclipse in 30-second resolution during the phenomenon. A cooling trend is indicated with a blue icon, while a warming trend is shown with red. As the shadow of the moon moved across the US,  in front of the shadow, most of the stations indicated a cooling trend as a larger and larger area of the sun was covered by the moon, while behind the shadow, temperatures rose rapidly. Keep in mind that cloud cover and rain also have significant impact on temperature, so this blue/red wave was not uniform (that is why we are also showing weather conditions along the path).
+      p Once the app has initialized (which may take a minute or two), click the Play button. When it is not running the animation, clicking on any of the stations shows a temperature chart. Click anywhere to return to the map. If you need to restart the app, click the red stop sign near the top right corner and click the green flag afterwards. <span style="font-weight: bold">For best performance, please use Google Chrome (on a computer not a mobile device) for viewing the eclipse tracking app!</span>
+      .panel.panel-default
+        .panel-body
+          .embed-responsive.embed-responsive-16by9
+            a(href='https://editor.netsblox.org/?action=present&Username=ledeczi&ProjectName=EclipseViz')
+              img.embed-responsive-item.img-responsive.img-rounded(src='/images/eclipse2017.png' title='Click to open the interactive eclipse tracker!')
 
 
-            p If you're interested to make your own project with the eclipse service, check out 
-                a( href="/eclipse/help" ) this guide
-                |  to learn more about the available RPCs.
+      p If you're interested to make your own project with the eclipse service, check out 
+        a( href="/eclipse/help" ) this guide
+        |  to learn more about the available RPCs.
 
-            br
-            br
+      br
+      p Also, thank you to Harpeth Hall for inviting us to the 
+        a(href='https://www.harpethhall.org/total-eclipse-of-the-hall') Total Eclipse of the Hall
+        |  where we had great time 
+        a(href='') demonstrating NetsBlox's latest Eclipse-2017 service
+        |  and watching the eclipse!
+
