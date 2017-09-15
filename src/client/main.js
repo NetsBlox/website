@@ -129,6 +129,7 @@ $(document).ready(function() {
   $('#logout').on('click', (e) => {
     e.preventDefault();
     $.ajax({
+      method: 'post',
       url: SERVER_ADDRESS + 'api/logout',
       success: () => {
         document.cookie = "netsblox-cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
