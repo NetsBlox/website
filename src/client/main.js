@@ -131,12 +131,11 @@ $(document).ready(function() {
     $.ajax({
       url: SERVER_ADDRESS + 'api/logout',
       success: () => {
-        document.cookie = "netsblox-cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        document.cookie = `netsblox-cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain=.netsblox.org`;
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
         updateLoginViews(false);
       }
     });
-
   });
 
 // goto top button    
@@ -165,6 +164,7 @@ $('form').submit(function(e) {
   e.preventDefault();
   let username = $('input[name="username"]').val();
   let password = $('input[name="password"]').val();
+  $('input[name="password"]').val('');
   let hashedP = sha512(password);
 
   $.ajax({
@@ -173,7 +173,7 @@ $('form').submit(function(e) {
     data: JSON.stringify({
       __h: hashedP,
       __u: username,
-      remember: true
+      remember: false
     }),
     contentType: "application/json; charset=utf-8",
     xhrFields: {
@@ -219,9 +219,11 @@ function updateLoginViews(isLoggedIn) {
       $('#login').removeClass('hidden');
       $('#logout').addClass('hidden');
       $('#userProjects-grid').addClass('hidden').find('row').empty();
+      document.getElementById('userProjects-grid').innerHTML = '';
       $('nav p').addClass('hidden');
     }
   }
+
   function grabUserProjects(){
 
     $('#userProjects-grid').find('.row').empty();
