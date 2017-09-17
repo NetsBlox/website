@@ -61,6 +61,11 @@ div.btn-group {
     margin-top: 3px;
 }
 
+.deprecated {
+  color: #999;
+  text-decoration: line-through;
+}
+
 /* set navbar size backto normal since we dont have logo there*/
 nav.navbar {
   margin-left:unset;
