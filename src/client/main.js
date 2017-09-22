@@ -15,6 +15,9 @@ var disableMobileProject = () =>{
   }
 };
 
+function isMainPage(){
+  return document.getElementById('#examples-grid') !== null
+}
 
 $(document).ready(function() {
 
@@ -22,6 +25,7 @@ $(document).ready(function() {
   let $gridM = $('#examples-grid-m');
   var $pSlider = $('#projects-slider');
 
+  // check if is on landing
   disableMobileProject();
 
   // init Isotope
@@ -46,23 +50,25 @@ $(document).ready(function() {
   };
 
   // layout the items after the images are loaded
-  let images = document.querySelectorAll('#examples-grid-m .element-item img');
-  document.querySelector('.spinner').className += ' hidden';
-  console.log('preloaded images', loadedImages);
-  const LOADING_THRESHOLD = 2;
-  if (loadedImages >= images.length - LOADING_THRESHOLD) {
-    //reveal and layout isotope
-    revealExamples();
-  }else {
-    images.forEach((img)=>{
-      img.addEventListener('load',(e)=>{
-        if (loadedImages >= images.length - LOADING_THRESHOLD) {
-          revealExamples();
-        }
+  // check if is on main page
+  if (isMainPage()){
+    let images = document.querySelectorAll('#examples-grid-m .element-item img');
+    document.querySelector('.spinner').className += ' hidden';
+    console.log('preloaded images', loadedImages);
+    const LOADING_THRESHOLD = 2;
+    if (loadedImages >= images.length - LOADING_THRESHOLD) {
+      //reveal and layout isotope
+      revealExamples();
+    }else {
+      images.forEach((img)=>{
+        img.addEventListener('load',(e)=>{
+          if (loadedImages >= images.length - LOADING_THRESHOLD) {
+            revealExamples();
+          }
+        });
       });
-    });
+    }
   }
-
 
   // setup button filters for isotope
   // $('.filter-button-group').on( 'click', 'button', function() {
@@ -141,7 +147,6 @@ $(document).ready(function() {
 
 // goto top button    
   $(window).scroll(function () {
-    console.log('scrolled')
     if ($(this).scrollTop() > 50) {
       $('#back-to-top').fadeIn();
     } else {
@@ -215,13 +220,13 @@ function updateLoginViews(isLoggedIn) {
       $('#logout').removeClass('hidden');
       $('nav p').removeClass('hidden').find('b').text(Cookies.get('username'));
       $('#login-modal').modal('hide');
-      grabUserProjects();
+      if (isMainPage()) grabUserProjects();
     } else { //means we are logging out
+      $('nav p').addClass('hidden');
       $('#login').removeClass('hidden');
       $('#logout').addClass('hidden');
-      $('#userProjects-grid').addClass('hidden').find('row').empty();
-      document.getElementById('userProjects-grid').innerHTML = '';
-      $('nav p').addClass('hidden');
+      if (isMainPage()) $('#userProjects-grid').addClass('hidden').find('row').empty();
+      if (isMainPage()) document.getElementById('userProjects-grid').innerHTML = '';
     }
   }
 
