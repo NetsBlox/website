@@ -170,6 +170,10 @@ $('form').submit(function(e) {
   e.preventDefault();
   let username = $('input[name="username"]').val();
   let password = $('input[name="password"]').val();
+  if (!username || !password) {
+    alert('Fill in your username and password');
+    return;
+  }
   $('input[name="password"]').val('');
   let hashedP = sha512(password);
 
