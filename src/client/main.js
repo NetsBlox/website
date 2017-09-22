@@ -135,11 +135,12 @@ $(document).ready(function() {
   $('#logout').on('click', (e) => {
     e.preventDefault();
     $.ajax({
-      method: 'post',
+      method: 'POST',
       url: SERVER_ADDRESS + 'api/logout',
       success: () => {
         document.cookie = `netsblox-cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain=.netsblox.org`;
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        console.log('logged out');
         updateLoginViews(false);
       }
     });
