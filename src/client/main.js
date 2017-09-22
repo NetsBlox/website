@@ -209,9 +209,7 @@ $('form').submit(function(e) {
   });
 
   function postLogin() {
-    Cookies.set('username', username, {
-      expires: 14
-    });
+    Cookies.set('username', username);
     updateLoginViews(true);
   }
 }); // end of on submit
