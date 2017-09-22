@@ -16,13 +16,13 @@ var disableMobileProject = () =>{
 };
 
 function isMainPage(){
-  return document.getElementById('#examples-grid') !== null
+  let is = document.getElementById('examples-grid') !== null;
+  return is; 
 }
 
 $(document).ready(function() {
 
   var $grid = $('#examples-grid');
-  let $gridM = $('#examples-grid-m');
   var $pSlider = $('#projects-slider');
 
   // check if is on landing
@@ -30,7 +30,7 @@ $(document).ready(function() {
 
   // init Isotope
   var qsRegex;
-  $gridM.isotope({
+  $grid.isotope({
       // options
       // layoutMode: 'fitRows',
       itemSelector: '.element-item',
@@ -45,14 +45,14 @@ $(document).ready(function() {
 
   let revealExamples = () => {
     document.querySelector('.spinner').className += ' hidden';
-    $gridM.removeClass('hidden');
-    $gridM.isotope('layout');
+    $grid.removeClass('hidden');
+    $grid.isotope('layout');
   };
 
   // layout the items after the images are loaded
   // check if is on main page
   if (isMainPage()){
-    let images = document.querySelectorAll('#examples-grid-m .element-item img');
+    let images = document.querySelectorAll('#examples-grid .element-item img');
     document.querySelector('.spinner').className += ' hidden';
     console.log('preloaded images', loadedImages);
     const LOADING_THRESHOLD = 2;
@@ -82,7 +82,7 @@ $(document).ready(function() {
   // use value of search field to filter
   var $quicksearch = $('.quicksearch').keyup(debounce(function() {
     qsRegex = new RegExp($quicksearch.val(), 'gi');
-    $gridM.isotope();
+    $grid.isotope();
   }, 200));
 
   // debounce so filtering doesn't happen every millisecond
@@ -138,7 +138,6 @@ $(document).ready(function() {
       method: 'POST',
       url: SERVER_ADDRESS + 'api/logout',
       success: () => {
-        document.cookie = `netsblox-cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain=.netsblox.org`;
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
         console.log('logged out');
         updateLoginViews(false);
@@ -190,17 +189,19 @@ $('form').submit(function(e) {
     xhrFields: {
       withCredentials: true
     },
+    headers: {
+      // SESSIONGLUE: '.sc1m16',
+      Accept: '*/*',
+    },
     crossDomain: true,
     statusCode: {
       403: function(xhr) {
-          // login failed ( catching using status code due to the response)
-          console.log(xhr.responseText);
-          alert(xhr.responseText);
-        }
-      },
-      success: data => {
-        console.log(document.cookie);
-        console.log('logged in');
+        // login failed
+        alert(xhr.responseText);
+      }
+    },
+    success: data => {
+      console.log('logged in');
       postLogin(); // promises..
     },
     fail: err => {
