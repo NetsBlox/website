@@ -1,9 +1,9 @@
-/*Global:$*/
+/* global $, Recaptcha */
 /**
  * Created by laszlojuracz on 4/1/14.
  */
 $(function() {
-    "use strict";
+    'use strict';
 
     var captchaShown = false,
         returnedError = false,
@@ -17,13 +17,13 @@ $(function() {
 
 
     validatEmail = function(x) {
-        var atpos=x.indexOf("@");
-        var dotpos=x.lastIndexOf(".");
+        var atpos=x.indexOf('@');
+        var dotpos=x.lastIndexOf('.');
         if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
         {
-          return false;
+            return false;
         } else {
-          return true;
+            return true;
         }
     };
 
@@ -86,11 +86,11 @@ $(function() {
             $('#submit-button').fadeIn(1000);
             
             $('form input[type=text]').keyup(function() {
-               validate();
+                validate();
             });
 
             $('form input[type=email]').keyup(function() {
-               validate();
+                validate();
             });
 
         }
@@ -99,8 +99,8 @@ $(function() {
             Recaptcha.create('6LedJPESAAAAAD6-0I5Jh8mrqtUWNGAC3-885gHm',
                 'recaptcha-holder',
                 {
-                  theme: 'clean',
-                  callback: capcthaIsReady
+                    theme: 'clean',
+                    callback: capcthaIsReady
                 }
             );
 
