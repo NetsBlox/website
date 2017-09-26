@@ -92,6 +92,13 @@ nav.navbar {
   color: #e8e8e8 ;
 }
 
+.nav button#logout{
+  background: transparent;
+  border: none;
+  color: white;
+  margin-top: 1em;
+}
+
 .navbar-inverse .navbar-text, .navbar-brand {
   color: #e8e8e8  !important;
 }
@@ -116,7 +123,7 @@ nav.navbar {
   border-bottom: none;
 }
 
-#example-grid-m .element-item {
+#example-grid .element-item {
   min-height: 300px;
 }
  a.wrapper-link{

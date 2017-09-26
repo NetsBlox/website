@@ -15,18 +15,22 @@ var disableMobileProject = () =>{
   }
 };
 
+function isMainPage(){
+  let is = document.getElementById('examples-grid') !== null;
+  return is; 
+}
 
 $(document).ready(function() {
 
   var $grid = $('#examples-grid');
-  let $gridM = $('#examples-grid-m');
   var $pSlider = $('#projects-slider');
 
+  // check if is on landing
   disableMobileProject();
 
   // init Isotope
   var qsRegex;
-  $gridM.isotope({
+  $grid.isotope({
       // options
       // layoutMode: 'fitRows',
       itemSelector: '.element-item',
@@ -41,28 +45,30 @@ $(document).ready(function() {
 
   let revealExamples = () => {
     document.querySelector('.spinner').className += ' hidden';
-    $gridM.removeClass('hidden');
-    $gridM.isotope('layout');
+    $grid.removeClass('hidden');
+    $grid.isotope('layout');
   };
 
   // layout the items after the images are loaded
-  let images = document.querySelectorAll('#examples-grid-m .element-item img');
-  document.querySelector('.spinner').className += ' hidden';
-  console.log('preloaded images', loadedImages);
-  const LOADING_THRESHOLD = 2;
-  if (loadedImages >= images.length - LOADING_THRESHOLD) {
-    //reveal and layout isotope
-    revealExamples();
-  }else {
-    images.forEach((img)=>{
-      img.addEventListener('load',(e)=>{
-        if (loadedImages >= images.length - LOADING_THRESHOLD) {
-          revealExamples();
-        }
+  // check if is on main page
+  if (isMainPage()){
+    let images = document.querySelectorAll('#examples-grid .element-item img');
+    document.querySelector('.spinner').className += ' hidden';
+    console.log('preloaded images', loadedImages);
+    const LOADING_THRESHOLD = 2;
+    if (loadedImages >= images.length - LOADING_THRESHOLD) {
+      //reveal and layout isotope
+      revealExamples();
+    }else {
+      images.forEach((img)=>{
+        img.addEventListener('load',(e)=>{
+          if (loadedImages >= images.length - LOADING_THRESHOLD) {
+            revealExamples();
+          }
+        });
       });
-    });
+    }
   }
-
 
   // setup button filters for isotope
   // $('.filter-button-group').on( 'click', 'button', function() {
@@ -76,7 +82,7 @@ $(document).ready(function() {
   // use value of search field to filter
   var $quicksearch = $('.quicksearch').keyup(debounce(function() {
     qsRegex = new RegExp($quicksearch.val(), 'gi');
-    $gridM.isotope();
+    $grid.isotope();
   }, 200));
 
   // debounce so filtering doesn't happen every millisecond
@@ -129,20 +135,18 @@ $(document).ready(function() {
   $('#logout').on('click', (e) => {
     e.preventDefault();
     $.ajax({
-      method: 'post',
+      method: 'POST',
       url: SERVER_ADDRESS + 'api/logout',
       success: () => {
-        document.cookie = "netsblox-cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        console.log('logged out');
         updateLoginViews(false);
       }
     });
-
   });
 
 // goto top button    
   $(window).scroll(function () {
-    console.log('scrolled')
     if ($(this).scrollTop() > 50) {
       $('#back-to-top').fadeIn();
     } else {
@@ -166,6 +170,11 @@ $('form').submit(function(e) {
   e.preventDefault();
   let username = $('input[name="username"]').val();
   let password = $('input[name="password"]').val();
+  if (!username || !password) {
+    alert('Fill in your username and password');
+    return;
+  }
+  $('input[name="password"]').val('');
   let hashedP = sha512(password);
 
   $.ajax({
@@ -174,23 +183,25 @@ $('form').submit(function(e) {
     data: JSON.stringify({
       __h: hashedP,
       __u: username,
-      remember: true
+      remember: false
     }),
     contentType: "application/json; charset=utf-8",
     xhrFields: {
       withCredentials: true
     },
+    headers: {
+      // SESSIONGLUE: '.sc1m16',
+      Accept: '*/*',
+    },
     crossDomain: true,
     statusCode: {
       403: function(xhr) {
-          // login failed ( catching using status code due to the response)
-          console.log(xhr.responseText);
-          alert(xhr.responseText);
-        }
-      },
-      success: data => {
-        console.log(document.cookie);
-        console.log('logged in');
+        // login failed
+        alert(xhr.responseText);
+      }
+    },
+    success: data => {
+      console.log('logged in');
       postLogin(); // promises..
     },
     fail: err => {
@@ -200,9 +211,7 @@ $('form').submit(function(e) {
   });
 
   function postLogin() {
-    Cookies.set('username', username, {
-      expires: 14
-    });
+    Cookies.set('username', username);
     updateLoginViews(true);
   }
 }); // end of on submit
@@ -215,14 +224,16 @@ function updateLoginViews(isLoggedIn) {
       $('#logout').removeClass('hidden');
       $('nav p').removeClass('hidden').find('b').text(Cookies.get('username'));
       $('#login-modal').modal('hide');
-      grabUserProjects();
+      if (isMainPage()) grabUserProjects();
     } else { //means we are logging out
+      $('nav p').addClass('hidden');
       $('#login').removeClass('hidden');
       $('#logout').addClass('hidden');
-      $('#userProjects-grid').addClass('hidden').find('row').empty();
-      $('nav p').addClass('hidden');
+      if (isMainPage()) $('#userProjects-grid').addClass('hidden').find('row').empty();
+      if (isMainPage()) document.getElementById('userProjects-grid').innerHTML = '';
     }
   }
+
   function grabUserProjects(){
 
     $('#userProjects-grid').find('.row').empty();

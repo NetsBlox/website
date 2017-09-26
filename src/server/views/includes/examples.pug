@@ -17,41 +17,9 @@ h3.text-center Examples &amp; Services
   .rect5
 
 
-
-//- rotating cards: 
-//- .hidden-xs.clearfix
-//- #examples-grid
-//-   .grid-sizer.col-xs-12.col-sm-6.col-md-4.col-lg-3
-//-   each eg in examples
-//-     .element-item.col-xs-12.col-sm-6.col-md-4.col-lg-3
-//-       a(href= servAddr+'/?action=example&ProjectName='+eg.projectName, target='_blank')
-//-         .card-container
-//-           .card
-//-             .front(style=`background-image: url(${servAddr}/api/examples/${eg.projectName}/thumbnail);`)
-//-               .content
-//-                 .main
-//-                   //- h3.name= eg.projectName
-//-                   //- p.profession= eg.services.join(', ')
-//-             .back
-//-               .content
-//-                 .main
-//-                   h3.name= eg.projectName
-//-                   h4.text-center= eg.primaryRoleName
-//-                   p.profession= eg.services.join(', ')
-//-                   p.text-center= eg.notes
-//-                   .stats-container
-//-                     .stats
-//-                       h4 235
-//-                       p Views
-//-                     .stats
-//-                       h4 114
-//-                       p Likes
-//-                     .stats
-//-                       h4= eg.roleNames.length
-//-                       p Roles
 script.
   let loadedImages = 0;
-#examples-grid-m.clearfix.hidden
+#examples-grid.clearfix.hidden
   .grid-sizer.col-xs-12.col-sm-4.col-md-3.col-lg-2
   each eg in examples
     a(class="wrapper-link",href= env.EDITOR_ADDRESS+'/?action=example&ProjectName='+eg.projectName + '&editMode=true', target='_blank') 
