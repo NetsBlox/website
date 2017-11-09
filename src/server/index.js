@@ -1,14 +1,13 @@
 'use strict';
 const path      = require('path'),
-  express       = require('express'),
-  bodyParser    = require('body-parser'),
-  axios         = require('axios'),
-  http          = require('http'),
-  memoize       = require('memoizee'),
-  cookieParser  = require('cookie-parser'),
-  logger        = require('morgan'),
-  log           = require('loglevel'),
-  fs            = require('fs');
+    express       = require('express'),
+    bodyParser    = require('body-parser'),
+    axios         = require('axios'),
+    http          = require('http'),
+    memoize       = require('memoizee'),
+    cookieParser  = require('cookie-parser'),
+    logger        = require('morgan'),
+    log           = require('loglevel');
 
 const PORT = process.env.PORT || 8000;
 const NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'dev';
@@ -37,19 +36,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 let getPublicProjects = memoize(() => {
-  log.debug('Calling server for public projects');
-  return axios({
-    method: 'GET',
-    url: SERVER_ADDRESS +'/api/Projects/PROJECTS'
-  });
+    log.debug('Calling server for public projects');
+    return axios({
+        method: 'GET',
+        url: SERVER_ADDRESS +'/api/Projects/PROJECTS'
+    });
 },{promise: true, maxAge: 86400  });
 
 let getExamples = memoize(() => {
-  log.debug('Calling server for example projects');
-  return axios({
-      url: SERVER_ADDRESS + '/api/Examples/EXAMPLES?metadata=true',
-      method: 'get'
-  });
+    log.debug('Calling server for example projects');
+    return axios({
+        url: SERVER_ADDRESS + '/api/Examples/EXAMPLES?metadata=true',
+        method: 'get'
+    });
 }, {promise: true, maxAge: 86400 });
 
 app.get('/', (req, res) => {
@@ -63,7 +62,7 @@ app.get('/', (req, res) => {
 
     axios.all([examplesPromise,publicProjectsPromise]).then(axios.spread((examples,projects)=>{
         log.debug('Data received from server',projects.data.length);
-    // this is cached by default by express if node env is set to production
+        // this is cached by default by express if node env is set to production
         examples.data = examples.data.filter(eg => !['Weather','Star Map','Battleship','Earthquakes'].includes(eg.projectName));
         res.render('index.pug', {examples: examples.data, projects: projects.data });
     })).catch((err)=>{
@@ -82,7 +81,7 @@ app.get('/quickstart', (req,res) => res.render('quickstart.pug',{}));
 app.get('/eclipse', (req,res) => res.render('eclipse.pug',{}));
 app.get('/eclipse/help', (req, res) => res.render('eclipse-help.pug'));
 app.get('*', (req,res)=>{
-  res.status(404).send('Page not found. Go back to <a href="/">Home Page</a>. If you believe there is a mistake, please let us know at <a href="https://facebook.com/netsblox"> our facebook page</a>.');
+    res.status(404).send('Page not found. Go back to <a href="/">Home Page</a>. If you believe there is a mistake, please let us know at <a href="https://facebook.com/netsblox"> our facebook page</a>.');
 });
 
 /**********************************************************************************************************/
@@ -90,6 +89,6 @@ app.get('*', (req,res)=>{
 // Run the server itself
 
 
-let httpServer = http.Server(app).listen(PORT, () => {
-  log.info('listening on unsecure port: ' + PORT);
+http.Server(app).listen(PORT, () => {
+    log.info('listening on unsecure port: ' + PORT);
 });
