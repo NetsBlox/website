@@ -78,4 +78,4 @@ let json2MobileEl = project => {
 </div>`
 };
 
-export { json2MobileEl };
+module.exports = json2MobileEl;
