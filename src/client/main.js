@@ -230,8 +230,7 @@ function updateLoginViews(isLoggedIn) {
         $('nav p').addClass('hidden');
         $('#login').removeClass('hidden');
         $('#logout').addClass('hidden');
-        if (isMainPage()) $('#userProjects-grid').addClass('hidden').find('row').empty();
-        if (isMainPage()) document.getElementById('userProjects-grid').innerHTML = '';
+        if (isMainPage()) $('#userProjects-grid').addClass('hidden').find('.row').empty();
     }
 }
 
