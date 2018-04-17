@@ -12,8 +12,7 @@ footer
           a(href='http://www.vuse.vanderbilt.edu', target='_blank') School of Engineering
       .col-md-3.text-center
         p 
-          b Contact: 
-          | akos.ledeczi@vanderbilt.edu
+          a(href=env.EDITOR_ADDRESS + '/privacy.html') Privacy Policy
   #login-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
     .modal-dialog
       .loginmodal-container
@@ -23,10 +22,6 @@ footer
           input(type='text', name='username', placeholder='Username')
           input(type='password', name='password', placeholder='Password')
           button.login.loginmodal-submit(name='login', type='submit') Login
-          //- .login-help
-          //-   a(href='https://editor.netsblox.org/') Register
-          //-   |  -
-          //-   a(href='https://editor.netsblox.org/') Forgot Password
   <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
   script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
