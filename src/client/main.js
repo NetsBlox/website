@@ -1,6 +1,9 @@
-/* global $, loadedImages, Cookies, sha512 */
+/* global $, loadedImages, Cookies, AuthHandler*/
 /* jshint esversion: 6 */
+
 const SERVER_ADDRESS = document.getElementById('editor').href;
+// setup netsblox authenticator
+const auth = new AuthHandler(SERVER_ADDRESS);
 const json2MobileEl = require('./helper');
 // helper disable project links on mobile
 var disableMobileProject = () =>{
@@ -135,15 +138,12 @@ $(document).ready(function() {
     //logout
     $('#logout').on('click', (e) => {
         e.preventDefault();
-        $.ajax({
-            method: 'POST',
-            url: SERVER_ADDRESS + 'api/logout',
-            success: () => {
+        auth.logout()
+            .then(() => {
                 document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
                 console.log('logged out');
                 updateLoginViews(false);
-            }
-        });
+            });
     });
 
     // goto top button    
@@ -176,40 +176,16 @@ $('form').submit(function(e) {
         return;
     }
     $('input[name="password"]').val('');
-    let hashedP = sha512(password);
 
-    $.ajax({
-        url: SERVER_ADDRESS + 'api/?SESSIONGLUE=.sc1m16',
-        method: 'POST',
-        data: JSON.stringify({
-            __h: hashedP,
-            __u: username,
-            remember: false
-        }),
-        contentType: 'application/json; charset=utf-8',
-        xhrFields: {
-            withCredentials: true
-        },
-        headers: {
-            // SESSIONGLUE: '.sc1m16',
-            Accept: '*/*',
-        },
-        crossDomain: true,
-        statusCode: {
-            403: function(xhr) {
-                // login failed
-                alert(xhr.responseText);
-            }
-        },
-        success: () => {
+    auth.login(username, password )
+        .then(() => {
             console.log('logged in');
-            postLogin(); // promises..
-        },
-        fail: err => {
+            postLogin();
+        })
+        .catch(err => {
+            alert(err.request.responseText);
             console.log('failed to log in', err);
-        }
-
-    });
+        });
 
     function postLogin() {
         Cookies.set('username', username);
