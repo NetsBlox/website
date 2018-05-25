@@ -81,6 +81,7 @@ app.get('/quickstart', (req,res) => res.render('quickstart.pug',{}));
 app.get('/eclipse', (req,res) => res.render('eclipse.pug',{}));
 app.get('/eclipse/help', (req, res) => res.render('eclipse-help.pug'));
 app.get('/privacy.html', (req, res) => res.redirect(SERVER_ADDRESS + '/privacy.html'));
+app.get('/emailus', (req, res) => res.redirect('mailto:akos.ledeczi@vanderbilt.edu'));
 app.get('*', (req,res)=>{
     res.status(404).send('Page not found. Go back to <a href="/">Home Page</a>. If you believe there is a mistake, please let us know at <a href="https://facebook.com/netsblox"> our facebook page</a>.');
 });
