@@ -6,14 +6,13 @@ const SERVER_ADDRESS = document.getElementById('editor').href;
 const auth = new AuthHandler(SERVER_ADDRESS);
 const json2MobileEl = require('./helper');
 // helper disable project links on mobile
-var disableMobileProject = () =>{
+var alertMobileMode = () =>{
     if (/Mobi/.test(navigator.userAgent)) {
     // mobile!
         let projectLinks = document.querySelectorAll(`a[href^="${SERVER_ADDRESS}?action"], a[href^="${SERVER_ADDRESS}#present"]`);
         projectLinks.forEach(a => {
             a.addEventListener('click', e => {
-                e.preventDefault();
-                alert('Opening projects on small-screen devies is not fully supported yet. Please try again on a desktop.');
+                alert('For a better experience install the "NetsBlox Player" app from your app store. Visit /mobile for more info');
             });
         });
     }
@@ -21,7 +20,7 @@ var disableMobileProject = () =>{
 
 function isMainPage(){
     let is = document.getElementById('examples-grid') !== null;
-    return is; 
+    return is;
 }
 
 $(document).ready(function() {
@@ -30,7 +29,7 @@ $(document).ready(function() {
     var $pSlider = $('#projects-slider');
 
     // check if is on landing
-    disableMobileProject();
+    alertMobileMode();
 
     // init Isotope
     var qsRegex;
@@ -146,7 +145,7 @@ $(document).ready(function() {
             });
     });
 
-    // goto top button    
+    // goto top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 50) {
             $('#back-to-top').fadeIn();
@@ -226,7 +225,6 @@ function grabUserProjects(){
             data.forEach( proj => {
                 $('#userProjects-grid').find('.row').append(json2MobileEl(proj));
             });
-            disableMobileProject();
             $('#userProjects-grid').removeClass('hidden');
         }
     });
