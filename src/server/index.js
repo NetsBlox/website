@@ -77,6 +77,7 @@ app.get('/tutorials*', (req,res) => res.render('tutorials.pug',{}));
 app.get('/help', (req,res) => res.render('help.pug',{}));
 app.get('/howtos', (req,res) => res.render('howtos.pug',{}));
 app.get('/quickstart', (req,res) => res.render('quickstart.pug',{}));
+app.get('/mobile', (req,res) => res.render('mobile.pug',{}));
 
 app.get('/eclipse', (req,res) => res.render('eclipse.pug',{}));
 app.get('/eclipse/help', (req, res) => res.render('eclipse-help.pug'));
