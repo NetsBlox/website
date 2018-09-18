@@ -432,6 +432,25 @@ footer a.back-to-top {
   animation-delay: -0.8s;
 }
 
+.center-container {
+  position: relative;
+  height: 10rem;
+}
+
+.center-child {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+.center {
+  text-align: center;
+}
+
+
 @-webkit-keyframes sk-stretchdelay {
   0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
   20% { -webkit-transform: scaleY(1.0) }
