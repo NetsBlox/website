@@ -1,0 +1,24 @@
+extends includes/layout.pug
+block title
+  title Mobile Access
+block content
+  .container
+    h2 NetsBlox on Small Screens
+    br
+    .row
+      p Have you ever wanted to demo a project on your phone but couldn't because of the small screen? With the recent development we have made accessing your projects on portable devices with small screens (read phones and small tablets) possible.
+      h4 Two Solutions
+      p There are two different ways of opening and running your projects:
+
+      p First is purely through the browser; navigate to
+        a( href="/" )  main NetsBlox page
+        | , login and find the project you want to run. Tap on the project to open it just like you would on a desktop. NetsBlox will recognize that you are on a small device and automatically open the project in app mode with a mobile friendly design.
+      p However there are limitation to the aforementioned method, eg you can't trigger keyboard events, type, manage the room, etc. To address these issues we developed mobile applications for IOS and Android platforms. You can find and install these apps through your app store.
+      h3( class="center") Get NetsBlox Player
+      div( class="center-container")
+        div( class="center-child")
+          a( href="https://play.google.com/store/apps/details?id=org.netsblox.player")
+            img(class="", src="/images/google-play-download.png", alt="Google play store download")
+          a( href="https://itunes.apple.com/bh/app/netsblox-player/id1372820318")
+            img(class="", src="/images/app-store-download.png", alt="App store download")
+
