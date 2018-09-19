@@ -6,16 +6,21 @@ const SERVER_ADDRESS = document.getElementById('editor').href;
 const auth = new AuthHandler(SERVER_ADDRESS);
 const json2MobileEl = require('./helper');
 // helper disable project links on mobile
+
+function isMobileDevice() {
+    return /Mobi/.test(navigator.userAgent)
+}
+
+// alerts and prepares the projects to be opened on a mobile device
 var alertMobileMode = () =>{
-    if (/Mobi/.test(navigator.userAgent)) {
-    // mobile!
-        let projectLinks = document.querySelectorAll(`a[href^="${SERVER_ADDRESS}?action"], a[href^="${SERVER_ADDRESS}#present"]`);
-        projectLinks.forEach(a => {
-            a.addEventListener('click', e => {
-                alert('For a better experience install the "NetsBlox Player" app from your app store. Visit /mobile for more info');
-            });
+    let projectLinks = document.querySelectorAll(`a[href*="ProjectName="`);
+
+    projectLinks.forEach(a => {
+        a.addEventListener('click', e => {
+            alert('For a better experience install the "NetsBlox Player" app from your app store. Visit /mobile for more info');
         });
-    }
+        a.href = a.href.replace('&editMode=true', ''); // remove editmode to open in appmode
+    });
 };
 
 function isMainPage(){
@@ -29,7 +34,7 @@ $(document).ready(function() {
     var $pSlider = $('#projects-slider');
 
     // check if is on landing
-    alertMobileMode();
+    if (isMobileDevice()) alertMobileMode();
 
     // init Isotope
     var qsRegex;
