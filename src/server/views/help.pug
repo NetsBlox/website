@@ -4,11 +4,12 @@ block title
 block content
   mixin box(title, url, buttonCaption)
     .col-md-4.col-sm-6.text-center
-      .box
+      .box.card
         h2.tag-title= title
         block
         br
-        a.btn.btn-block.btn-primary(href=url)= buttonCaption
+        if buttonCaption
+          a.btn.btn-block.btn-primary(href=url)= buttonCaption
   .container
     .row
       h2.text-center Learn more about NetsBlox
@@ -55,9 +56,61 @@ block content
               a(href='https://www.youtube.com/watch?v=e0WSvF6bln8') Eclipse Temperature Tracking (short)
             li
               a(href='https://www.youtube.com/watch?v=vyP_2Fc_u4Y') Internet of Things (IoT)
-        +box('White Paper', 'NetsBloxWhitePaper.pdf','View')
-          p Computational thinking (CT) has been described as a general analytic approach to problem solving, designing systems, and understanding human behaviors. The integration of CT within the K12 curriculum has also been argued for by the ACM committee on K12 education, and has become a focus of several researchers on educational computing. This paper provides a detailed introduction to NetsBlox and its relation to computational thinking and distributed programming.
-        +box('Snap! Manual', 'https://snap.berkeley.edu/SnapManual.pdf','View')
-          p In this manual we sometimes make reference to Scratch, e.g., to explain how some Snap! feature extends something familiar in Scratch. It’s very helpful to have some experience with Scratch before reading this manual, but not essential..
-        +box('Flyer','NetsBloxFlyer.pdf','View')
-          p NetsBlox is an open-source web and cloud-based visual programming environment. Its visual notation is based on Scratch from MIT and uses the open source JavaScript code base of Snap! from Berkeley. Both of these are extremely successful tools in K12 computer science education. NetsBlox adds the capability of networking and enables distributed programming at a level accessible to young learners.
+        +box('Documents', '#','')
+          ul.text-left
+            li
+              a(href='/NetsBloxWhitePaper.pdf') White Paper
+            li
+              a(href='https://snap.berkeley.edu/SnapManual.pdf') Snap! Manual
+            li
+              a(href='/NetsBloxFlyer.pdf') Flyer
+            hr
+            li
+              a(href='/NetsBlox_JPDC.pdf') A Visual Programming Environment for Introducing Distributed Computing to Secondary Education - JCPD 2018
+            li
+              a(href='/NetsBlox_BlocksAndBeyond.pdf') You Can Teach Computer Networking in High School - Blocks & Beyond 2017
+            li
+              a(href='/NetsBlox_SIGCSE.pdf') A Visual Programming Environment for Learning Distributed Programming - SIGCSE 2017
+        +box('For Educators', '#','')
+          p Find NetsBlox lesson plans here in this section.
+          ul.text-left
+            li
+              a(href="/lessons/NetsBlox Lesson Map and Weather.pdf") Map and Weather
+            li
+              a(href="/lessons/NetsBlox Lesson Lists and Movies.pdf") Lists and Movies
+            li
+              a(href="/lessons/NetsBlox Lesson Messages and Chatroom.pdf") Messages and Chatroom
+        +box('Sample Projects','/','')
+          ul.text-left
+            li
+              a(href="https://editor.netsblox.org/?action=example&ProjectName=QuickQuake") Quick Quake
+            li
+              a(href="https://editor.netsblox.org/?action=example&ProjectName=StreetViewMap") StreetView Map
+            li
+              a(href="https://editor.netsblox.org/?action=example&ProjectName=CastShow") Cast Show
+            li
+              a(href="https://editor.netsblox.org/?action=present&Username=ledeczi&ProjectName=BellCurve") Bell Curve
+            li
+              a(href="https://editor.netsblox.org/?action=present&Username=ledeczi&ProjectName=EclipseViz") Eclipse Viz
+            li
+              a(href="https://editor.netsblox.org/?action=present&Username=ledeczi&ProjectName=FlyLikeCrows") Fly Like Crows
+            li
+              a(href="https://editor.netsblox.org/?action=present&Username=ledeczi&ProjectName=QuakeHistogram") Quake Histogram
+            li
+              a(href="https://editor.netsblox.org/?action=example&ProjectName=Weather&editMode=true") Weather
+            li
+              a(href="https://editor.netsblox.org/?action=example&ProjectName=Star%20Map&editMode=true") Star Map
+            li
+              a(href="https://editor.netsblox.org/?action=example&ProjectName=Earthquakes&editMode=true") Earthquake
+            li
+              span(class="label label-info" title="Multiplayer") M
+              a(href="https://editor.netsblox.org/?action=present&Username=ledeczi&ProjectName=SemiPongX")  Semi Pong&nbsp
+            li
+              span(class="label label-info" title="Multiplayer") M
+              a(href="https://editor.netsblox.org/?action=example&ProjectName=Battleship&editMode=true")  Battleship&nbsp
+            li
+              span(class="label label-info" title="Multiplayer") M
+              a(href="https://editor.netsblox.org/?action=present&Username=ledeczi&ProjectName=SharedWhiteboardx")  Shared Whiteboard
+            li
+              span(class="label label-info" title="Multiplayer") M
+              a(href="https://editor.netsblox.org/?action=present&Username=ledeczi&ProjectName=21%20Pebbles")  21 Pebbles
