@@ -6,12 +6,12 @@
 
 body {
   font-family: sans-serif;
+  background-color: #fbfbfb;
 }
 
 body div#main-content{
-  background-color: #fbfbfb;
   /*padding before footer*/
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
 body {
