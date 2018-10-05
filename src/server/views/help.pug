@@ -4,11 +4,12 @@ block title
 block content
   mixin box(title, url, buttonCaption)
     .col-md-4.col-sm-6.text-center
-      .box
+      .box.card
         h2.tag-title= title
         block
         br
-        a.btn.btn-block.btn-primary(href=url)= buttonCaption
+        if buttonCaption
+          a.btn.btn-block.btn-primary(href=url)= buttonCaption
   .container
     .row
       h2.text-center Learn more about NetsBlox
