@@ -1,6 +1,7 @@
 'use strict';
 const path      = require('path'),
     express       = require('express'),
+    serveStatic = require('serve-static'),
     bodyParser    = require('body-parser'),
     axios         = require('axios'),
     http          = require('http'),
@@ -20,8 +21,19 @@ let app = express();
 app.use(cookieParser());
 // Setup pipeline logging
 if (NODE_ENV !== 'test') app.use(logger('dev'));
+
 // Setup pipeline support for static pages
-app.use(express.static(path.join(__dirname, '../../public')));
+// app.use(express.static(path.join(__dirname, '../../public')));
+app.use(serveStatic(path.join(__dirname, '../../public'), {
+    maxAge: '1h',
+    setHeaders: setCacheControl,
+}));
+
+function setCacheControl(res, path) {
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+}
+
+
 // Setup pipeline support for server-side templates
 app.engine('pug', require('pug').__express);
 app.set('views', path.join(__dirname, 'views'));
