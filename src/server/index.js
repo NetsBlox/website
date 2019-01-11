@@ -64,6 +64,12 @@ let getExamples = memoize(() => {
 }, {promise: true, maxAge: 86400 });
 
 app.get('/', (req, res) => {
+
+    // set caching headers
+    res.set({
+        'Cache-Control': 'private, max-age=3600',
+    })
+
     // get the examples and public projects data
     // get examples data
     let examplesPromise = getExamples();
