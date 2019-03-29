@@ -7,7 +7,7 @@
            a(class="wrapper-link", href= env.EDITOR_ADDRESS + '/#present:Username='+eg.owner+'&ProjectName='+eg.projectName + '&editMode=true', target='_blank')
             .h-thumbnail
               .img-container
-                img.img-responsive.center-block.img-thumbnail(src= eg.thumbnail, style='width: 100%;')
+                img.img-responsive.lazy.center-block.img-thumbnail(src='images/placeholder.jpg', data-src= eg.thumbnail, style='width: 100%;')
                 .overlay
                   .caption.text-center= eg.notes || 'No description provided.'
               ul.list-group
