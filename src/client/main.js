@@ -8,12 +8,12 @@ const json2MobileEl = require('./helper');
 // helper disable project links on mobile
 
 function isMobileDevice() {
-    return /Mobi/.test(navigator.userAgent)
+    return /Mobi/.test(navigator.userAgent);
 }
 
 // alerts and prepares the projects to be opened on a mobile device
 var alertMobileMode = () =>{
-    let projectLinks = document.querySelectorAll(`a[href*="ProjectName="`);
+    let projectLinks = document.querySelectorAll('a[href*="ProjectName="');
 
     projectLinks.forEach(a => {
         a.addEventListener('click', e => {
@@ -27,6 +27,35 @@ function isMainPage(){
     let is = document.getElementById('examples-grid') !== null;
     return is;
 }
+
+
+// lazyload images
+document.addEventListener('DOMContentLoaded', function() {
+    var lazyImages = [].slice.call(document.querySelectorAll('img.lazy'));
+
+    if ('IntersectionObserver' in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    let lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.classList.remove('lazy');
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+    } else {
+        // Possibly fall back to a more compatible method here
+        lazyImages.forEach(lazyImage => {
+            lazyImage.src = lazyImage.dataset.src;
+            lazyImage.classList.remove('lazy');
+        });
+    }
+});
 
 $(document).ready(function() {
 
