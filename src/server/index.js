@@ -107,6 +107,8 @@ app.get('/mobile', (req,res) => renderView(res, 'mobile.pug'));
 app.get('/eclipse', (req,res) => renderView(res, 'eclipse.pug'));
 app.get('/eclipse/help', (req, res) => renderView(res, 'eclipse-help.pug'));
 app.get('/csta18', (req,res) => renderView(res, 'csta18.pug'));
+app.get('/cybersecurity', (req,res) => renderView(res, 'roboscape.pug'));
+app.get('/roboscape', (req,res) => res.redirect('/cybersecurity'));
 
 app.get('/privacy.html', (req, res) => res.redirect(SERVER_ADDRESS + '/privacy.html'));
 app.get('/emailus', (req, res) => res.redirect('mailto:akos.ledeczi@vanderbilt.edu'));
