@@ -11,7 +11,7 @@ const path      = require('path'),
     log           = require('loglevel');
 
 const PORT = process.env.PORT || 8000;
-const NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'dev';
+const NODE_ENV = process.env.NODE_ENV || 'dev';
 const SERVER_ADDRESS = process.env.EDITOR_ADDRESS;
 /**********************************************************************************************************/
 
@@ -21,6 +21,8 @@ let app = express();
 app.use(cookieParser());
 // Setup pipeline logging
 if (NODE_ENV !== 'test') app.use(logger('dev'));
+
+if (NODE_ENV === 'dev') log.enableAll();
 
 // Setup pipeline support for static pages
 // app.use(express.static(path.join(__dirname, '../../public')));
@@ -68,7 +70,7 @@ app.get('/', (req, res) => {
     // set caching headers
     res.set({
         'Cache-Control': 'private, max-age=3600',
-    })
+    });
 
     // get the examples and public projects data
     // get examples data
@@ -95,7 +97,7 @@ function renderView(res, path) {
         'Cache-Control': 'public, max-age=3600',
     });
     return res.render(path, {});
-};
+}
 
 app.get('/tutorials*', (req,res) => renderView(res, 'tutorials.pug'));
 app.get('/help', (req,res) => renderView(res, 'help.pug'));
@@ -105,6 +107,8 @@ app.get('/mobile', (req,res) => renderView(res, 'mobile.pug'));
 app.get('/eclipse', (req,res) => renderView(res, 'eclipse.pug'));
 app.get('/eclipse/help', (req, res) => renderView(res, 'eclipse-help.pug'));
 app.get('/csta18', (req,res) => renderView(res, 'csta18.pug'));
+app.get('/cybersecurity', (req,res) => renderView(res, 'roboscape.pug'));
+app.get('/roboscape', (req,res) => res.redirect('/cybersecurity'));
 
 app.get('/privacy.html', (req, res) => res.redirect(SERVER_ADDRESS + '/privacy.html'));
 app.get('/emailus', (req, res) => res.redirect('mailto:akos.ledeczi@vanderbilt.edu'));
