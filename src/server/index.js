@@ -110,6 +110,16 @@ app.get('/csta18', (req,res) => renderView(res, 'csta18.pug'));
 app.get('/cybersecurity', (req,res) => renderView(res, 'roboscape.pug'));
 app.get('/roboscape', (req,res) => res.redirect('/cybersecurity'));
 
+// 2019 camp files
+app.get('/camp2019/netsblox', (req,res) => renderView(res, 'camp2019/netsblox.pug'));
+app.get('/camp2019/roboscape', (req,res) => renderView(res, 'camp2019/roboscape.pug'));
+app.get('/camp2019/simple-attacks', (req,res) => renderView(res, 'camp2019/simple-attacks.pug'));
+app.get('/camp2019/denial-of-service', (req,res) => renderView(res, 'camp2019/denial-of-service.pug'));
+app.get('/camp2019/plain-text', (req,res) => renderView(res, 'camp2019/plain-text.pug'));
+app.get('/camp2019/brute-force', (req,res) => renderView(res, 'camp2019/brute-force.pug'));
+app.get('/camp2019/insecure-key-exchange', (req,res) => renderView(res, 'camp2019/insecure-key-exchange.pug'));
+app.get('/camp2019/replay-attack', (req,res) => renderView(res, 'camp2019/replay-attack.pug'));
+
 app.get('/privacy.html', (req, res) => res.redirect(SERVER_ADDRESS + '/privacy.html'));
 app.get('/emailus', (req, res) => res.redirect('mailto:akos.ledeczi@vanderbilt.edu'));
 
