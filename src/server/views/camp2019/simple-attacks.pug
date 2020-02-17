@@ -1,0 +1,70 @@
+extends ../includes/layout.pug
+block title
+  title RoboScape
+block content
+  .container
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    meta(http-equiv='Content-Style-Type' content='text/css')
+    meta(name='generator' content='pandoc')
+    title
+    style(type='text/css') code{white-space: pre;}
+    h1#simple-attacks Simple Attacks
+    h2#learning-goals Learning Goals
+    ul
+      li Understand that networked applications are vulnerable
+      li Motivate the need for securing robots and programs by demonstrating dangers of communicating over a shared medium
+      li Learn how to detect simple attacks
+    h2#description Description
+    p The robots work without authentication and encryption by default. This opens up the possibility of students issuing commands to and/or asking sensor values from any robot.
+    p In this unit students will learn about some of the weaknesses of their robot programs. After demonstrating that any user can take over any robot as well as passively listen to other user's robots, we'll introduce a simple detection mechanism to identify such instances.
+    p This is similar to any real world scenarios involving unencrypted messages or data. These are quite vulnerable to any attacks!
+    h2#glossary Glossary
+    ul
+      li
+        a(href='https://en.wikipedia.org/wiki/Remote_procedure_call') shared medium
+    h2#requiredauthorized-commands Required/Authorized Commands
+    ul
+      li
+        code listen
+      li all robotics commands from previous unit
+    h2#activities Activities
+    ul
+      li
+        strong Overhearing
+        ul
+          li
+            p When the user listens to a robot they are also signing up to receive a copy of all the commands issued to the robot in the form of messages. These messages will have the following format:
+            ul
+              li
+                | "robot command" with payload: 
+                code robot
+                |  & 
+                code command
+              li
+                | "robot message" with payload: 
+                code robot
+                |  & 
+                code message
+      li
+        strong Simple Attack
+        ul
+          li While one student tries to use his or her robot driving program from the previous units, the other students implement an attack by issuing commands interfering with the robot. Observe performance degradation and loss of control. NetsBlox sends all robot commands to the clients as well, allowing for the simulation of overhearing as an additional attack.
+      li
+        strong Attack Detection
+        ul
+          li The first step in defense is being able to detect an ongoing attack. Students will extend their self-driving program to detect an attack and display a warning on their screen.
+      li
+        strong Tug of War Game
+        ul
+          li Students work in pairs: one has the task of writing a self-driving program that tries to escape from a circle. The other has to write an attack program that tries to prevent this escape.
+    h2#common-pitfalls Common Pitfalls
+    ul
+      li In attack detection, students might have issues keeping the counts in sync and therefore getting false positives for presence of an attacks.
+      li It's important to mention that failed commands won't be overheard: network disconnect or invalid commands. We try to provide some solutions to this in the full write-up.
+    h2#additional-reading Additional Reading
+    ul
+      li
+        a(href='https://en.wikipedia.org/wiki/Sniffing_attack') sniffing attack
+      li
+        a(href='https://en.wikipedia.org/wiki/Passive_attack') passive attacks
+    a(href="/roboscape")  Back

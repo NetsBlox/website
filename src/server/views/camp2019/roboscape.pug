@@ -1,0 +1,81 @@
+extends ../includes/layout.pug
+block title
+  title RoboScape
+block content
+  .container
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    meta(http-equiv='Content-Style-Type' content='text/css')
+    meta(name='generator' content='pandoc')
+    title
+    style(type='text/css') code{white-space: pre;}
+    h1#general-roboscape General RoboScape
+    h2#learning-goals Learning Goals
+    ul
+      li Learn about the various remote procedure calls (RPCs) of RoboScape
+      li
+        | Communicate with robots by using the 
+        code getRobots
+        | , 
+        code listen
+        | , and especially 
+        code send
+        |  RPCs
+      li Apply previously learned programming concepts, such as variables and loops, in order to move the robot both manually and autonomously
+    h2#description Description
+    p Introduction to programming RoboScape robots.
+    p The second day is dedicated to programming the robots with NetsBlox to carry our simple tasks. This will familiarize the students with robot programming in general, as well as lets them practice their newly acquired programming/NetsBlox skills.
+    h2#requiredauthorized-commands Required/Authorized Commands
+    p
+      code getRobots
+      | , 
+      code set speed
+      | , and 
+      code beep
+      |  will be the primary needs. If time permits, using 
+      code listen
+      | , 
+      code get range
+      | , 
+      code get ticks
+      |  for the wall challenges will be necessary.
+    h2#glossary Glossary
+    ul
+      li
+        a(href='https://en.wikipedia.org/wiki/Shared_medium') remote procedure calls (RPC)
+    h2#activities Activities
+    ul
+      li
+        strong Introduction to NetsBlox robot programming
+        ul
+          li Show basic commands and sensor data access. Students will do simple tasks such as having their robot beep at a specified frequency.
+      li
+        strong Robot driving
+        ul
+          li Implement program to enable driving the robot with the arrow keys. After giving students time to test ideas, organize a race around an obstacle course.
+      li
+        strong Self-driving robot
+        ul
+          li Implement a program that drives the robot around a large rectangle without user interaction. Organize a competition, and declare whoever has the shortest distance between start and end points as the winner.
+      li
+        strong Get close to a wall without touching it
+        ul
+          li
+            | Use 
+            code get range
+            |  and conditional statements such as "if" in order to stop the robot at a specific distance from the wall.
+      li
+        strong Touch the wall and drive back to starting point
+        ul
+          li
+            | Listen to the robot to be able to receive back messages using 
+            code robot message
+            | . The whiskers will trigger one of these messages upon touching the wall. Use 
+            code get ticks
+            |  before beginning to move to get an initial reading, then use that data to return to the initial position.
+    h2#common-pitfalls Common Pitfalls
+    ul
+      li Should readdress any issues students had with difficult concepts, such as loops and conditionals
+    h2#hints Hints
+    ul
+      li Driving a robot in a rectangle automatically is a lot like one of the previous NetsBlox projects (especially if your rectangle is also a square)
+    a(href="/roboscape")  Back

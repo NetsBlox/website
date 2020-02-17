@@ -1,0 +1,75 @@
+extends ../includes/layout.pug
+block title
+  title RoboScape
+block content
+  .container
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    meta(http-equiv='Content-Style-Type' content='text/css')
+    meta(name='generator' content='pandoc')
+    title
+    style(type='text/css') code{white-space: pre;}
+    h1#denial-of-service Denial of Service
+    h2#learning-goals Learning Goals
+    ul
+      li Importance of the availability aspect of cybersecurity
+      li Attacks on availability: denial of service (DOS) and distributed DOS
+      li Mitigation techniques, such as rate limiting
+    h2#description Description
+    p By this point students might have already discovered the simplest - yet very effective - attack of DoS. The main real world example of these is when more traffic is sent to some network address than can be adequately handled. When this happens, service is interrupted for actual users. We will further demonstrate this by having one robot do a series of actions in a repeating pattern as the victim.
+    p Then attackers will interrupt the robot - making it unavailable to the legitimate user's requests - by bombarding the target robot with repeated commands of a different nature. The attackers' commands should be different in nature from the robot's intended behavior to show that the attackers aren't actively changing the instructions related to the original task.
+    p
+      | The provided examples of patterns for the target robot are tuned to demonstrate this loss of commands easily. The students can be instructed to use any non 
+      code set speed
+      |  commands on repeat to overwhelm the robot and make it miss instructions from its owner. Using the 
+      code beep
+      |  command on repeat with a low frequency and duration (such as 
+      code beep 10 10
+      | ) is a good option for covert attacking.
+    h2#glossary Glossary
+    ul
+      li
+        a(href='https://en.wikipedia.org/wiki/Denial-of-service_attack') DOS & DDOS
+      li
+        a(href='https://en.wikipedia.org/wiki/Information_security#Key_concepts') CIA triad
+    h2#requiredauthorized-commands Required/Authorized Commands
+    ul
+      li
+        code set total rate
+      li
+        code set client rate
+      li
+        code reset rate
+    h2#activities Activities
+    ul
+      li
+        strong Simple Rate Control
+        ul
+          li NetsBlox will provide an RPC to start rate control: the students will be able to set a rate for their own robots that controls the maximum frequency the server will send commands to it. This approach won’t help much since the legitimate commands will still get lost at a high probability during a DoS attack. Meaning everyone's commands, including the legitimate user's commands, are ignored after a threshold frequency is reached.
+      li
+        strong Source-Specific Rate Control
+        ul
+          li There is another Roboscape RPC designed to start source-specific rate control: the students will be able to set a rate for their own robots that controls the maximum frequency the server will accept requests from each client to send commands to the given robot. The RPC will have arguments for the rate and the timeout a given client will be locked out if the rate exceeds the limit. This approach will prevent the DoS attack, but with a caveat: the legitimate programs will have to be careful not to exceed the rate limit.
+      li
+        strong Tug of War Challenge Revisited
+        ul
+          li This challenge is a perfect fit for reinforcing the ideas of rate control. The competition changes drastically as either everyone combined or a specific user is suddenly limited in the number of actions that can be taken per second.
+    h2#common-pitfalls Common Pitfalls
+    ul
+      li Long-duration beeps will lock the robot
+      li Students might lock themselves out of their robot by getting rate limited.
+      li The maximum penalty duration is not so high that waiting is impractical, but they could always use the reset button to reset the setting on the robot and get control back.
+    h2#hints Hints
+    p
+      | Generally a good time to switch to these rate control techniques is when students have learned that using a 
+      code forever
+      |  loop to spam the commands they want to their robots is an effective strategy for Tug of War.
+    h2#next-steps Next Steps
+    ul
+      li Any previous challenge could be redone with the added attack surface of DOS.
+    h3#additional-reading Additional Reading
+    ul
+      li
+        a(href='https://www.a10networks.com/resources/articles/5-most-famous-ddos-attacks') Famous DDOS Attacks
+      li
+        a(href='https://www.incapsula.com/ddos/ddos-attacks.html') DDOS Mitigation Techniques
+    a(href="/roboscape")  Back
