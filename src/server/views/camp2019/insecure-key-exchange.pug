@@ -1,0 +1,54 @@
+extends ../includes/layout.pug
+block title
+  title RoboScape
+block content
+  .container
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    meta(http-equiv='Content-Style-Type' content='text/css')
+    meta(name='generator' content='pandoc')
+    title
+    style(type='text/css') code{white-space: pre;}
+    h1#insecure-key-exchange Insecure Key Exchange
+    h2#learning-goals Learning Goals
+    ul
+      li Insecurity of any key when the message sending the key to robots is vulnerable to an attacker
+      li How to use binary
+      li Implementing a new hardware based approach that could still be brute-forced given enough time, but is secure initially unlike other methods
+    h2#description Description
+    p So far, we've learned that our communications are not secure without encryption - and the initial key exchange between the student and the robot is no exception. Therefore, it should not happen in the open. We’ll show one way how the key can be securely transmitted. It will be sent from the robot to the student instead of the other way around.
+    h2#glossary Glossary
+    ul
+      li
+        a(href='https://en.wikipedia.org/wiki/Key_exchange') key exchange
+    h2#requiredauthorized-commands Required/Authorized Commands
+    ul
+      li No new commands are required, just the same ones that have been used previously.
+    h2#activities Activities
+    ul
+      li
+        strong The Issue: Network Key Exchange
+        ul
+          li
+            | The initial unencrypted key exchange between the robot and the student that is needed to setup the encryption is happening on the same communication channel as all the other robots. This means that anyone overhearing at the time can hear what the key is being set to and steal it. This is a big issue that can be demonstrated easily. In short, the attacker would start listening to the target robot and filter the commands it overhears for one starting with 
+            code set key
+            | . As soon as such a command is found, the hacker knows the key and can use this key to decrypt the future communication of the student with the target robot.
+      li
+        strong Binary Review
+        ul
+          li
+            a(href='https://en.wikipedia.org/wiki/Binary_number') Binary Number
+          li
+            a(href='https://ryanstutorials.net/binary-tutorial/binary-conversions.php') Binary Conversions
+      li
+        strong Solution: Hardware Key Exchange (that cannot be overheard)
+        ul
+          li
+            p In the real world, to avoid the problems with an insecure key exchange, there are exchange protocols (such as SSL) that ensure keys are sent properly and cannot be overheard or used by unauthorized users. To somewhat replicate this within the features of the robots, we use a feature that facilitates transfer of the initial keys directly from the robot to the students.
+          li
+            p There is a button on the robots that, when pressed, will instruct the robot to generate a 16 bit random number. Then by default (when using Caesar cipher) this sequence is assigned as the encryption key in the form of four 4-bit numbers. These 16 bits are immediately "transferred" to the user through a pair of blinking LEDs on the robot, one for zero and the other for 1.
+          li
+            p At this point the students will have to write down the sequence, convert it to decimal, and use it as their encryption key. They can also write a simple set of blocks that does this conversion for them! The robot will only accept commands encrypted with this key afterwards.
+    h2#common-pitfalls Common Pitfalls
+    ul
+      li Due to network conditions, LED blinking commands might not reach the robot and the robot could skip a bit as a result. If this happens, just restart and try again with a new key.
+    a(href="/roboscape")  Back

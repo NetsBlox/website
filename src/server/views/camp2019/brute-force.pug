@@ -1,0 +1,100 @@
+extends ../includes/layout.pug
+block title
+  title RoboScape
+block content
+  .container
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    meta(http-equiv='Content-Style-Type' content='text/css')
+    meta(name='generator' content='pandoc')
+    title
+    style(type='text/css') code{white-space: pre;}
+    h1#key-cracking-brute-force Key Cracking: Brute Force
+    h2#learning-goals Learning Goals
+    ul
+      li Brute-force attack exposing the weaknesses of basic encryption
+      li Importance of the strength of a cipher's algorithm and the secret key
+    h2#description Description
+    p Being a rudimentary cipher, Caesar cipher is easily susceptible to a host of attacks. The Caesar cipher has a very small key space, as there are only so many single shift values that can be chosen even moving into ASCII characters. Therefore, it is trivial for a computer program (or even humans) to explore the key space and find out the encryption key.
+    p In this unit, we demonstrate Caesar cipher's weaknesses and provide solutions.
+    h2#glossary Glossary
+    ul
+      li
+        a(href='https://en.wikipedia.org/wiki/Brute-force_attack') brute-force attack
+      li
+        a(href='https://en.wikipedia.org/wiki/Key_space_(cryptography)') key space
+      li
+        a(href='https://en.wikipedia.org/wiki/Character_encoding') character encoding
+    h2#requiredauthorized-commands Required/Authorized Commands
+    ul
+      li
+        code listen
+      li
+        code set key
+      li
+        code encrypt
+      li
+        code decrypt
+      li
+        code encrypt++
+      li
+        code speck encrypt
+    h2#activities Activities
+    ul
+      li
+        strong Discussing Key Cracking
+        ul
+          li
+            p
+              strong
+                em Frequency Analysis:
+              |  in a longer message especially, by examining how often letters come up in the encrypted text and comparing it to the data of percent likelihood for a particular letter to be used in English words, we can make educated guesses on decryption. This can be assisted by examining either spaces between words that have been encrypted or, if you can still see the spaces as plain text, by considering the length of common words for the particular application ("set" and "speed" in particular for the robots).
+          li
+            p
+              strong
+                em Brute Force:
+              |  alternatively, we can just go through all possible key values looking for a decrypted text that is what we'd expect to see (such as "set speed")
+          li
+            p
+              strong
+                em Character Encoding:
+              |  utilizes the ASCII table
+      li
+        strong Brute Force in Action
+        ul
+          li
+            p By this point, students might have already discovered that given the limited set of shift values in the ASCII implementation of the cipher, they can break each other's encryption by brute-forcing the key.
+          li
+            | One option is a partially known plain-text attack
+    
+            ol(style='list-style-type: decimal')
+              li Capture the encrypted command
+              li Cycle through all the shift values until you get a sensible text
+              li Use that value to encrypt messages and attack the robot
+          li
+            p The other option is to encrypt your command with different shift values and query the server until a true acknowledgment is received from the server. This would mean that the key had been discovered.
+      li
+        strong Mitigation Strategies
+        ul
+          li
+            | There are different strategies to protect against brute force attacks to a good extent.
+    
+            ul
+              li
+                | Increased key space by using 
+                code encrypt++
+                |  and multiple keys at once
+              li Reducing the key lifetime by changing it automatically and frequently during operation
+              li Basically, any other improvements to the cipher used and quality of encryption
+      li
+        strong Example: Shift Array
+        ul
+          li A simple way of enforcing the Caesar cipher that we have is to modify it to use a list of shift values. Instead of shifting all the characters by a constant shift value, we will loop through a series of shift values and shift each character differently, making the search space for a brute force attack much bigger. The longer the list of shift values, the harder it would be to crack. Incorporating this technique means that a dumb brute-force attack in NetsBlox would take long enough to make it infeasible.
+    h2#next-steps Next Steps
+    ul
+      li
+        a(href='http://practicalcryptography.com/ciphers/classical-era/') Other simple ciphers
+      li
+        a(href='https://crypto.interactive-maths.com/frequency-analysis-breaking-the-code.html') Frequency analysis
+      li
+        a(href='https://en.wikipedia.org/wiki/Known-plaintext_attack') Known plain-text attack
+    a(href="/roboscape")  Back

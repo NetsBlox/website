@@ -1,0 +1,53 @@
+extends ../includes/layout.pug
+block title
+  title RoboScape
+block content
+  .container
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    meta(http-equiv='Content-Style-Type' content='text/css')
+    meta(name='generator' content='pandoc')
+    title
+    style(type='text/css') code{white-space: pre;}
+    h1#replay-attack Replay Attack
+    h2#learning-goals Learning Goals
+    ul
+      li Even by taking the extra work to implement an out-of-band key exchange, replay attacks can still be effective
+      li Replay attacks are countered by sequence numbering
+      li Constant cycle of vulnerability, fixes, new vulnerability, stronger fixes, etc.
+    h2#description Description
+    p Even with safely exchanged strong keys, replay attacks can still wreak havoc. The solution is to introduce sequence numbering, such that commands that don't have a higher sequence number are ignored by the robot. Replay attackers can't change the sequence number without knowing the key or keys, in which case replay attacks aren't necessary anyways.
+    h2#glossary Glossary
+    ul
+      li
+        a(href='https://en.wikipedia.org/wiki/Replay_attack') replay attack
+    h2#requiredauthorized-commands Required/Authorized Commands
+    ul
+      li
+        code <seqno> <command>
+      li
+        code reset seq
+      li all previous commands
+    h2#activities Activities
+    ul
+      li
+        strong Replay Attack
+        ul
+          li
+            p Even when an attacker cannot understand, decrypt or manipulate the contents of a message being sent to the robot, they still can capture and replay those commands. By storing a previously sent message - assuming it's a valid one - the attacker can play them back to the robot at any time to achieve the same results.
+          li
+            p This is done in the real world to "hack" such things as automatic locks in cars and remote-triggered garage door openers. The messages sent around are encrypted, but that doesn't matter with replay attacks. This allowed hackers to unlock or lock cars, open or close garage doors, etc. before these exploits were fixed.
+          li
+            p To demonstrate how a robot's intended behavior can be hijacked or interfered with through replaying their commands, we will listen to and capture the communication to the target robot and wait for an interesting command to be issued. Then it's just a matter of storing that last issued command for later use.
+          li
+            p Another approach could be to randomly play the last "n" commands back to the robot in random order.
+          li
+            p Students will do the Tug of War game with replay attacks this time. If done properly, even the student who does not know the key of the robot can influence that robot in unexpected ways!
+      li
+        strong Sequencing
+        ul
+          li Demonstration of a simple technique to prevent even replay attacks.
+          li By simply adding a number to the beginning of each command - generally starting with 1 and increasing by at least 1 but no more than 100 for each successive command - replay attacks are rendered ineffective.
+    h2#common-pitfalls Common Pitfalls
+    ul
+      li Always changing keys would reduce the period that the robot will accept the captured command without sequencing. This is a good thing for defenders trying to secure their robots and a bad thing for potential attackers!
+    a(href="/roboscape")  Back

@@ -1,0 +1,77 @@
+extends ../includes/layout.pug
+block title
+  title RoboScape
+block content
+  .container
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    meta(http-equiv='Content-Style-Type' content='text/css')
+    meta(name='generator' content='pandoc')
+    title
+    style(type='text/css') code{white-space: pre;}
+    h1#netsblox-overview NetsBlox Overview
+    h2#learning-goals Learning Goals
+    ul
+      li Understand how to navigate around the various areas of the NetsBlox interface and use a variety of features
+      li Learn several programming concepts that will be necessary to understand when it comes time to work with the physical robot down the line
+    h2#description Description
+    p Introduction to programming in NetsBlox. The curriculum does not assume any prior knowledge of computer programming. Therefore, the first day is dedicated to teaching basic programming concepts, such as control structures, variables, data types and functions.
+    h2#requiredauthorized-commands Required/Authorized Commands
+    p
+      | Categories of NetsBlox blocks utilized: 
+      code Motion
+      | , 
+      code Looks
+      | , 
+      code Pen
+      | , 
+      code Network
+      | , 
+      code Control
+      | , 
+      code Sensing
+      | , 
+      code Operators
+      | , 
+      code Variables
+      | , and 
+      code Custom
+      | . Almost all categories of blocks will be required at some point or another.
+    h2#activities Activities
+    ul
+      li
+        strong Introduction to the NetsBlox environment
+        ul
+          li Basics of creating projects and navigating the interface.
+      li
+        strong Cat and Mouse Game
+        ul
+          li Mouse is “driven” by the user using the keyboard arrow keys, while the cat is following the mouse trying to catch it. Time-based scoring, with increasing difficulty level as time progresses. Introduces if-statements, sprites/backgrounds, loops, variables, events and concurrent scripts.
+      li
+        strong Digital Art
+        ul
+          li Polygon drawing custom block. Implements various ways of creating geometric art. Introduces custom blocks (functions).
+      li
+        strong Interactive Weather Map
+        ul
+          li Create a fully interactive google map background with panning and zooming. Display current weather conditions wherever the user clicks. Introduces Remote Procedure Calls (RPCs).
+      li
+        strong Shopping List App
+        ul
+          li Simple project to introduce lists. Set variables equal to lists and then add items to them. Further list manipulation is available as time permits.
+    h3#additional-training-projects Additional Training Projects
+    ul
+      li
+        strong Chatroom
+        ul
+          li Introduction to messages. Learn how to automatically send messages from one computer to everyone else able to receive it.
+      li
+        strong Movie Cast Info
+        ul
+          li Using the MovieDB service, display photos of leading cast members of any movie based on its title. Stresses lists.
+    h2#common-pitfalls Common Pitfalls
+    ul
+      li If students are brand new to programming concepts make sure to address any confusion about loops, conditionals, variables and their ability to store more than just numerical values, etc.
+    h2#hints Hints
+    ul
+      li For students without programming experience, the "core" curriculum should be sufficient. More experienced students could try their hands at the complementary extensions of problems.
+    a(href="/roboscape")  Back

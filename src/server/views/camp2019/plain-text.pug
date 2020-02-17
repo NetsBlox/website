@@ -1,0 +1,63 @@
+extends ../includes/layout.pug
+block title
+  title RoboScape
+block content
+  .container
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    meta(http-equiv='Content-Style-Type' content='text/css')
+    meta(name='generator' content='pandoc')
+    title
+    style(type='text/css') code{white-space: pre;}
+    h1#authentication-encryption Authentication & Encryption
+    h2#learning-goals Learning Goals
+    ul
+      li Dangers of plain text communication over a shared medium
+      li Authentication (identity verification) through a shared secret (key, password, etc.)
+      li Confidentiality through encryption
+    h2#description Description
+    p
+      | In the previous modules we've been communicating with the robots by sending them commands and messages wirelessly through the air. These messages pass through different devices and networking mediums before they reach the robot. Very much like talking to a teammate or a classroom, others could be listening on your communication with your robot. In RoboScape, users can achieve the same through a simulated 
+      code listen
+      |  command. As you have already seen, anyone can also send commands to your robot by simply knowing its ID.
+    p All online communication has the same challenges, and therefore we need careful and clever solutions to overcome these issues. Authentication and encryption are two key concepts that will help us in this regard.
+    p Authentication is the process of confirming the truth of a claim. An example of this is an identity claim. Some familiar forms of authentication are providing the password to your account, pin to your credit card, security questions, code words, etc.
+    p Encryption is the process of encoding messages (or any information) in such a way that only authorized parties can access and understand it. Some encryption algorithms (symmetric ciphers) are based on a shared key between the communicating parties.
+    p In RoboScape, we use shared keys to both authenticate and ensure confidentiality of the communication between the users and their robots. The initial cipher that we will explore is the Caesar cipher.
+    h2#glossary Glossary
+    ul
+      li
+        a(href='https://en.wikipedia.org/wiki/Encryption') encryption
+      li
+        a(href='https://en.wikipedia.org/wiki/Authentication') authentication
+      li
+        a(href='https://en.wikipedia.org/wiki/Authorization') authorization
+      li
+        a(href='https://en.wikipedia.org/wiki/Cipher') cipher
+      li
+        a(href='https://en.wikipedia.org/wiki/Caesar_cipher') Caesar cipher
+      li
+        a(href='https://en.wikipedia.org/wiki/Symmetric-key_algorithm') Symmetric-key algorithm
+    h2#requiredauthorized-commands Required/Authorized Commands
+    ul
+      li
+        code listen
+      li
+        code set key
+      li
+        code encrypt
+    h2#activities Activities
+    ul
+      li
+        strong Overhearing
+        ul
+          li Demonstrate the overhearing issue, being able to listen in on the commands everyone else is sending.
+      li
+        strong Lack of Authentication
+        ul
+          li Demonstrate how easy it is to control someone else's robot by simply sending unexpected commands to it, similar to previous experiences with Tug of War.
+      li
+        strong Encryption
+        ul
+          li To counter this problem, the secret code will be used to encrypt all messages from the computer to the robot and vice versa. It uses Caesar cipher with the code/key being the shift amount.
+          li This can be shown off to the class by running a simple example of robot movement (turning in a circle), but now using encryption. They will not be able to send it off course or delay commands to the robot as they could previously.
+    a(href="/roboscape")  Back
