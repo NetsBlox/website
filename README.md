@@ -4,4 +4,4 @@ Setup the enviroment variables:
 - GOOGLE_ANALYTICS: to your google analytics key/id
 - NODE_ENV: production
 
-* npm run build to generate client-side js files
+* npm run postinstall to generate client-side js files
